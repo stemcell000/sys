@@ -1,0 +1,37 @@
+<div id class="col-lg-4 col-md-4 col-sm-4">
+	<h4>Boxes</h4>
+	<% unless @boxes.empty?%>
+<table>
+	<thead>
+        <tr>
+            <th><%= sort_link(@q, :id, 'Name') %></th>
+            <th><%= sort_link(@q, :barcode) %></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    		<%@boxes.each do |vial|%>
+    		<tr>
+    			<td class="col-lg-8 col-md-8 col-sm-8">
+    				<small><small><%=link_to b.name, fetch_vials_box_path(vial.id), :remote => true %></small></small>
+    			</td>
+    			 <td class="col-lg-2 col-md-2 col-sm-2">
+    				<small><small><%=vial.barcode%></small></small>
+    			</td>
+    			<td class="col-lg-1 col-md-1 col-sm-1">
+    				<%=link_to edit_box_path(vial) do%>
+    					<i class="fa fa-edit"></i>
+    				<%end%>
+    				<%=link_to destroy_box_path(vial) do%>
+    					<i class="fas fa-trash"></i>
+    				<%end%>
+			</td>
+		</tr>
+		<%end%>
+    </tbody>
+</table>
+<small><%= paginate @boxes %></small>
+<%else%>
+	<p><em><small>No box.</small></em></p>
+<%end%>
+</div>

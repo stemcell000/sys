@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SYS</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <body>
+  		<%= render :partial => 'components/modal' %>
+	<div class="container">
+		
+		<%= render partial: 'layouts/header' %>
+			<div id='flash-msg-container'>
+				<%= render partial: "layouts/flash_messages", :flash => flash %>
+			</div>
+			<div class="jumbotron container-fluid white-bg" >	
+			    	<%= yield %>
+			</div>
+	
+		
+</body>
+	<footer class="footer">
+		<div class="row">
+	 		<div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-5 col-md-offset-5 col-sm-offset-5">
+			    <ul class="nav navbar-nav">
+			    		<li><small><a href="http://www.institut-vision.org/">Institut de la Vision - 2020</a> | </small></li>
+			      	<li><small><%= link_to "About", '#' %> | </small></li>
+			      	<li><small><%= link_to "Contact", 'mailto:marc.lechuga@inserm.fr' %></small></li>
+			    </ul>
+	      	</div>
+	     </div>
+     </footer>
+     </div>
+</html>

@@ -1,0 +1,24 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: sys_development
+  pool: 5
+  timeout: 5000
+  username: marc 
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: sys_test
+  pool: 5
+  timeout: 5000
+  username: marc
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: sys_production
+  pool: 5
+  timeout: 5000
+  username: marc

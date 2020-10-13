@@ -1,0 +1,35 @@
+<%= smart_listing_update(:vials) %>
+
+if(<%= !@box_type.nil?%>){
+	
+//Affichage du partial
+$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/map", :locals => {:box => @box, :box_type => @box_type, :v_max => @v_max, :h_max => @h_max, :position_ids => @position_ids, :position_names => @position_names, :position_vial_names => @position_vial_names}) %>");
+	
+	var arr1 =  <%= raw @position_ids.to_json %>;
+	var arr2 =  <%= raw @position_names.to_json %>;
+	var arr3 = 	<%= raw @position_vial_names.to_json %>;
+	var box_id= <%=@box.id %>;
+	
+	console.log('arr1 length = '+arr1.length);
+	console.log('arr2 length = '+arr2.length);
+	console.log('arr3 length = '+arr3.length);
+	console.log('box_id = '+box_id);
+
+$('.location-label').each(function(index){
+	console.log('Ajout des noms de batch des elts location-label');
+	$(this).append(arr2[index]);
+});
+
+$('.location').each(function(index){
+	console.log('Ajout de id des elts locations');
+	$(this).attr('id',arr1[index]);
+	$(this).append(arr3[index]);
+});
+
+$('.slot').each(function(index){
+	console.log('Ajout du dataset');
+	$(this).attr({'data-id': arr1[index], 'data-name': arr2[index]});
+});
+}else{
+	$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/no_map") %>");
+}

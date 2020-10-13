@@ -1,0 +1,29 @@
+#default: &default
+ # adapter: sqlite3
+  #pool: 5
+  #timeout: 5000
+  
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: labmate_development
+  pool: 5
+  timeout: 5000
+  username: marc 
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: labmate_test
+  pool: 5
+  timeout: 5000
+  username: marc
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: labmate_production
+  pool: 5
+  timeout: 5000
+  username: marc

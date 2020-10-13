@@ -1,0 +1,35 @@
+%h3 Listing containers
+-unless @containers.empty?
+  .row
+    .col-lg-12
+      .content
+        = render 'search'
+  .row
+  .col-lg-12
+    %table.table
+      %thead
+        %tr
+          %th.col-lg-3
+            name
+          %th.col-lg-3
+            barcode
+          %th.col-lg-3
+            location
+          %th.col-lg-3
+          
+      %tbody
+        - @containers.each do |container|
+          %tr
+            %td.col-lg-3= container.name
+            %td.col-lg-3= container.barcode
+            %td.col-lg-3= container.location.name
+            %td.col-lg-3
+              =link_to 'Show', container
+              =link_to 'Edit', edit_container_path(container)
+              =link_to 'Destroy', container, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    
+    %br
+-else
+%p
+  %em Add boxes.
+= link_to 'New Container', new_container_path

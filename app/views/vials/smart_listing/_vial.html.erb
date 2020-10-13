@@ -1,0 +1,9 @@
+  <td><small>
+  	<%if object.position %>
+  		<%box = object.position.box%>
+  		<%=link_to object.name, box_fetch_position_path(:virus_batch_id=>object.id, :box_id => box.id), :remote => true %></small>
+  	<%else%>
+  		<%=object.name%>
+  	<%end%>
+  	</td>
+  <td><small><%= object.barcode %></small></td>

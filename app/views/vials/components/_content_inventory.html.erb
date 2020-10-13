@@ -1,0 +1,58 @@
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong><%= "Vial".pluralize(@vials.length) %></strong>
+				</div>
+			<div class="panel-body out-slot" style="height: 500px;overflow: auto;">
+				<div class="row" >
+					<div class="col-lg-12">
+						<table>
+							<% @arr.each do |elt|%>
+								<tr>
+									<% elt.each do |v|%>
+									<td>
+										<div class="col-lg-12 col-md-12 col-sm-12 draggableContainer center">
+											<a tabindex="0" data-toggle="popover" data-trigger="focus" data-html = "true"
+												title='
+													<div class="row"> 
+														<div class="col-lg-5 text-left">
+															<strong><%=v.name%></strong>
+														</div>
+														<div class="col-lg-12 right">
+															<%unless v.trash%>
+																<%= link_to "Edit", edit_vial_path(v), :class =>"btn btn-primary btn-xs font80pc", :remote => true %>
+																<%= link_to "Remove", destroy_virus_batch_path(v), :class =>"btn btn-danger btn-xs font80pc", :title=>"Remove from list.", :remote => false %>
+																<%= link_to "Rescue", destroy_from_inventory_virus_production_virus_batch_path(v.virus_production, v.id), :class =>"btn btn-warning btn-xs font80pc", :title=>"Rescue", :remote => false %>
+															<%end%>	
+														</div>	
+													</div>'
+												data-content='
+													<div class="col-lg-12 text-left">
+														<small>
+														<strong>Barcode : </strong><%= v.barcode.nil? ? "-" : v.barcode %><br />
+														<strong>Date : </strong><%= v.date.nil? ?  "-" : v.date.strftime("%h %e, %Y ") %><br />
+														<strong>Type : </strong><%= v.type.nil? ? "-" : v.type.name %><br />
+														<strong>Volume : </strong><%= v.volume.nil? ? "-" : v.volume %> <%= v.vol_unit_id.blank? ? "" : v.vol_unit.name %><br />
+														<strong>Box : </strong><%= v.position.nil? ? "-" : v.position.box.name %> <br />
+														<strong>Slot : </strong><%= v.position.nil? ? "-" : v.position.name.upcase() %> <br />
+														<strong>Comments : </strong><br /><%= v.comment || "-" %><br />
+														<strong>Description : </strong><br /><%= v.description || "-" %><br />
+														</small>
+													</div>
+												'
+											>
+													<div class="center">
+														<img src= <%=v.set_tube_status %> alt="not-empty" class=<%=v.set_draggable%> data-id="<%=v.id %>"/>
+														<div class="<%= v.set_color_from_position%>"><strong><small><%= v.name %></small></strong></div>	
+													</div>
+											</a>	
+											</div>
+									</td>
+								<%end%>
+								</tr>
+								<%end%>
+							</table>
+						</div><!--End of col-lg-3-->
+					</div><!--End pf row-->
+				</div><!--End of panel body-->
+			</div><!--End of panel-->
+

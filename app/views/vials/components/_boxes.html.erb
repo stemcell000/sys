@@ -1,0 +1,25 @@
+<% unless @boxes.empty?%>
+<table>
+	<thead>
+        <tr>
+            <th><%= sort_link(@q, :id) %></th>
+            <th><%= sort_link(@q, :barcode) %></th>
+        </tr>
+    </thead>
+    <tbody>
+    		<%@boxes.each do |b|%>
+    		<tr>
+    			<td>
+    				<%=b.name%>
+    			</td>
+    			 <td>
+    				<%=b.barcode%>
+    			</td>
+		</tr>
+		<%end%>
+    </tbody>
+</table>
+<%= paginate @boxes %>
+<%else%>
+	<span>No box to display</span>
+<%end%>

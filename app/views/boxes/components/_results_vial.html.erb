@@ -1,0 +1,28 @@
+<div class="col-lg-4 col-md-4 col-sm-4">
+<h4>Batches</h5>
+<% unless @vials.empty?%>
+<table>
+	<thead>
+        <tr>
+            <th>Name</th>
+            <th>Barcode</th>
+        </tr>
+    </thead>
+    <tbody>
+    		<%@vials.each do |vial|%>
+    		<tr>
+    			<td class="col-lg-6 col-md-6 col-sm-6">
+    				<small><%=vial.name%></small>
+    			</td>
+    			 <td class="col-lg-6 col-md-6 col-sm-6">
+    				<small><%=vial.barcode%></small>
+    			</td>
+		</tr>
+		<%end%>
+    </tbody>
+</table>
+<small><%= paginate @vials %></small>
+<%else%>
+	No sample to display.
+<%end%>
+</div>

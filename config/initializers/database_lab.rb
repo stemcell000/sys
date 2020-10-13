@@ -1,0 +1,1 @@
+DATABASE_LAB = YAML.load_file(File.join(Rails.root, "config", "database_lab.yml"))[Rails.env.to_s]

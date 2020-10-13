@@ -1,0 +1,25 @@
+<% unless @vials.empty?%>
+<table>
+	<thead>
+        <tr>
+            <th><%= sort_link(@q, :name) %></th>
+            <th><%= sort_link(@q, :barcode) %></th>
+        </tr>
+    </thead>
+    <tbody>
+    		<%@vials.each do |vb|%>
+    		<tr>
+    			<td>
+    				<%=vb.name%>
+    			</td>
+    			 <td>
+    				<%=vb.barcode%>
+    			</td>
+		</tr>
+		<%end%>
+    </tbody>
+</table>
+<%= paginate @vials %>
+<%else%>
+	<span>No sample to display</span>
+<%end%>

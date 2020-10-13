@@ -1,0 +1,15 @@
+-# frozen_string_literal: true
+%h3= content_for :title, Container.model_name.human
+.fieldset
+= simple_form_for(@container) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+  = f.input :name
+  = f.input :barcode
+  = f.association :location, label_method: :name
+ 
+  %p
+  .btn-group{"aria-label" => "...", :role => "group"}
+    = f.button :submit
