@@ -9,6 +9,7 @@ class CreateTableVials < ActiveRecord::Migration
       t.boolean "trash"
       t.string "barcode"
       t.integer "position_id"
+      t.integer "team_id"
       t.text "recap"
       t.text "description"
     end

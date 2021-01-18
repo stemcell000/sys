@@ -1,0 +1,25 @@
+	  <table  class="table table-striped table-small">
+	    <thead>
+		    <th class="col-lg-3 col-md-3 col-sm-3 center">
+		        <%= sort_link(@q, :lastname, "Name", default_order: :desc) %>
+		    </th>
+		    <th class="col-lg-3 col-md-2 col-sm-2 center"> E-mail
+		    </th>
+		    <th class="col-lg-3 col-md-3 col-sm-3 center">
+		   	 	<%= sort_link(@q, 'teams_name', t('menu.teams'), default_order: :desc) %>
+		    </th>
+		  	<th class="col-lg-3 center"">
+		  	</th>
+	    </thead>
+	    <tbody>
+		  <% unless smart_listing.empty? %> 
+		  	<% smart_listing.collection.each do |p| %>
+	      			<tr>
+					<%= smart_listing.render object: p, partial: "users/smart_listing/user", locals: {object: p} %>
+	        		</tr>
+	      	<% end %>
+	      	<%end%>
+	    </tbody>
+	  </table>
+	  <%= smart_listing.paginate %>
+	  <%= smart_listing.pagination_per_page_links %>

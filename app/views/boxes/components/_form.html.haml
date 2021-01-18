@@ -1,3 +1,4 @@
+%h3= content_for :title, Box.model_name.human
 = simple_form_for(@box) do |f|
   = f.error_notification
   .container
@@ -11,12 +12,6 @@
         = f.association :box_type, label_method: :name, as: :hidden, :input_html => {class: "col-lg-6"}
       - else
         = f.association :box_type, :collection=>BoxType.all, :input_html => {class: "col-lg-6"}
-    .row
-      = f.association :shelf,                                                         
-        :collection=>Shelf.all,                                                       
-        :label_method => lambda { |shelf| "#{shelf.container.name} | #{shelf.name}"}, 
-        :value_method => :id,
-        :input_html => {class: "col-lg-6"}
     .row
       .col-lg-12
       .btn-group{"aria-label" => "...", :role => "group"}

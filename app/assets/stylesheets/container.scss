@@ -1,0 +1,139 @@
+.container_shelf {
+  min-width: 90px;
+  min-height: 90px;
+  max-width: 120px;
+  max-height: 400px;
+  text-align: center;
+  border:1px solid black;
+  border-radius: 2px; 
+  padding: 0px;
+}
+
+.container_rack {
+  min-width: 60px;
+  min-height: 180px;
+  max-width: 60px;
+  max-height: 350px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 2px; 
+  padding:0;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.container_rack_row {
+  min-width: 70px;
+  min-height: 200px;
+  max-width: 70px;
+  max-height: 350px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 2px; 
+  padding:0;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.container_rack_top {
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 50px;
+  max-height: 50px;
+  text-align: center;
+  border:1px solid black;
+  border-radius: 2px; 
+  padding:0;
+  margin-left: 5px;
+  margin-right: 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.container_rack_label {
+  font-size: 80%;
+  text-align: center;
+  padding:0 0 0 0px;
+  margin-left: 2%;
+  margin-right: auto;
+}
+
+.container_rack_position {
+  min-width: 40px;
+  min-height: 10px;
+  max-width: 40px;
+  max-height: 10px;
+  text-align: center;
+  vertical-align: middle;
+  border:1px solid grey;
+  border-radius: 2px; 
+  padding: 0 0 0 0px;
+  margin-left: 5%;
+  margin-right: 0%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.container_rack_position_row {
+  min-width: 50px;
+  min-height: 14px;
+  max-width: 50px;
+  max-height: 14px;
+  text-align: center;
+  vertical-align: middle;
+  border:1px solid grey;
+  border-radius: 2px; 
+  padding: 0 0 0 0px;
+  margin-left: 5%;
+  margin-right: 0%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+//Container map small
+
+.container_rack_row_small {
+  min-width: 40px;
+  min-height: 80px;
+  max-width: 40px;
+  max-height: 80px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 2px; 
+  padding: 0 0 0 0;
+  margin: 1% 1% 0% 0%;
+  background-color: lightgrey;
+}
+
+.container_rack_label_small {
+  font-size: 70%;
+  text-align: center;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+}
+
+.container_shelf_label_small {
+  min-width: 40px;
+  min-height: 80px;
+  max-width: 40px;
+  max-height: 80px;
+  text-align: center;
+  padding: 0 0 0 0;
+  margin: 1% 1% 0% 0%;
+  font-size: 90%;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.verticaltext{
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  }

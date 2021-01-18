@@ -1,0 +1,3 @@
+<div class='row'> <strong>Email : </strong> <a href = 'mailto:#{self.email}'><%=user.email%></a> </div>
+<div class='row'><strong><%= t("menu.teams") %> : </strong> <%=user.teams.pluck(:name).to_sentence %></div>
+<div class='row'><strong><%= t("users.role") %> : </strong> <%=role_set(user.role) %> </div>

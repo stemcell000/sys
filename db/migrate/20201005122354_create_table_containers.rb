@@ -4,6 +4,7 @@ class CreateTableContainers < ActiveRecord::Migration
       t.string "name"
       t.string "barcode"
       t.integer "location_id"
+      t.integer "container_type_id"
       t.text "recap"
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false

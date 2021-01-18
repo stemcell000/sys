@@ -13,6 +13,7 @@ class Ability
           can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "superadmin"
       elsif user.role? :administrator
           can :read, :all
+          can :manage, User
           can :manage, Vial
           can :manage, Position
           can :manage, Box
@@ -23,8 +24,6 @@ class Ability
           can :manage, Vial
           can :manage, Position
           can :manage, Box
-          can :manage, Container
-          can :manage, Rack
      else
           can :read, :all
     end

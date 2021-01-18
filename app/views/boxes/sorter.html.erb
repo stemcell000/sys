@@ -1,0 +1,18 @@
+<% provide(:title, "Box sorter") %>
+ <div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<h3>Box sorter</h3>
+	</div>
+</div>
+		<div id="info-container">
+					<div class="row">
+						<div id="vb-container" class="col-lg-5">
+							<%= render :partial => "boxes/components/content_inventory", :locals => {:boxes => @boxes} %>
+						</div>
+						<div class="col-lg-5">
+								<%=select_tag "Rack", "#", :class => 'select2-select col-lg-12', include_blank: true, onchange: "getRackMap(this.value, '#map-container')" %>
+							<span><em><small>Choose a box then drag and drop each vial into a slot.</small></em></span>
+						<div id="map-container"></div>
+						</div><!--End of col-->
+					</div><!--End of row-->
+		</div>

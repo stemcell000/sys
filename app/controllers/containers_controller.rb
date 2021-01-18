@@ -10,7 +10,6 @@ class ContainersController < InheritedResources::Base
     @q = Container.ransack(params[:q])
      @containers = @q.result(distinct: true)
      @containers = @containers.includes(:shelves).order(:name)
-     #@containers = smart_listing_create(:containers, @containers, partial: "containers/smart_listing/list", default_sort: {name: "desc"}, page_sizes: [10, 20, 30, 50, 100])
   end
   
   def new
@@ -21,7 +20,6 @@ class ContainersController < InheritedResources::Base
      @container = Container.create(container_params)
      if  @container.valid?
        flash.keep[:success] = "Container created !"
-       @container.generate_recap
        redirect_to @container
      else
        render action: "new"
@@ -37,9 +35,9 @@ class ContainersController < InheritedResources::Base
    if @container.valid?
      flash.keep[:success] = "Container updated!"
      redirect_to container_path 
-  else
+   else
       render :action => 'edit'
-  end
+   end
   end
 
   def destroy
@@ -48,16 +46,18 @@ class ContainersController < InheritedResources::Base
   end
 
   def show
-    
+    @container_type_id = @container.container_type_id
   end
   
   private
 
   def container_params
-    params.require(:container).permit(:id, :name, :barcode, :location_id, :recap,
-    location_attributes: [:id, :name],
-    shelves_ids: [],
-    shelf_attributes: [:id, :name, :barcode])
+    params.require(:container).permit(:id, :name, :barcode, :location_id, :container_type_id, :recap,
+    location_attributes: [:id, :name, :building_id],
+    container_type_attributes: [:id, :name],
+    shelf_ids: [],
+    shelves_attributes: [:id, :name, :barcode, :rack_number, :rack_position_number, :container_id, :_destroy,
+      shelf_racks_attributes: [:id, :name, :shelf_id, :_destroy]])
   end
   
   def set_container

@@ -1,0 +1,142 @@
+
+$("#vb-container").html("<%= escape_javascript( render :partial => "boxes/components/content_inventory", :locals => {:boxes => @boxes})%>");
+$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/map", :locals => {:container_name, :shelf_names, :shelf_rack => @shelf_rack, :rack_position_ids => @rack_position_ids, :position_names => @position_names, :position_box_names => @position_box_names}) %>");
+
+$('[data-toggle="popover"]').popover({html:true});
+	
+	
+	  	var arr1 =  <%= raw @position_ids  %>
+  		var arr2 =  <%= raw @position_names %>
+  		var arr3 = <%= raw @position_batch_names%>
+ 		var arr4 = <%= raw @position_batch_ids %>
+	
+	var box_id= <%= @box.id%>;
+	
+	var box_id= <%= @box.id%>;
+	var debug = false
+	
+	if(debug){
+	console.log('arr1 length = '+arr1.length);
+	console.log('arr1 = '+arr1);
+	console.log('arr2 length = '+arr2.length);
+	console.log('arr2 = '+arr2);
+	console.log('arr3 length = '+arr3.length);
+	console.log('arr3 = '+arr3);
+	console.log('arr4 length = '+arr4.length);
+	console.log('arr4 = '+arr4);
+	console.log('box_id = '+box_id);
+	console.log('hmax = <%=@h_max%>');
+	console.log('vmax = <%=@v_max%>');
+	};
+
+$('.slot').each(function(index){
+	console.log('Ajout du dataset des elts draggableContainer');
+	$(this).attr({'data-id': arr1[index], 'data-name': arr2[index]});
+	if(arr3[index]){
+		$(this).append("<%= escape_javascript(render :partial => "virus_batches/components/tube")%>")
+		$(this).find('.location').append(arr3[index]);
+		$(this).find('.dot').attr({'data-id': arr4[index]});
+	}else{
+		$(this).addClass('empty-slot')
+	}
+})
+
+$('.location-label').each(function(index){
+	console.log('Ajout des noms de batch des elts location-label');
+	$(this).append(arr2[index]);
+});
+
+$('.empty-slot').droppable({
+		drop: function(event, ui){
+			console.log('Dropped');
+			$(this).effect("highlight", {color: '#e7f5fe'}, 1000);
+			console.log('data-id = '+this.dataset.id);
+			console.log('data-name = '+this.dataset.name);
+			console.log('vb_id = '+vb_id);
+			//
+			param = {position_id: $(this).data('id'), virus_batch_id: vb_id, box_id: box_id};
+			//
+			updateBox(vb_id, param);
+			//
+			$(this).popover({
+				html: true,
+  				container: 'body'
+			});
+		},
+		over: function(event, ui){
+			console.log('Over');
+			$(this).effect( "highlight",  {color: '#FDC6F1'}, 1000);
+		},
+		out: function (event, ui) {
+			$(this).attr('class', 'bg-default')
+		}
+	});
+
+$('.draggable').draggable({
+	appendTo: 'body',
+    revert: "true",
+    helper: "clone",
+    stack: ".draggable",
+    start: function(event, ui){
+    			console.log('Dragging start');
+    			vb_id = $(this).data('id');
+    			$(this).popover('destroy');
+    		}
+    });
+    
+//Drag and Drop
+function updateBox(id, param){
+	$.ajax({
+			url : '/virus_batches/'+id+'/update_box',
+			type: 'patch',
+			data: param,
+			success: function(data){
+				console.log("success")
+				},
+			error: function(data) { 
+				console.log("error")
+				},
+			})
+}
+//
+$('.out-slot').droppable({
+		drop: function(event, ui){
+			console.log('Dropped');
+			$(this).effect( "highlight",  {color: '#e7f5fe'}, 1000);
+			console.log('data-id = '+this.dataset.id);
+			console.log('data-name = '+this.dataset.name);
+			console.log('vb_id = '+vb_id);
+			//
+			param = {virus_batch_id: vb_id, box_id: $('#map-container').data('id')};
+			//
+			updateBox(vb_id, param);
+			//
+			$(this).popover({
+				html: true,
+  				container: 'body'
+			});
+		},
+		over: function(event, ui){
+			console.log('Over');
+			$(this).effect( "highlight",  {color: '#FDC6F1'}, 1000);
+		},
+		out: function (event, ui) {
+			$(this).attr('class', 'bg-default')
+		}
+	});
+
+//Drag and Drop back
+function updateBox(id, param){
+	$.ajax({
+			url : '/virus_batches/'+id+'/update_box',
+			type: 'patch',
+			data: param,
+			success: function(data){
+				console.log("success")
+				},
+			error: function(data) { 
+				console.log("error")
+				},
+			})
+}
+	

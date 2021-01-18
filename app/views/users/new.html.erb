@@ -1,0 +1,5 @@
+<h3><%= @user? @user.full_name : t('new_user') %> Profile</h3>
+	<% isSysAdmin = can? :manage, :all %>
+    <% isAdmin = can? :manage, Organization %>
+    <% isManager= ['superadmin', 'administrator', 'inventory_manager'].include? current_user.role%>
+<%= render partial: '/users/components/form', locals: {isAdmin: isAdmin, isManager: isManager, isSysAdmin: isSysAdmin} %>

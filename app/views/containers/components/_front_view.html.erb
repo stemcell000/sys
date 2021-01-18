@@ -1,0 +1,19 @@
+        <div class="row">Shelf <%=shelf.name%></div>
+         <% shelf.shelf_racks.each do |rack| %>
+                <div class="col-xs-1 container_rack_row">
+                      
+                      <div class="text-left text-primary container_rack_label">
+                        rack#<%=rack.name%>
+                      </div>
+
+                  <%rack.rack_positions.each do |position|%>
+                 
+                      <div class = "col-xs-11 bg-default container_rack_position_row draggableContainer">
+                      </div>
+                      <div class="col-xs-1 " style="font-size: 65%; padding: 0 2% 0 2%;"><%=position.name%>
+                      </div>
+    
+                  <%end%>
+       
+                </div>
+          <% end%>

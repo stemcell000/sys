@@ -1,0 +1,30 @@
+<% # frozen_string_literal: true %>
+<h3>
+  <%= content_for :title, Container.model_name.human %>
+</h3>
+<div class="fieldset"></div>
+<%= simple_nested_form_for(@container) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="form-inputs"></div>
+  <%= f.input :name %>
+  <%= f.input :barcode %>
+  <%= f.association :location, label_method: :name %>
+  <%= f.association :container_type, label_method: :name %>
+<div class="panel panel-primary">
+  <div class="panel-heading">Shelves</div>
+  <div class="panel-body">
+  <%= f.simple_fields_for :shelves do |s| %>
+    <%= s.input :name %>
+    <%= s.input :rack_number %>
+    <%= s.input :rack_position_number %>
+    <%= s.link_to_remove "remove" %>
+  <% end %>
+  <%= f.link_to_add "Add shelf", :shelves %>
+</div>
+</div>
+
+  <div aria-label="..." class="btn-group" role="group">
+    <%= f.button :submit , class: "btn btn-default" %>
+  </div>
+<% end %>

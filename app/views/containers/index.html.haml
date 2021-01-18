@@ -1,4 +1,4 @@
-%h3 Listing containers
+%h3 Containers
 -unless @containers.empty?
   .row
     .col-lg-12
@@ -27,9 +27,8 @@
               =link_to 'Show', container
               =link_to 'Edit', edit_container_path(container)
               =link_to 'Destroy', container, :method => :delete, :data => { :confirm => 'Are you sure?' }
-    
     %br
 -else
 %p
-  %em Add boxes.
+  %em Add Container.
 = link_to 'New Container', new_container_path

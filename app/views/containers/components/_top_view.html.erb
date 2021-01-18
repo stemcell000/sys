@@ -1,0 +1,15 @@
+  <h5>Top view</h5>
+  <%col_class = "col-xs-"+(12/container.shelves.count).to_s %>
+  <% container.shelves.each do |shelf| %>
+  <div class="<%=col_class%>">
+       <% shelf.shelf_racks.each do |rack| %>
+        <div class="row">
+                <div class="bg-default container_rack_top">
+                <div class="text-left text-primary container_rack_label">
+                  rack#<%=rack.name%>
+                </div>
+              </div>
+        </div>
+        <%end%>
+  </div>
+  <%end%>

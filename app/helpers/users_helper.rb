@@ -3,12 +3,6 @@ def num_to_phone(num)
   "#{ num[0..1] } #{ num[2..3] } #{ num[4..5] } #{ num[6..7] } #{ num[8..9] }"
 end
 
-def invcolor(obj)
-    if obj.active_status == false
-      "danger"
-    end
-  end
-
 def role_set(name)
   case name
    when "superadmin"

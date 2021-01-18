@@ -5,4 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+types = ContainerType.create([{name: 'row organization'}, {name: 'column organization'}])
+box_types = BoxType.create([{name: '9x9', vertical_max: 9, horizontal_max: 9}, {name: '12x8', vertical_max: 8, horizontal_max: 12}])

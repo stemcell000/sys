@@ -4,7 +4,7 @@
     <title>SYS</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" >
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -13,29 +13,22 @@
     <%= javascript_include_tag 'application' %>
   </head>
   <body>
+  	<div class="container">
   		<%= render :partial => 'components/modal' %>
-	<div class="container">
-		
+	<header">
 		<%= render partial: 'layouts/header' %>
-			<div id='flash-msg-container'>
+		<div id='flash-msg-container' class="container-fluid">
 				<%= render partial: "layouts/flash_messages", :flash => flash %>
+		</div>
+	</header>		
+
+			<div class="jumbotron" >
+        <div class="container">
+				    	<%= yield %>
+        </div>
 			</div>
-			<div class="jumbotron container-fluid white-bg" >	
-			    	<%= yield %>
-			</div>
-	
-		
+	</div>
 </body>
-	<footer class="footer">
-		<div class="row">
-	 		<div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-5 col-md-offset-5 col-sm-offset-5">
-			    <ul class="nav navbar-nav">
-			    		<li><small><a href="http://www.institut-vision.org/">Institut de la Vision - 2020</a> | </small></li>
-			      	<li><small><%= link_to "About", '#' %> | </small></li>
-			      	<li><small><%= link_to "Contact", 'mailto:marc.lechuga@inserm.fr' %></small></li>
-			    </ul>
-	      	</div>
-	     </div>
-     </footer>
+	<%= render partial: 'layouts/footer' %>
      </div>
 </html>

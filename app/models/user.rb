@@ -1,4 +1,4 @@
-class User < DatabaseLabBase
+class User < ActiveRecord::Base
   
   attr_writer :login
   
@@ -7,19 +7,16 @@ class User < DatabaseLabBase
   
   has_many :vials
   has_many :options
+  has_and_belongs_to_many :teams
   
   accepts_nested_attributes_for :vials, reject_if: :all_blank
   accepts_nested_attributes_for :options
+  accepts_nested_attributes_for :teams
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable,:rememberable, :trackable, :confirmable, 
+  devise :database_authenticatable,:rememberable
          :validatable
-  #validates :tel1, phone: { possible: true, allow_blank: true, types: [:voip, :mobile]}
-  #validates :tel2, phone: { possible: true, allow_blank: true, types: [:voip, :mobile]}
-  #validates :email, uniqueness: true
-  #validates :location, presence: true
-  #validates :teams, presence: true
 
   def login
     @login || self.username || self.email

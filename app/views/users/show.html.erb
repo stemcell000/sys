@@ -1,0 +1,13 @@
+<h3>Profile <%=@user.full_name%></h3>
+	<div class="container-fluid">
+		<div class='panel panel-primary'>
+			<div class="panel-heading">Contact information</div>
+			<div class="panel-body">
+				<div class="container">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<%=render :partial => "users/components/user", :locals => {:user => @user}  %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

@@ -1,11 +1,10 @@
 class Vial < ActiveRecord::Base
+  
   belongs_to :position
-  belongs_to :box
-  belongs_to :shelf
-  belongs_to :container
-  belongs_to :user
+  belongs_to :team
   
   accepts_nested_attributes_for :position
+  accepts_nested_attributes_for :team
   
   #validations
   validates :name, :volume, :presence => true

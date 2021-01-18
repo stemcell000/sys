@@ -1,0 +1,30 @@
+<%= smart_listing_item :users, :create, @user, @user.valid? ? "users/smart_listing/user" : "users/components/form" %>
+$('.datepicker').datepicker({
+    	    	format: "M. dd, yyyy",
+    		autoclose: true,
+    		todayBtn: true,
+    		clearBtn: true,
+    		calendarWeeks: true,
+    		todayHighlight: true
+    		}
+    );
+    
+$(".select2-select").select2({
+		    theme: "bootstrap",
+		    tag: true,
+		    placeholder: "Select",
+		    tokenSeparators: [',', ' '],
+		    allowClear: true
+		});
+
+		
+$('[data-toggle="popover"]').popover({html:true});
+
+// Display a Javascript alert
+//alert('success!');
+//<% if remotipart_submitted? %>
+  //alert('submitted via remotipart')
+//<% else %>
+  //alert('submitted via native jquery-ujs')
+//<% end %>
+

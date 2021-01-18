@@ -1,0 +1,19 @@
+%h1 Listing racks
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @shelf_racks.each do |shelf_rack|
+      %tr
+        %td= link_to 'Show', shelf_rack
+        %td= link_to 'Edit', edit_shelf_rack_path(rack)
+        %td= link_to 'Destroy', rack, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Rack', new_shelf_rack_path

@@ -1,0 +1,22 @@
+ $('.datepicker').datepicker({
+    	    	format: "M. dd, yyyy",
+    		autoclose: true,
+    		todayBtn: true,
+    		clearBtn: true,
+    		calendarWeeks: true,
+    		todayHighlight: true
+    		}
+    );
+    
+$(".select2-select").select2({
+		    theme: "bootstrap",
+		    tag: true,
+		    placeholder: "Select",
+		    tokenSeparators: [',', ' '],
+		    allowClear: true
+		});
+
+$('[data-toggle="popover"]').popover({html:true});
+
+<%# Render list for XHR requests %>
+<%= smart_listing_update(:users) %>

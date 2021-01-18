@@ -1,0 +1,5 @@
+<h3>User administration</h3>
+	<% isSysAdmin = can? :manage, :all %>
+    <% isAdmin = can? :manage, Organization %>
+    <% isManager= ['superadmin', 'administrator', 'inventory_manager'].include? current_user.role%>
+<%= render partial: '/users/components/form_hr', locals: {isAdmin: isAdmin, isManager: isManager, isSysAdmin: isSysAdmin} %>

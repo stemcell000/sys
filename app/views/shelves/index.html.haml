@@ -1,19 +1,2 @@
-%h1 Listing shelves
-
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-
-  %tbody
-    - @shelves.each do |shelf|
-      %tr
-        %td= link_to 'Show', shelf
-        %td= link_to 'Edit', edit_shelf_path(shelf)
-        %td= link_to 'Destroy', shelf, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Shelf', new_shelf_path
+%h1 Shelves#index
+%p Find me in app/views/shelves/index.html.haml

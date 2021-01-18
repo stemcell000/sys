@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201013124459) do
+ActiveRecord::Schema.define(version: 20210106135222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,19 +44,38 @@ ActiveRecord::Schema.define(version: 20201013124459) do
   create_table "boxes", force: :cascade do |t|
     t.string   "name"
     t.string   "barcode"
-    t.integer  "shelf_id"
     t.integer  "box_type_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "rack_position_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "container_name"
+    t.string   "shelf_name"
+    t.string   "shelf_rack_name"
+    t.text     "comment"
+    t.text     "recap"
+  end
+
+  create_table "container_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "containers", force: :cascade do |t|
     t.string   "name"
     t.string   "barcode"
     t.integer  "location_id"
+    t.integer  "container_type_id"
     t.text     "recap"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "options", force: :cascade do |t|
+    t.boolean  "display_all", default: true
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "positions", force: :cascade do |t|
@@ -67,16 +86,54 @@ ActiveRecord::Schema.define(version: 20201013124459) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rack_positions", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "shelf_rack_id"
+    t.integer  "nb"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shelf_racks", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "shelf_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shelves", force: :cascade do |t|
     t.string   "name"
     t.integer  "container_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "rack_number"
+    t.integer  "rack_position_number"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.string   "acronym"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "teams_users", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "teams_users", ["team_id"], name: "index_teams_users_on_team_id", using: :btree
+  add_index "teams_users", ["user_id"], name: "index_teams_users_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "username"
+    t.string   "role"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -96,6 +153,7 @@ ActiveRecord::Schema.define(version: 20201013124459) do
     t.boolean "trash"
     t.string  "barcode"
     t.integer "position_id"
+    t.integer "team_id"
     t.text    "recap"
     t.text    "description"
   end

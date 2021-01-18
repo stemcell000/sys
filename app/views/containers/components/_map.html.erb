@@ -1,0 +1,20 @@
+<%if container.container_type_id== 2%>
+      <div class="row">
+        <div class="col-xs-2">
+        <%=render partial: 'containers/components/top_view', locals: {container: container}%>
+      </div>
+      <div class="col-xs-3">
+        <%=render partial: 'containers/components/side_view', locals: {container: container}%>
+      </div>
+      <div class="col-xs-6">
+      </div>
+
+    <%else%>
+    <div class="row">
+    <% container.shelves.each do |shelf| %>
+      <div class="row">
+        <%=render partial: 'containers/components/front_view', locals: {container: container, shelf: shelf}%>
+      </div>
+      <%end%>
+    </div>
+  <%end%>

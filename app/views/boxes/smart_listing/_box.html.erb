@@ -1,4 +1,4 @@
-  <td><small><%=link_to object.name, fetch_virus_batches_box_path(object.id), :remote => true %></small></td>
+  <td><small><%=link_to object.name, fetch_vials_box_path(object.id), :remote => true %></small></td>
   <td><small><%= object.barcode %></small></td>
 <td class="actions text-right">
 	<% if can? :manage, Box%>
