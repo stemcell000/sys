@@ -15,11 +15,16 @@ Rails.application.routes.draw do
     get :fetch_vials, :on => :member
     get :fetch_position
     get :sorter, :on => :collection
+    patch :update_shelf_rack, :on=>:member
   end
-  resources :box_types
   resources :shelves
-  resources :containers
+  resources :containers do
+    get :map_container, :on => :collection
+  end
   resources :positions
+  resources :shelf_racks do
+    get :map_shelf_rack, :on => :collection
+  end
   resources :users
   
   #Root

@@ -12,9 +12,7 @@
     <%else%>
     <div class="row">
     <% container.shelves.each do |shelf| %>
-      <div class="row">
         <%=render partial: 'containers/components/front_view', locals: {container: container, shelf: shelf}%>
-      </div>
       <%end%>
     </div>
   <%end%>

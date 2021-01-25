@@ -1,0 +1,19 @@
+$("#help-message").html("Click on a rack.");
+$("#map-container").html("<%= escape_javascript(render :partial =>  "containers/components/front_view_small", :locals => {container: @container})%>");
+$('[data-toggle="popover"]').popover({html:true});
+
+console.log('New container selected');
+
+$('#container_select').on('select2:clearing', function (e) {
+  $("#help-message").html("Please, select a container.");
+$("#map-container").html("");
+});
+
+$(".btn").on("click", function() {
+    //Changement de couleur du fond du rack cliqué
+    //$(this).css("background", "#5cb85c");
+    $(this).toggleClass("#5cb85c");
+    //
+    getShelfRackMap($(this).data("id"), '#map-shelf-rack');
+    $('#map-shelf-rack').attr({'data-id': $(this).data("id")});
+})

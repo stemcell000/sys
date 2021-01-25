@@ -1,10 +1,30 @@
+<%if container%>
+   <%if container.container_type_id == 1%>
+    <% container.shelves.each do |shelf| %>
       <div class="row">
           <div class="col-xs-1 container_shelf_label_small">Shelf <%=shelf.name%></div>
            <% shelf.shelf_racks.each do |rack| %>
-                  <div class="col-xs-1 container_rack_row_small">
-                        <div class="text-left text-primary container_rack_label_small">
-                          rack#<%=rack.name%>
+                  <div class="col-xs-1 container_rack_row_small btn" id=<%=rack.name%> data-id=<%=rack.id%>>
+                        <div class="text-left container_rack_label_small">
+                          rack#<%=rack.name%><br/>
                         </div>
                   </div>
             <%end%>
         </div>
+      <%end%>
+    <%else%>
+        <% container.shelves.each do |shelf| %>
+        <div class="col-xs-1 container_shelf">
+         <% shelf.shelf_racks.each do |rack| %>
+          <div class="row">
+                  <div id=<%=rack.name%> data-id=<%=rack.id%> class="container_rack_top btn">
+                  <div class="text-left container_rack_label_small">
+                    rack#<%=rack.name%>
+                  </div>
+                </div>
+          </div>
+          <%end%>
+        </div>
+  <%end%>
+<%end%>
+<%end%>

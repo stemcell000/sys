@@ -1,0 +1,126 @@
+
+$("#help-message").html("Click on a rack.");
+$("#map-container").html("<%= escape_javascript(render :partial =>  "containers/components/front_view_small", :locals => {container: @container})%>");
+$('[data-toggle="popover"]').popover({html:true});
+
+console.log('container manager');
+
+$(".btn").on("click", function() {
+    //Changement de couleur du fond du rack cliqué
+    //$(this).css("background", "#5cb85c");
+    $(this).toggleClass("#5cb85c");
+    //
+    getShelfRackMap($(this).data("id"), '#map-shelf-rack');
+})
+
+$("#map-shelf-rack").html("<%= escape_javascript(render :partial =>  "shelf_racks/components/single_rack_map", :locals => {shelf_rack: @shelf_rack})%>");
+console.log("map_self_rack");
+
+	  	var arr1 =  <%= raw @position_ids  %>
+  		var arr3 =  <%= raw @position_box_names %>
+ 		var arr4 = <%= raw @position_box_ids %>
+
+	var shelf_rack_id = <%= @shelf_rack.id%>;
+
+	var debug = false
+
+	if(debug){
+	console.log('arr1 length = '+arr1.length);
+	console.log('arr1 = '+arr1);
+	console.log('arr3 length = '+arr3.length);
+	console.log('arr3 = '+arr3);
+	console.log('arr4 length = '+arr4.length);
+	console.log('arr4 = '+arr4);
+	console.log('shelf_rack_id = '+shelf_rack_id);
+	};
+
+	$('.slot').each(function(index){
+	console.log('Ajout du dataset aux éléments slot');
+	if(arr3[index]){
+		$(this).append("<%= escape_javascript(render :partial => "boxes/components/box")%>")
+		$(this).find('.box').append(arr3[index]);
+		$(this).find('.location').attr({'data-id': arr4[index]});
+	}else{
+		$(this).addClass('empty-slot');
+	}
+	});
+
+	$('.empty-slot').droppable({
+		drop: function(event, ui){
+			console.log('Dropped');
+			$(this).effect("highlight", {color: '#e7f5fe'}, 1000);
+			console.log('empty slot : data-id = '+this.dataset.id);
+			console.log('empty slot : data-name = '+this.dataset.name);
+			console.log('empty slot : box_id = '+box_id);
+			//
+			param = {rack_position_id: $(this).data('id'), box_id: box_id, shelf_rack_id: shelf_rack_id};
+			//
+			updateShelfRack(box_id, param);
+			//
+			$(this).popover({
+				html: true,
+  				container: 'body'
+			});
+		},
+		over: function(event, ui){
+			console.log('empty slot : Over');
+			$(this).effect( "highlight",  {color: '#FDC6F1'}, 1000);
+		},
+		out: function (event, ui) {
+			console.log('empty slot : Out');
+			//$(this).attr('class', 'bg-default')
+		}
+	});
+
+	$('.draggable').draggable({
+	appendTo: 'body',
+    revert: "true",
+    helper: "clone",
+    stack: ".draggable",
+    start: function(event, ui){
+    			console.log('Dragging start');
+    			box_id = $(this).data('id');
+    		}
+    });
+
+    //Drag and Drop
+function updateShelfRack(id, param){
+	$.ajax({
+			url : '/boxes/'+id+'/update_shelf_rack',
+			type: 'patch',
+			data: param,
+			success: function(data){
+				console.log("success")
+				},
+			error: function(data) { 
+				console.log("error")
+				},
+			})
+}
+
+//
+$('.out-slot').droppable({
+		drop: function(event, ui){
+			console.log('Dropped');
+			$(this).effect( "highlight",  {color: '#e7f5fe'}, 1000);
+			console.log('data-id = '+this.dataset.id);
+			console.log('data-name = '+this.dataset.name);
+			console.log('box_id = '+box_id);
+			//
+			param = {box_id: box_id, shelf_rack_id: $('#map-shelf-rack').data('id')};
+			//
+			updateShelfRack(box_id, param);
+			//
+			$(this).popover({
+				html: true,
+  				container: 'body'
+			});
+		},
+		over: function(event, ui){
+			console.log('Over');
+			$(this).effect( "highlight",  {color: '#FDC6F1'}, 1000);
+		},
+		out: function (event, ui) {
+			$(this).attr('class', 'bg-default')
+		}
+	});

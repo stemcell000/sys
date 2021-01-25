@@ -3,8 +3,21 @@
     		<%=link_to(image_tag("/images/Logo-A.png", size: "80x30", alt: "SYS"), root_path, class: "navbar-brand")%>
     	</div>
       <ul class="nav navbar-nav">
-          	<%= content_tag(:li, link_to( "Boxes", boxes_path, class: "nav-link"), remote: true)%>
-          	<%= content_tag(:li, link_to( "Vials", sorter_vials_path, class: "nav-link"), remote: true)%>
+          	<li class="dropdown">
+          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Boxes<span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+          			<%= content_tag(:li, link_to( "Inventory", boxes_path, class: "nav-link"), remote: true)%>
+          			<%= content_tag(:li, link_to( "Sorter", sorter_boxes_path, class: "nav-link"), remote: true)%>
+          		</ul>
+          	</li>
+
+          	<li class="dropdown">
+          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vials<span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+          			<%= content_tag(:li, link_to( "Inventory", vials_path, class: "nav-link"), remote: true)%>
+          			<%= content_tag(:li, link_to( "Sorter", sorter_vials_path, class: "nav-link"), remote: true)%>
+          		</ul>
+          	</li>
           	<%= content_tag(:li, link_to( "Containers", containers_path, class: "nav-link"), remote: true)%>
             <%= content_tag(:li, link_to( "Users", users_path, class: "nav-link"), remote: true)%>
 	</ul>

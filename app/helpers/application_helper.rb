@@ -15,4 +15,13 @@ module ApplicationHelper
   def simple_pluralize count, singular, plural=nil
     ((count == 1 || count =~ /^1(\.0+)?$/) ? singular : (plural || singular.pluralize))
   end
+
+  def deal_with_even(n)
+    a=0
+    if n%2 == 0
+      a = n
+    else
+      a = n+1
+    end
+  end
 end

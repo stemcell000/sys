@@ -55,3 +55,35 @@ $(".select2-select").select2({
     allowClear: true
 });
 });
+
+function getContainerMap(id, containername) {
+console.log("Selected");
+console.log("ID : "+id);
+param = {container_id: id}; 
+console.log("param : "+id);
+  $.ajax({
+      url : '/containers/map_container',
+      data: param,
+      success: function(data){
+        console.log("success");
+        },
+      //error: function(data) { alert("error"); }
+      });
+    $(containername).attr({'data-id': id});
+}
+
+
+function getShelfRackMap(id, shelfrackname) {
+console.log("Selected");
+console.log("ID : "+id);
+param = {shelf_rack_id: id}; 
+console.log("param : "+param);
+  $.ajax({
+      url : '/shelf_racks/map_shelf_rack',
+      data: param,
+      success: function(data) {
+        console.log("success");
+        },
+      error: function(data) { alert("error"); }
+      });
+}

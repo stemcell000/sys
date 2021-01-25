@@ -41,9 +41,9 @@ class Box < ActiveRecord::Base
     barcode = self.barcode.nil? ? 'unknown' : self.barcode
     box_type_name = self.box_type.nil? ? 'unknown' : self.box_type.name
     rack_position = self.rack_position.nil? ? 'unknown' : self.rack_position.name
-    shelf_rack_name = self.rack_position.nil? ? 'unknown' : self.shelf_rack.name
-    shelf_name = self.shelf_name.nil? ? 'unknown' : self.shelf.name
-    container_name = self.rack_position.nil? ? 'unknown' : self.shelf.container.name
+    shelf_rack_name = self.rack_position.nil? ? 'unknown' : self.rack_position.shelf_rack.name
+    shelf_name = self.rack_position.nil? ? 'unknown' : self.rack_position.shelf_rack.shelf.name
+    container_name = self.rack_position.nil? ? 'unknown' : self.rack_position.shelf_rack.shelf.container.name
     comment = self.comment.nil? ? 'no comment' : self.comment
 
     block =

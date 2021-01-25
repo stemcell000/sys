@@ -4,7 +4,7 @@ class ContainersController < InheritedResources::Base
     include SmartListing::Helper::ControllerExtensions
     helper  SmartListing::Helper
     
-    before_action :set_container, only:[:delete, :edit, :show, :update, :destroy]
+    before_action :set_container, only:[:delete, :edit, :show, :update, :destroy, :set_container_map]
   
   def index
     @q = Container.ransack(params[:q])
@@ -48,6 +48,13 @@ class ContainersController < InheritedResources::Base
   def show
     @container_type_id = @container.container_type_id
   end
+
+  def map_container
+    set_container_map
+    respond_to do |format|
+      format.js
+    end
+  end
   
   private
 
@@ -62,6 +69,17 @@ class ContainersController < InheritedResources::Base
   
   def set_container
     @container = Container.find(params[:id])
+  end
+
+  def set_container_map
+      @boxes = Box.where(rack_position_id: nil).order(:name)
+      @arr = @boxes.each_slice(5).to_a
+
+        begin
+          @container = Container.find(params[:container_id])
+        rescue ActiveRecord::RecordNotFound => e
+          print e
+        end
   end
   
 end

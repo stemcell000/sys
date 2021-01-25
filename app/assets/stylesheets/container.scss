@@ -1,27 +1,21 @@
 .container_shelf {
-  min-width: 90px;
+  min-width: 60px;
   min-height: 90px;
-  max-width: 120px;
-  max-height: 400px;
-  text-align: center;
-  border:1px solid black;
-  border-radius: 2px; 
-  padding: 0px;
+  max-width: 90px;
+  max-height: 400px; 
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
 }
 
 .container_rack {
-  min-width: 60px;
-  min-height: 180px;
-  max-width: 60px;
-  max-height: 350px;
+  display: block;
+  overflow: auto;
   text-align: center;
   border: 1px solid black;
   border-radius: 2px; 
-  padding:0;
-  margin-left: 1%;
-  margin-right: 1%;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  padding:0 0 10% 0;
+  float: none;
+  margin: 0 0 0 0;
 }
 
 .container_rack_row {
@@ -47,35 +41,33 @@
   text-align: center;
   border:1px solid black;
   border-radius: 2px; 
-  padding:0;
-  margin-left: 5px;
-  margin-right: 0px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  padding: 0 0 0 0 ;
+  margin: 1% 1% 0% 0%;
+  background-color: #5bc0de;
 }
 
 .container_rack_label {
   font-size: 80%;
   text-align: center;
-  padding:0 0 0 0px;
+  padding: 0 0 0 0px;
   margin-left: 2%;
   margin-right: auto;
 }
 
 .container_rack_position {
-  min-width: 40px;
-  min-height: 10px;
-  max-width: 40px;
-  max-height: 10px;
+  min-width: 80px;
+  min-height: 25px;
+  max-width: 80px;
+  max-height: 25px;
   text-align: center;
   vertical-align: middle;
   border:1px solid grey;
   border-radius: 2px; 
-  padding: 0 0 0 0px;
+  padding: 0;
   margin-left: 5%;
   margin-right: 0%;
-  margin-top: 1%;
-  margin-bottom: 1%;
+  margin-top: 0%;
+  margin-bottom: 3%;
 }
 
 .container_rack_position_row {
@@ -106,7 +98,7 @@
   border-radius: 2px; 
   padding: 0 0 0 0;
   margin: 1% 1% 0% 0%;
-  background-color: lightgrey;
+  background-color: #5bc0de;
 }
 
 .container_rack_label_small {
@@ -133,7 +125,11 @@
     float: none;
 }
 
-.verticaltext{
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  }
+.hcenter {
+float: none;
+margin: 0 auto;
+}
+
+
+.container_rack_row_small:click { background-color: #5cb85c; }
+.container_rack_top:click { background-color: #5cb85c; }

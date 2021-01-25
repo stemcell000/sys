@@ -1,41 +1,42 @@
 			<div class="panel panel-default">
+				<div class="panel-heading">Boxes</div>
 			<div class="panel-body out-slot" style="height: 500px;overflow: auto;">
 				<div class="row" >
-					<div class="col-lg-12">
+					<div class="col-xs-12">
 						<table>
 							<% @arr.each do |elt|%>
 								<tr>
 									<% elt.each do |box|%>
 									<td>
-										<div class="col-lg-12 col-md-12 col-sm-12 draggableContainer center">
+										<div class="col-xs-12 draggableContainer center">
+											<div class="col-xs-1" style="text-align: center">
+											<img src= "/images/box copie.png" alt="not-empty" class="draggable" data-id="<%=box.id %>"/>
 											<a tabindex="0" data-toggle="popover" data-trigger="focus" data-html = "true" data-container="body"
 												title='
 													<div class="row"> 
-														<div class="col-lg-12 text-left">
+														<div class="col-xs-12 text-left">
 															<strong><%=box.name%></strong>
 														</div>
-														<div class="col-lg-12 right">
+														<div class="col-xs-12 right">
 																<%= link_to "Edit", edit_box_path(box), :class =>"btn btn-primary btn-xs font80pc", :remote => true %>
 																<%= link_to "Discard", box, :method => :delete, :class =>"btn btn-danger btn-xs font80pc", :title=>"Discard box", :remote => false %>
 														</div>	
 													</div>'
 												data-content='
-													<div class="col-lg-12 text-left">
+													<div class="col-xs-12 text-left">
 														<small>
 														<%=box.recap.nil? ? "-" : box.recap%>
 														</small>
 													</div>
 												'
 											>
-													<div class="draggable">
-														<div class="<%= box.set_color_from_position%>" data-id="<%=box.id %>" style = "text-align: center;">
-															<i class="fa fa-th"></i> <br />
+														<div class="<%= box.set_color_from_position%> col-xs-1" data-id="<%=box.id %>">
 															<strong><small><%= box.name %></small></strong>
 														</div>	
-													</div>
 
 											</a>	
 											</div>
+										</div>
 									</td>
 								<%end%>
 								</tr>

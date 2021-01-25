@@ -118,17 +118,17 @@ def map_box
   end
 end
   
-def update_box
-@virus_batch = VirusBatch.find(params[:virus_batch_id])    
-  if params[:position_id]
-    position = Position.find(params[:position_id])
+def update_shelf_rack
+  @box = Box.find(params[:box_id])
+  if params[:rack_position_id]
+    rack_position = RackPosition.find(params[:rack_position_id])
   else
-    @virus_batch.update_columns(position_id: nil)
+    @box.update_columns(rack_position_id: nil)
   end
   #
-  @virus_batch.position = position
-  @virus_batch.save!
-  set_box_map
+  @box.rack_position = rack_position
+  @box.save!
+  set_rack_map
   #
   respond_to do |format|
     format.js
@@ -155,15 +155,14 @@ private
 
     def set_rack_map
       @boxes = Box.where(rack_position_id: nil).order(:name)
-      @arr = @boxes.each_slice(5).to_a
+      @arr = @boxes.each_slice(2).to_a
       if params[:shelf_rack_id]
         @shelf_rack = ShelfRack.find(params[:shelf_rack_id])
     
-        @rack_position_ids = @shelf_rack.rack_position_ids
-        @rack_position_names = @shelf_rack.rack_positions.map{|p| p.name.upcase}
-        @rack_position_box_names = @shelf_rack.rack_positions.map{|p| p.box.nil? ? "":p.box.name}
-        @rack_position_box_ids = @shelf_rack.rack_positions.order(:nb).map{|p| p.box.nil? ? "":p.box.id}
-        @arr = @boxes.each_slice(4).to_a
+        @position_ids = @shelf_rack.rack_position_ids
+        @position_names = @shelf_rack.rack_positions.map{|p| p.name.upcase}
+        @position_box_names = @shelf_rack.rack_positions.map{|p| p.box.nil? ? "":p.box.name}
+        @position_box_ids = @shelf_rack.rack_positions.order(:nb).map{|p| p.box.nil? ? "":p.box.id}
         @users = User.all
       end
     end

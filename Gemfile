@@ -41,6 +41,9 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 gem 'rake', '13.0.1'
@@ -49,7 +52,6 @@ gem 'nprogress-rails'
 gem 'devise'
 gem 'activeadmin'
 gem 'activeadmin-select2', github: 'mfairburn/activeadmin-select2'
-gem 'binding_of_caller'
 gem 'rails-autocomplete'
 gem 'jquery-ui-rails'
 gem 'select2-rails'
@@ -78,7 +80,6 @@ group :production do
   gem 'foreman'
 end
 gem "figaro"
-gem 'sendgrid'
 gem 'bootstrap-popover-rails'
 gem "active_admin_import" , '3.0.0.pre'
 gem "font-awesome-rails"
