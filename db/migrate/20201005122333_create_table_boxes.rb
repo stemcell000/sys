@@ -12,6 +12,7 @@ class CreateTableBoxes < ActiveRecord::Migration
       t.string "shelf_rack_name"
       t.text "comment"
       t.text "recap"
+      t.integer "color_id"
     end
   end
 end

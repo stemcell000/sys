@@ -1,14 +1,11 @@
 $("#map-shelf-rack").html("<%= escape_javascript(render :partial =>  "shelf_racks/components/single_rack_map", :locals => {shelf_rack: @shelf_rack})%>");
 $("#box-container").html("<%= escape_javascript(render :partial => "boxes/components/content_inventory", :locals => {:boxes => @boxes})%>");
 
-console.log("update_shelf_rack");
-
 	  	var arr1 =  <%= raw @position_ids  %>;
   		var arr3 =  <%= raw @position_box_names %>;
  		var arr4 = 	<%= raw @position_box_ids %>;
 		var shelf_rack_id = <%= @shelf_rack.id%>;
-
-		var debug = false;
+		var debug = true;
 
 	if(debug){
 	console.log('arr1 length = '+arr1.length);
@@ -23,9 +20,8 @@ console.log("update_shelf_rack");
 	$('.slot').each(function(index){
 	console.log('Ajout du dataset aux éléments slot');
 	if(arr3[index]){
-		$(this).append("<%= escape_javascript(render :partial => "boxes/components/box")%>")
 		$(this).find('.box').append(arr3[index]);
-		$(this).find('.location').attr({'data-id': arr4[index]});
+		$(this).find('.box-location').attr({'data-id': arr4[index]});
 	}else{
 		$(this).addClass('empty-slot');
 	}

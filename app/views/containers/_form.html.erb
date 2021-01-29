@@ -12,7 +12,7 @@
   <%= f.association :location, label_method: :name %>
   <%= f.association :container_type, label_method: :name %>
 <div class="panel panel-primary">
-  <div class="panel-heading">Shelves</div>
+  <div class="panel-heading">Shelves/Columns</div>
   <div class="panel-body">
   <%= f.simple_fields_for :shelves do |s| %>
     <%= s.input :name %>

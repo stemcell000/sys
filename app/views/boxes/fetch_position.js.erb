@@ -1,15 +1,14 @@
 console.log("fetch position")
-console.log("<%=@vial.id%>")
-console.log("<%=@box.id%>")
 
 if(<%= !@box_type.nil?%>){
 	
 //Affichage du partial
-$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/map", :locals => {:box => @box, :box_type => @box_type, :v_max => @v_max, :h_max => @h_max, :position_ids => @position_ids, :position_names => @position_names, :position_vial_names => @position_vial_names}) %>");
+$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/map", :locals => {:box => @box, :box_type => @box_type, :v_max => @v_max, :h_max => @h_max, :position_ids => @position_ids, :position_names => @position_names, :position_vial_names => @position_vial_names, :storage_status=> @storage_status}) %>");
 	
-	var arr1 =  <%= raw @position_ids.to_json %>;
-	var arr2 =  <%= raw @position_names.to_json %>;
-	var arr3 = 	<%= raw @position_vial_names.to_json %>;
+	var arr1 =  <%= raw @position_ids %>;
+	var arr2 =  <%= raw @position_names %>;
+	var arr3 = 	<%= raw @position_batch_names%>;
+	var arr4 = <%= raw @position_batch_ids%>
 	var box_id= <%=@box.id %>;
 	
 	console.log('arr1 length = '+arr1.length);
@@ -28,13 +27,18 @@ $('.location').each(function(index){
 });
 
 $('.slot').each(function(index){
-	console.log('Ajout du dataset');
-	$(this).attr('id',arr1[index]);
-	$(this).attr({'data-id': arr1[index], 'data-name': arr2[index]});
+	console.log('Ajout du dataset des elts draggableContainer');
+	$(this).attr({'id': arr1[index], 'data-name': arr2[index]});
+	if(arr3[index]){
+		$(this).append("<%= escape_javascript(render :partial => "vials/components/tube")%>")
+		$(this).find('.location').append(arr3[index]+" ("+arr4[index]+")");
+	}else{
+		$(this).addClass('empty-slot')
+	}
 });
 
-$("#<%=@vial.position.id%>").css('background-color', '#FDC6F1');
-$("#vb-recap").html("<%= escape_javascript( render :partial =>  "boxes/components/vb", :locals => {:b => @vial})%>");
+$("#<%=@vial.position.id%>").css('background-color', '#A6F5F7');
+$("#vial-recap").html("<%= escape_javascript( render :partial =>  "boxes/components/vial", :locals => {:vial => @vial})%>");
 }else{
 	$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/no_map") %>");
 }

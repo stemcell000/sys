@@ -39,7 +39,7 @@ private
 
     def set_shelf_rack_map
       @boxes = Box.where(rack_position_id: nil).order(:name)
-      @arr = @boxes.each_slice(5).to_a
+      @arr = @boxes.each_slice(2).to_a
 
       if params[:shelf_rack_id]
         @shelf_rack = ShelfRack.find(params[:shelf_rack_id])
@@ -47,6 +47,7 @@ private
         @position_ids = @shelf_rack.rack_position_ids
         @position_box_names = @shelf_rack.rack_positions.map{|p| p.box.nil? ? "":p.box.name}
         @position_box_ids = @shelf_rack.rack_positions.order(:nb).map{|p| p.box.nil? ? "":p.box.id}
+        @position_box_color_codes = @shelf_rack.rack_positions.map{|p| p.box.nil? ? "":p.box.color.code}
       end
     end
 

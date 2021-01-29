@@ -1,20 +1,19 @@
 <% rows = ('a'..'z').to_a[0..(h_max-1)] %>
 <% cols = (1..26).to_a[0..(v_max-1)] %>
-<div class="row">
-		<div class="col-lg-12">
-			<h5><%="#{box.name} #{box.barcode}"%></h5>
-			<% unless box.shelf.nil? %>
-				<h6>stored in : <%= box.shelf.container.name+" | "+box.shelf.name %></h6>
-			<%end%>
+<% slot_size = 55%>
+<div class="row" style="background-color:">
+				<div class="col-xs-1 text-left"><div style="width: 20px; height: 20px; background-color: <%=box.color.code%>"></div></div>
+
+				<div class="col-xs-10 text-left"><h5 style="color: <%=box.color.code%>"><%="#{box.name} #{box.barcode}"%><%=storage_status%></h5></div>
+		</div>
 		<table>
 		<% cols.each do |c| %>
 			<tr>
 				<% rows.each do |r| %>
 					<td style="padding: 1px;">
 						<div class="col-lg-1 col-md-1 col-sm-1 slot draggableContainer" 
-						style="min-width: 35px; min-height: 35px; max-width: 35px; max-height: 35px; text-align: center; vertical-align: middle; border:1px solid black; border-radius: 2px; ; margin: 0; padding:0;">
-							<div class="location-label text-left text-primary" style="font-size: 50%; text-align: left; margin: 0; padding:0 0 0 1px;"></div>
-							<div class="location text-center" style="font-size: 70%; margin: 0; padding:0;"></div>
+						style="min-width: <%=slot_size%>px; min-height: <%=slot_size%>px; max-width: <%=slot_size%>px; max-height: <%=slot_size%>px;">
+							<div class="location-label text-left text-primary"></div>
 						</div>
 					</td>
 				<%end%>
@@ -23,8 +22,8 @@
 		</table>
 	</div>
 </div>
-<div class="row"
-	<div class="col-lg-12"
-		<div id="vb-recap"></div>
+<div class="row">
+	<div class="col-xs-12">
+		<div id="vial-recap"></div>
 	</div>
 </div>

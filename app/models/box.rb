@@ -4,15 +4,16 @@ class Box < ActiveRecord::Base
   after_update :generate_recaps
 
   has_many :positions, :dependent => :destroy
-  has_many :vials, through: :positions
   belongs_to :box_type
   belongs_to :rack_position
+  belongs_to :color
 
   validates :name, :box_type, :presence => true
   #validates :shelf, :presence => true
   
   accepts_nested_attributes_for :positions
   accepts_nested_attributes_for :rack_position
+  accepts_nested_attributes_for :color
   
   def generate_positions
     position_name = []

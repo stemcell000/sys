@@ -74,7 +74,7 @@ GEM
     autoprefixer-rails (9.8.6)
       execjs
     aws-eventstream (1.1.0)
-    aws-partitions (1.417.0)
+    aws-partitions (1.421.0)
     aws-sdk-core (3.111.2)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
@@ -255,7 +255,7 @@ GEM
     nprogress-rails (0.2.0.2)
     orm_adapter (0.5.0)
     pg (0.20.0)
-    puma (5.1.1)
+    puma (5.2.0)
       nio4r (~> 2.0)
     rabl (0.13.0)
       activesupport (>= 2.3.14)
@@ -381,7 +381,6 @@ DEPENDENCIES
   acts_as_list
   amoeba
   better_errors
-  binding_of_caller
   bootstrap-popover-rails
   bootstrap-sass
   byebug

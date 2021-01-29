@@ -21,7 +21,7 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">Container</div>
 								<div class="panel-body " style="height: 500px;overflow: auto;">
-									<%=select_tag "container_select", options_from_collection_for_select(Container.all.order(name: :desc), "id", "name"), :class => 'select2-select col-xs-12', include_blank: true, onchange: "getContainerMap(this.value, '#map-container')"%>
+									<%=select_tag "container-select", options_from_collection_for_select(Container.all.order(name: :desc), "id", "name"), :class => 'select2-select col-xs-12', include_blank: true, onchange: "getContainerMap(this.value, '#map-container')"%>
 									<span><em><small><div id="help-message">Please, select a container.</div></small></em></span>
 									<div id="map-container" class="col-xs-12"></div>
 								</div><!--End of panel-body-->

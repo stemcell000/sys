@@ -1,24 +1,24 @@
  <%= search_form_for @q, remote: false do |f| %>
 <div class="row top-buffer">
-		<div class="col-lg-12 col-md-12 col-sm-12">
-				<%= f.search_field :recap_or_positions_vial_name_cont, class: "col-lg-12 col-md-12 col-sm-12", placeholder: "Search any terms."%>
+		<div class="col-xs-12">
+				<%= f.search_field :name_or_barcode_or_positions_vial_name_or_positions_vial_recap_cont, class: "col-lg-12 col-md-12 col-sm-12", placeholder: "Search any terms."%>
 		</div>
 </div>
 <div class="row top-buffer">
-			<div class="col-lg-4">
+			<div class="col-xs-4">
 				<%= f.label "Container"%>
 				<%= f.select(:container_name_in, Container.all.map{|c| c.name}, {:include_blank=> " "}, {:class => "select2-select col-lg-12", :multiple => true}) %>
 			</div>
-			<div class="col-lg-4">
+			<div class="col-xs-4">
 				<%= f.label "Shelf"%>
 				<%= f.select(:shelf_name_in, Shelf.all.map{|s| s.name}, {:include_blank=> " "}, {:class => "select2-select col-lg-12", :multiple => true}) %>
 			</div>
-			<div class="col-lg-4">
+			<div class="col-xs-4">
 				<%= f.label "Rack"%>
 				<%= f.select(:shelf_rack_name_in, ShelfRack.all.map{|s| s.name}, {:include_blank=> " "}, {:class => "select2-select col-lg-12", :multiple => true}) %>
 			</div>
 </div>
-<div class="row">
+<div class="row margin-top-row-20">
 	<div class="form-group pull-right top-buffer">
   			<%= f.submit class:"btn btn-default" %>
   			<%= link_to "Clear Search", request.path, class: "btn btn-default" %>

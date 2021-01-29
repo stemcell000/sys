@@ -1,9 +1,44 @@
-  <td><small>
+  <td class="text-left"><small>
   	<%if object.position %>
   		<%box = object.position.box%>
-  		<%=link_to object.name, box_fetch_position_path(:virus_batch_id=>object.id, :box_id => box.id), :remote => true %></small>
+  		<%=link_to "#{object.name} (#{object.id})", box_fetch_position_path(:vial_id=>object.id, :box_id => box.id), :remote => true %></small>
   	<%else%>
-  		<%=object.name%>
+  		<%=object.name%> (<%=object.id%>)
   	<%end%>
-  	</td>
-  <td><small><%= object.barcode %></small></td>
+  </td>
+
+  <td class="actions text-right">
+    <a tabindex="0" data-toggle="popover" data-trigger="focus" data-html = "true" data-container="body"
+                        title='
+                          <div class="row"> 
+                            <div class="col-lg-5 text-left">
+                              <strong><%=object.name%></strong>
+                            </div> 
+                          </div>'
+                        data-content='
+                          <div class="col-lg-12 text-left">
+                            <small>
+                            <strong>Barcode : </strong><%= object.barcode.nil? ? "-" : object.barcode %><br />
+                            <strong>Date : </strong><%= object.date.nil? ?  "-" : object.date.strftime("%h %e, %Y ") %><br />
+                            <strong>Volume : </strong><%= object.volume.nil? ? "-" : object.volume %><br />
+                            <strong>Box : </strong><%= object.position.nil? ? "-" : object.position.box.name %> <br />
+                            <strong>Slot : </strong><%= object.position.nil? ? "-" : object.position.name.upcase() %> <br />
+                            <strong>Comments : </strong><br /><%= object.comment || "-" %><br />
+                            <strong>Description : </strong><br /><%= object.description || "-" %><br />
+                            </small>
+                          </div>
+                        '
+                      >
+                          <div class="center">
+                            <i class="fas fa-eye" data-id="<%=object.id %>"></i><br/>
+                          </div>
+                      </a>  
+
+	<% if can? :manage, Vial%>
+	  	<%= smart_listing_item_actions [
+	  	{name: :custom, url: edit_vial_path(object),
+	  		method: :get, 
+  			icon: "fa fa-edit",
+  			title: "Edit"}]%>
+  	<%end%>
+  </td>

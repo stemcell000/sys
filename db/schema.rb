@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210106135222) do
+ActiveRecord::Schema.define(version: 20210125095209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 20210106135222) do
     t.string   "shelf_rack_name"
     t.text     "comment"
     t.text     "recap"
+    t.integer  "color_id"
+  end
+
+  create_table "colors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "container_types", force: :cascade do |t|
@@ -90,6 +98,7 @@ ActiveRecord::Schema.define(version: 20210106135222) do
     t.string   "name"
     t.integer  "shelf_rack_id"
     t.integer  "nb"
+    t.boolean  "available",     default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -15,7 +15,7 @@
   border-radius: 2px; 
   padding:0 0 10% 0;
   float: none;
-  margin: 0 0 0 0;
+  padding: 0 0 5% 5%;
 }
 
 .container_rack_row {
@@ -34,24 +34,19 @@
 }
 
 .container_rack_top {
-  min-width: 50px;
-  min-height: 50px;
-  max-width: 50px;
-  max-height: 50px;
-  text-align: center;
+  min-width: 70px;
+  min-height: 70px;
+  max-width: 70px;
+  max-height: 70px;
   border:1px solid black;
   border-radius: 2px; 
-  padding: 0 0 0 0 ;
-  margin: 1% 1% 0% 0%;
-  background-color: #5bc0de;
+  padding: 0 0 0 5% ;
+  margin: 0 0 0 0 ;
+  background-color: #337ab7;
 }
 
 .container_rack_label {
-  font-size: 80%;
-  text-align: center;
-  padding: 0 0 0 0px;
-  margin-left: 2%;
-  margin-right: auto;
+  margin: 0 0 0 5%;
 }
 
 .container_rack_position {
@@ -63,11 +58,8 @@
   vertical-align: middle;
   border:1px solid grey;
   border-radius: 2px; 
-  padding: 0;
-  margin-left: 5%;
-  margin-right: 0%;
-  margin-top: 0%;
-  margin-bottom: 3%;
+  padding: 5% 5% 5% 5%;
+  margin: 5% 5% 5% 5%;
 }
 
 .container_rack_position_row {
@@ -130,6 +122,11 @@ float: none;
 margin: 0 auto;
 }
 
+.box-location {
+    font-size: 70%;
+    text-align: center;
 
-.container_rack_row_small:click { background-color: #5cb85c; }
-.container_rack_top:click { background-color: #5cb85c; }
+    }
+.box {
+  padding:  0 0 0 0;
+}

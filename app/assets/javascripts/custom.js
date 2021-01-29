@@ -87,3 +87,32 @@ console.log("param : "+param);
       error: function(data) { alert("error"); }
       });
 }
+
+function getBoxMap(id, containername) {
+console.log("Selected");
+console.log("Box ID : "+id);
+param = {box_id: id}; 
+  $.ajax({
+      url : '/vials/map_tube',
+      data: param,
+      success: function(data){
+        console.log("success");
+        },
+      //error: function(data) { alert("error"); }
+      });
+    $(containername).attr({'data-id': id});
+}
+
+function updateBox(id, param){
+  $.ajax({
+      url : '/vials/'+id+'/update_box',
+      type: 'patch',
+      data: param,
+      success: function(data){
+        console.log("updateBox success")
+        },
+      error: function(data) { 
+        console.log("error")
+        },
+      })
+}

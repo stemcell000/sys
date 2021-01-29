@@ -1,9 +1,8 @@
     <h5>Side view</h5>
     <%col_class = "col-xs-"+(12/container.shelves.count).to_s %>
     <% container.shelves.each do |shelf| %>
-    <div class="<%=col_class%>">
+    <div style="display: inline-block; text-align: middle; margin: 0 0 0 0;">
        <% shelf.shelf_racks.each do |rack| %>
-        <div class="row">
               <div class="container_rack_row">
                     
                     <div class="text-left text-primary container_rack_label">
@@ -13,14 +12,13 @@
 
                 <%rack.rack_positions.each do |position|%>
                
-                    <div class = "col-xs-11  bg-default container_rack_position_row draggableContainer">
+                    <div class = "col-xs-11 container_rack_position_row draggableContainer">
                     </div>
                     <div class="col-xs-1 " style="font-size: 75%; padding: 0 2% 0 2%;"><%=position.name%>
                     </div>
   
                 <%end%>
      
-              </div>
         </div>
         <%end%>
     </div>

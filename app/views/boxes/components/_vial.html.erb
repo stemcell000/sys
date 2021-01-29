@@ -3,13 +3,11 @@
 <div class="panel-body text-left">
 	<small>
 	<div class="col-lg-6">
-		<strong>Owner : </strong><%= vial.user.full_name.nil? ? "-" : vial.user.full_name %><br />
-		<strong>Team : </strong><%= vial.user.teams.name.nil? ? "-" : vial.user.full_name %><br />	
 		<strong>Barcode : </strong><%= vial.barcode.nil? ? "-" : vial.barcode %><br />
 		<strong>Date : </strong><%= vial.date.nil? ?  "-" : vial.date.strftime("%h %e, %Y ") %><br />
 	</div>
 	<div class="col-lg-6">
-		<strong>Volume : </strong><%= vial.volume.nil? ? "-" : vial.volume %> <%= vial.vol_unit_id.blank? ? "" : vial.vol_unit.name %><br />
+		<strong>Volume : </strong><%= vial.volume.nil? ? "-" : vial.volume %> µL<br />
 		<strong>Box : </strong><%= vial.position.nil? ? "-" : vial.position.box.name %> <br />
 		<strong>Slot : </strong><%= vial.position.nil? ? "-" : vial.position.name.upcase() %> <br />
 		<% if !vial.comment.blank? %>

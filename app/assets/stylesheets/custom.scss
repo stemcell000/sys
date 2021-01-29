@@ -1,2 +1,14 @@
 //Set margin up to the application body.
-body { padding-top: 60px; }
+body { 
+padding-top: 60px;
+}
+
+.margin-top-row-20 {
+	margin-top: 20px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}

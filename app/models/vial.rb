@@ -2,16 +2,24 @@ class Vial < ActiveRecord::Base
   
   belongs_to :position
   belongs_to :team
+  belongs_to :box
   
   accepts_nested_attributes_for :position
   accepts_nested_attributes_for :team
   
   #validations
   validates :name, :volume, :presence => true
-  validates :name, :uniqueness => {message: "This name is already taken."}
+  validates :name, length: { in: 2..25 }
+  validates :name, length: { maximum: 25,
+    too_long: "%{count} characters is the maximum allowed",
+    minimum: 2, 
+    too_sort: "%{count} characters is the minimum allowed" }
+  validates :name, :format => { with: /\A[a-zA-Z0-9 ]+\z/ ,
+    :message => 'no special characters, only letters and numbers' }
   
 def generate_recap
   block = "#{self.name} <br />
+            #{self.id} <br />
             #{self.barcode} <br />
             #{self.volume} µL <br />
             #{self.description} <br />

@@ -1,5 +1,8 @@
-  <td><small><%=link_to object.name, fetch_vials_box_path(object.id), :remote => true %></small></td>
-  <td><small><%= object.barcode %></small></td>
+  <td class="text-left">
+    <div style="width: 10px; height: 10px; background-color: <%=box.color.code%>"></div>
+  </td>
+  <td class="text-left"><%=link_to object.name, fetch_vials_box_path(object.id), :remote => true%></td>
+  <td class="text-left"><small><%= object.barcode %></small></td>
 <td class="actions text-right">
 	<% if can? :manage, Box%>
 	  	<%= smart_listing_item_actions [

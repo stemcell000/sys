@@ -1,26 +1,22 @@
-<h5>Vials</h5>
+   <% unless smart_listing.empty? %>
 <small>
   <div class="container-fluid">
 	  <table class="table table-striped">
 	    <thead>
-	      
-	    <th class="col-lg-5 col-md-6 col-sm-6">
+	    <th class="col-xs-7">
 	        Name
 	    </th>
-	    	 <th class="col-lg-6 col-md-6 col-sm-6">
-	        Barcode
-	    </th>
+	    <th class="col-xs-2"></th>
 	    
 	    </thead>
 	    <tbody>
-	    	 <% unless smart_listing.empty? %>
 		  	<% smart_listing.collection.to_a.uniq.each do |s| %>
 	      		<tr class="editable" data-id = "<%= s.id %>">
 	          		<%= smart_listing.render object: s, partial: "vials/smart_listing/vial", locals: {object: s} %>
 	        		</tr>
 	      	<% end %>
 	      <%else%>
-	      	No batch
+	      	No vial.
 	     <%end%>
 	    </tbody>
 	  </table>

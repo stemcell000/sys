@@ -1,21 +1,24 @@
 class VialsController < ApplicationController
   
-  
+      #Smart_listing
+    include SmartListing::Helper::ControllerExtensions
+    helper  SmartListing::Helper
+
 def index
       #Formattage des dates
       start_time = params[:date_gteq].to_date rescue Date.current
       start_time = start_time.beginning_of_day # sets to 00:00:00
       end_time = params[:date_lteq].to_date rescue Date.current
       end_time = end_time.end_of_day # sets to 23:59:59
-      
+      #
       @q = Vial.ransack(params[:q])
       @q.sorts = ['name asc', 'date desc'] if @q.sorts.empty?
-      vbs = @q.result
-      @vials = vbs.includes([:virus_production]).order(:name).page params[:page]
-      
-      vb_ids = vbs.map{|vb|vb.id}
-      
-      @boxes = Box.joins(:vials).where(vials: {id: vb_ids})
+      @vials = @q.result
+      @vials = smart_listing_create(:vials, @vials, partial: "vials/smart_listing/list", default_sort: {id: "asc"}, page_sizes: [20, 30, 50, 100])
+      #
+      vial_ids = @vials.map{|vb|vb.id}
+      #
+      @boxes = Box.joins(:vials).where(vials: {id: vial_ids})
       @boxes = @boxes.order(:name).page params[:page]
 end
  
@@ -101,45 +104,39 @@ def destroy_from_inventory
  
  def map_tube
    if params[:box_id]
-    @box = Box.find(params[:box_id])
-    @box_type = @box.box_type
-    @v_max = @box_type.vertical_max
-    @h_max = @box_type.horizontal_max
-    
-    @position_ids = @box.position_ids
-    @position_names = @box.positions.sort_by{|position| position.nb}.map{|p|p.name.upcase()}
-    
-    @position_batch_ids = @box.positions.ids
+      set_box_map
    end
     @users = User.all
-     set_unsorted_collection 
+     
   end
   
-  def update_box
-  @vial = Vial.find(params[:vial_id])    
-    if params[:position_id]
-      position = Position.find(params[:position_id])
-      if position.vial
-        position.build_vial
-      end
-    else
-      @vial.update_columns(:position_id => nil)
-    end
+  #def update_box
+  #@vial = Vial.find(params[:vial_id])    
+   # if params[:position_id]
+    #  position = Position.find(params[:position_id])
+     # if position.vial
+      #  position.build_vial
+      #end
+    #else
+     # @vial.update_columns(:position_id => nil)
+    #end
     #
+   # @vial.position = position
+    #@vial.save(validation: false)
+    #
+    #set_box_map
+  #end
+   
+    def update_box
+    position = Position.find(params[:position_id])
+    @vial = Vial.find(params[:vial_id])
     @vial.position = position
-    @vial.save!
+    @vial.save!(validate: false)
+    set_box_map
     #
-    @box = Box.find(params[:box_id])
-    @box_type = @box.box_type
-    #
-    @v_max = @box_type.vertical_max
-    @h_max = @box_type.horizontal_max
-    #
-    @position_ids = @box.position_ids
-    @position_names = @box.positions.map{|p|p.name.upcase()}
-    @position_batch_names = @box.positions.map{|p| p.vial.nil? ? "":p.vial.name}
-    #
-    set_unsorted_collection
+    respond_to do |format|
+      format.js
+    end
   end
   
   private
@@ -160,11 +157,35 @@ def destroy_from_inventory
 
     def set_collections
       @vial = Vial.find(params[:id])
-      @arr = @vials.each_slice(4).to_a
+      @arr = @vials.each_slice(2).to_a
     end
     
     def set_unsorted_collection
-      @vials = Vial.where(trash: false).where(position_id: nil).order(:id)
-      @arr = @vials.each_slice(5).to_a
+     @vials = Vial.where(position_id: nil).order(:name)
+      @arr = @vials.each_slice(2).to_a
     end
+
+    def set_box_map
+      @vials = Vial.where(position_id: nil).order(:name)
+    if params[:box_id]
+      @box = Box.find(params[:box_id])
+      @box_type = @box.box_type
+      @v_max = @box_type.vertical_max
+      @h_max = @box_type.horizontal_max
+      #
+      @storage_status= ""
+      unless @box.rack_position_id.nil? 
+        @storage_status = "stored in : " + @box.rack_position.shelf_rack.container.name+" | "+@box.rack_position.shelf_rack.name
+      else
+        @storage_status= "(unstored)"
+      end
+      #
+      @position_ids = @box.position_ids
+      @position_names = @box.positions.map{|p| p.name.upcase}
+      @position_batch_names = @box.positions.map{|p| p.vial.nil? ? "":p.vial.name}
+      @position_batch_ids = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.id}
+      @arr = @vials.each_slice(2).to_a
+      @users = User.all
+    end
+  end
 end
