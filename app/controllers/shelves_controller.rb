@@ -30,4 +30,5 @@ class ShelvesController < ApplicationController
 
   def shelf_params
     params.require(:shelf).permit( :id, :shelf_rack_number, :shelf_id)
+  end
 end
