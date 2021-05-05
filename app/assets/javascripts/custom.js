@@ -61,6 +61,7 @@ console.log("Selected");
 console.log("ID : "+id);
 param = {container_id: id}; 
 console.log("param : "+id);
+$("#map-shelf-rack").html("");
   $.ajax({
       url : '/containers/map_container',
       data: param,
@@ -115,4 +116,25 @@ function updateBox(id, param){
         console.log("error")
         },
       })
+}
+
+    //Drag and Drop
+function updateShelfRack(id, param){
+  $.ajax({
+      url : '/boxes/'+id+'/update_shelf_rack',
+      type: 'patch',
+      data: param,
+      success: function(data){
+        console.log("success")
+        },
+      error: function(data) { 
+        console.log("error")
+        },
+      })
+}
+
+function reset_fields(){
+  $("#map-container").html("");
+$("#container-map-container").html("");
+$("#map-shelf-rack").html("");  
 }

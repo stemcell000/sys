@@ -1,0 +1,24 @@
+<%if smart_listing.empty? %>
+<span>No vial</span>
+<%else%>
+<small>
+	  <table class="table table-striped">
+	    <thead>
+	    <th class="col-xs-4">Name</th>
+	    <th class="col-xs-4">Box name</th>
+	    <th class="col-xs-2">Box barcode</th>
+	    <th class="col-xs-1">Container</th>
+	    <th class="col-xs-1"></th>
+	    </thead>
+	    <tbody>
+		  	<% smart_listing.collection.to_a.uniq.each do |s| %>
+	      		<tr class="editable" data-id = "<%= s.id %>">
+	          		<%= smart_listing.render object: s, partial: "batches/components/vial", locals: {object: s} %>
+	        	</tr>
+	      	<% end %>
+	    </tbody>
+	  </table>
+	  <%= smart_listing.paginate %>
+	  <%= smart_listing.pagination_per_page_links %>
+</small>
+<%end%>

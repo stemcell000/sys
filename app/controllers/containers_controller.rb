@@ -55,6 +55,13 @@ class ContainersController < InheritedResources::Base
       format.js
     end
   end
+
+  def fetch_vials
+  @box = Box.find(params[:id])
+  set_variables
+    @vials = Vial.where(position_id: @position_ids)
+    @vials = smart_listing_create(:vials, @vials, partial: "vials/smart_listing/list", default_sort: {name: "asc"}, page_sizes: [20, 30, 50, 100])
+  end
   
   private
 

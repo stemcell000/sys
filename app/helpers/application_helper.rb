@@ -24,4 +24,6 @@ module ApplicationHelper
       a = n+1
     end
   end
+
+  include Pagy::Frontend
 end

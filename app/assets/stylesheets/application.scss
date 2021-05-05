@@ -28,7 +28,6 @@
 
 @import "autocomp_style";
 
-@import "custom";
 @import "font-awesome";
 @import "container";
 
@@ -225,49 +224,4 @@
     .navbar-text.navbar-right:last-child {
         margin-right: 0;
     } 
-}
-
-.invisible {
-  visibility: hidden;
-}
-
-.btn-circle {
-    width: 28px;
-    height: 28px;
-    padding: 0px 0px;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 12px;
-    line-height: 1.42857;
-}
-
-.dot {
-  height: 40px;
-  width: 40px;
-  background-color: #DAF7A6;
-  border-radius: 50%;
-  display: inline-block;
-  padding: 0px;
-}
-
-.location {
-    font-size: 50%;
-    text-align: center;
-    padding-top: 3px;
-    }
-
-.slot {
-    text-align: center;
-    vertical-align: middle;
-    border:1px solid black;
-    border-radius: 2px;
-    margin: 0;
-    padding:0;
-}
-
-.location-label{
-    font-size: 50%;
-    text-align: left;
-    margin: 0;
-    padding:0 0 0 1px;
 }

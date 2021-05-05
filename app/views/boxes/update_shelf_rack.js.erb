@@ -65,29 +65,14 @@ $("#box-container").html("<%= escape_javascript(render :partial => "boxes/compon
     		}
     });
 
-    //Drag and Drop
-function updateShelfRack(id, param){
-	$.ajax({
-			url : '/boxes/'+id+'/update_shelf_rack',
-			type: 'patch',
-			data: param,
-			success: function(data){
-				console.log("success")
-				},
-			error: function(data) { 
-				console.log("error")
-				},
-			})
-}
-
 //
 $('.out-slot').droppable({
 		drop: function(event, ui){
 			console.log('Dropped');
 			$(this).effect( "highlight",  {color: '#e7f5fe'}, 1000);
-			console.log('data-id = '+this.dataset.id);
-			console.log('data-name = '+this.dataset.name);
-			console.log('box_id = '+box_id);
+			console.log('out-slot : data-id = '+this.dataset.id);
+			console.log('out-slot : data-name = '+this.dataset.name);
+			console.log('out-slot : box_id = '+box_id);
 			//
 			param = {box_id: box_id, shelf_rack_id: $('#map-shelf-rack').data('id')};
 			//
@@ -106,3 +91,4 @@ $('.out-slot').droppable({
 			$(this).attr('class', 'bg-default')
 		}
 	});
+$('[data-toggle="popover"]').popover({html:true, container: 'body'});

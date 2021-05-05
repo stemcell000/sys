@@ -1,0 +1,57 @@
+<h3>Containers</h3>
+<% unless @containers.empty? %>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="content">
+        <%= render 'search' %>
+      </div>
+    </div>
+  </div>
+  <div class="row"></div>
+  <div class="col-lg-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-lg-3">
+            name
+          </th>
+          <th class="col-lg-3">
+            barcode
+          </th>
+          <th class="col-lg-3">
+            location
+          </th>
+          <th class="col-lg-3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @containers.each do |container| %>
+          <tr>
+            <td class="col-lg-3">
+              <%= container.name %>
+            </td>
+            <td class="col-lg-3">
+              <%= container.barcode %>
+            </td>
+            <td class="col-lg-3">
+              <%= container.location.name %>
+            </td>
+
+            <td class="col-lg-3">
+              <%= link_to 'Show', container %>
+            <%if can? :manage, @container %>
+              <%= link_to 'Edit', edit_container_path(container) %>
+              <%= link_to 'Destroy', container, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+              <%end%>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br/>
+  </div>
+<% else %>
+<p>
+  <em>Add Container.</em>
+</p>
+<% end %>

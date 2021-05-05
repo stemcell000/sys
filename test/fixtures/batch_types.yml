@@ -1,0 +1,16 @@
+batch_type1:
+  name: "iPS cells"
+batch_type2:
+  name: "Müller glial cells"
+batch_type3:
+  name: "Photoreceptors"
+batch_type4:
+  name: "Retinal ganglion cells"
+batch_type5:
+  name: "Retinal organoids"
+batch_type6:
+  name: "Retinal pigmented cells"
+batch_type7:
+  name: "Retinal progenitors"
+batch_type8:
+  name: "Other"

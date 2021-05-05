@@ -1,4 +1,4 @@
-class CreateTeamsUsers < ActiveRecord::Migration
+class CreateTeamsUsers < ActiveRecord::Migration[5.0]
  def self.up
         create_table :teams_users do |t|
            t.belongs_to :team, index: true

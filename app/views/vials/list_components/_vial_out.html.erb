@@ -1,0 +1,56 @@
+  <td class="text-left">
+    <div class="<%=object.set_color_from_status%>">
+  		<%=object.name%>
+    </div>
+  </td>
+
+    <td class="text-left"> <%=object.exit_date.nil? ? "Unknown" : object.exit_date.strftime("%h %e, %Y ") %> </td>
+    <td class="text-left"> <%=object.user.nil? ? "Unknown" : object.user.full_name %> </td>
+
+  <td class="actions text-left">
+    <div style="display: inline-block;">
+    <a tabindex="0" data-toggle="popover" data-placement="left" data-trigger="focus" data-html = "true" data-container="body"
+                        title='
+                          <div class="row"> 
+                            <div class="col-xs-9 text-left">
+                              <strong><%=object.name%></strong>
+                            </div> 
+                          </div>'
+                        data-content='
+                          <div class="col-xs-12 text-left">
+                            <small>
+                            <strong>Barcode : </strong><%= object.barcode.blank? ? "-" : object.barcode %><br />
+
+                            <strong>Type : </strong><%= object.batch.nil? ? "-" :  object.batch.batch_type.name.capitalize() %> <br />
+
+                            <strong>Date : </strong><%= object.batch.nil? ?  "-" : object.batch.date.strftime("%h %e, %Y ") %><br />
+
+                            <strong>User : </strong><%= object.batch.nil? ?  "-" : object.batch.user.full_name %><br />
+      
+                              <strong>Exit date : </strong><%= object.exit_date.nil? ?  "-" : object.exit_date.strftime("%h %e, %Y ") %><br />
+
+                              <strong>Client : </strong><%= object.user.nil? ?  "-" : object.user.full_name %><br />
+ 
+                            <strong>Volume : </strong><%= object.volume.nil? ? "-" : object.volume %><br />
+
+                            <strong>Comments : </strong><%= object.comment.blank? ? "-" : object.comment %><br />
+
+                            </small>
+                          </div>
+                        '
+                      >
+                          <div class="center">
+                            <i class="fas fa-eye" data-id="<%=object.id %>"></i><br/>
+                          </div>
+                      </a>
+                    </div>
+                    
+<% if can? :manage, Container%>
+      <%= smart_listing_item_actions [
+      {name: :custom, url: edit_vial_path(object),
+        method: :get, 
+        icon: "fa fa-edit",
+        title: "Show"}]%>
+    <%end%> 
+</div>
+  </td>

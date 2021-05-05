@@ -1,0 +1,19 @@
+box1:
+  name: "box1"
+  barcode: "B00001"
+  box_type_id: "1"
+  rack_position_id: 1
+  comment: "No comment."
+  recap: "xxx"
+  team_id: 1
+  color_id: 1
+
+box2:
+  name: "box1"
+  barcode: "B00001"
+  box_type_id: "2"
+  rack_position_id: 2
+  comment: "No comment."
+  recap: "xxx"
+  team_id: 1
+  color_id: 1

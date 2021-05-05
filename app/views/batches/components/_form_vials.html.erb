@@ -1,0 +1,61 @@
+<h3>
+  Add vials to batch <%=@batch.name%>
+</h3>
+<%= simple_nested_form_for (@batch), url: update_vials_batch_path, html: {class: 'vertical-form'} do |f|  %>
+	<%= f.error_notification %>
+	
+<div class="container">
+	<%= f.simple_fields_for :vials do |ff| %>
+	<div class="row margin-top-row-20">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			  	<div class="row">
+					<div class="col-xs-6">
+						<%=ff.input :name, :input_html => {class: 'col-xs-12'} %>
+					</div>
+					<div class="col-xs-3">
+						<%=ff.input :barcode, input_html: { class: 'col-xs-12' } %>
+					</div>
+				</div>
+
+				<div class="row margin-top-row-20">
+			  		<div class="col-xs-2">
+			  			<%= ff.input :volume, :label => "Volume in µL: ", input_html: { class: 'col-xs-12' }%>
+			  		</div>
+			  	</div>
+			  	<div class="row margin-top-row-20">
+					<div class="col-xs-12">
+						<%= ff.input :comment, :label => "Comment :", input_html: { class: 'col-xs-12' } %>
+					</div>
+				</div>
+			<% if can? :manage, Vial%>
+				<div class="row margin-top-row-20">
+					<div class="col-xs-4">
+						<%=ff.input :out, :label => "Sample is out", input_html: {class: "col-xs-12"} %>
+					</div>
+					<div class="col-xs-4 ">
+						<%=ff.input :exit_date, :as => :string, :input_html => {"data-behaviour" => "datepicker", class: 'col-xs-12'} %>
+					</div>
+					<div class="col-xs-4">
+					<%=ff.association :user, label_method: lambda { |user| "#{user.firstname} #{user.lastname}"}, input_html: {class: "col-xs-12"}%>
+					</div>
+				</div>
+			
+				<%= ff.link_to_remove "remove" %>
+			<%end%>
+			</div>	
+		</div>
+	</div>
+				 <%end%>
+
+ 
+</div>
+
+<div class="panel-footer">
+ 		<div class="btn-group" role="group" aria-label="...">
+    		<%= f.submit("Save", :class => "btn btn-default", :title => "Save") %>
+    		<%= link_to 'Back', edit_batch_path(@batch), :class => "btn btn-default" %>
+        	<%= link_to 'Cancel', @batch, method: :delete, data: { confirm: 'Are you sure you want to cancel this batch registration ?' }, :class => "btn btn-default" %>
+        </div>
+</div>
+<% end %>

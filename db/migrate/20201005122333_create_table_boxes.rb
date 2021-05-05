@@ -1,4 +1,4 @@
-class CreateTableBoxes < ActiveRecord::Migration
+class CreateTableBoxes < ActiveRecord::Migration[5.0]
   def change
      create_table "boxes", force: :cascade do |t|
       t.string   "name"
@@ -7,11 +7,9 @@ class CreateTableBoxes < ActiveRecord::Migration
       t.integer "rack_position_id"
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
-      t.string "container_name"
-      t.string "shelf_name"
-      t.string "shelf_rack_name"
       t.text "comment"
       t.text "recap"
+      t.integer "team_id"
       t.integer "color_id"
     end
   end

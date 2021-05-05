@@ -1,19 +1,17 @@
-        <div class="row">Shelf <%=shelf.name%></div>
-         <% shelf.shelf_racks.each do |rack| %>
-                <div class="col-xs-1 container_rack_row">
-                      
-                      <div class="text-left text-primary container_rack_label">
-                        rack#<%=rack.name%>
-                      </div>
-
-                  <%rack.rack_positions.each do |position|%>
-                 
-                      <div class = "col-xs-11 bg-default container_rack_position_row draggableContainer">
-                      </div>
-                      <div class="col-xs-1 " style="font-size: 65%; padding: 0 2% 0 2%;"><%=position.name%>
-                      </div>
-    
-                  <%end%>
-       
-                </div>
-          <% end%>
+    <h5>Front view</h5>
+    <% container.shelves.each do |shelf| %>
+    <div display= "inline-grid">Shelf <%=shelf.name%></div>
+        <div style="display: inline-flex; text-align: middle; margin: 0 0 0 0;">
+         <% shelf.shelf_racks.order("name").each do |rack| %>
+              <div class="container_rack_row" display="inline-block">
+                    <div class="text-left text-primary container_rack_label">
+                      rack#<%=rack.name%>
+                    </div>
+                    <%rack.rack_positions.each do |position|%>
+                        <div class = "container_rack_position_row" style="margin-bottom: 5%;"></div>
+                    <%end%>
+                
+              </div>
+          <%end%>
+        </div>
+    <%end%>

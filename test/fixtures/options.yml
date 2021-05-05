@@ -1,0 +1,7 @@
+option1:
+  display_all: true
+  user_id: 1
+
+option2:
+  display_all: false
+  user_id: 2

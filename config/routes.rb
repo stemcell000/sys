@@ -10,10 +10,12 @@ Rails.application.routes.draw do
     get :sorter, :on => :collection
     get :sort_tube, :on => :collection
     get :map_tube, :on => :collection
+    get :out_vials, :on => :collection
   end
   resources :boxes do
     get :fetch_vials, :on => :member
     get :fetch_position
+    get :fetch_box, :on => :member
     get :sorter, :on => :collection
     patch :update_shelf_rack, :on=>:member
   end
@@ -26,7 +28,11 @@ Rails.application.routes.draw do
     get :map_shelf_rack, :on => :collection
   end
   resources :users
-  
+  resources :batches do
+    get :add_vials, :on=>:member
+    patch :update_vials, :on=>:member
+  end
+
   #Root
-  root 'boxes#index'
+  root 'vials#index'
 end

@@ -1,6 +1,6 @@
 
 $("#vial-container").html("<%= escape_javascript( render :partial => "vials/components/content_inventory", :locals => {:vials => @vials})%>");
-$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/map", :locals => {:box => @box, :box_type => @box_type, :v_max => @v_max, :h_max => @h_max, :position_ids => @position_ids, :position_names => @position_names, :position_batch_names => @position_batch_names, :storage_status => @storage_status}) %>");
+$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/map_small", :locals => {:box => @box, :box_type => @box_type, :v_max => @v_max, :h_max => @h_max, :position_ids => @position_ids, :position_names => @position_names, :position_batch_names => @position_batch_names, :storage_status => @storage_status}) %>");
 
 $('[data-toggle="popover"]').popover({html:true});
 
@@ -33,9 +33,9 @@ $('.slot').each(function(index){
 	console.log('Ajout du dataset des elts draggableContainer');
 	$(this).attr({'data-id': arr1[index], 'data-name': arr2[index]});
 	if(arr3[index]){
-		$(this).append("<%= escape_javascript(render :partial => "vials/components/tube")%>")
-		$(this).find('.location').append(arr3[index]+" ("+arr4[index]+")");
-		$(this).find('.dot').attr({'data-id': arr4[index]});
+		$(this).append("<%= escape_javascript(render :partial => "vials/components/tube_medium")%>")
+		$(this).find('.location').append(arr3[index]);
+		$(this).find('.dot-medium').attr({'data-id': arr4[index]});
 	}else{
 		$(this).addClass('empty-slot')
 	}

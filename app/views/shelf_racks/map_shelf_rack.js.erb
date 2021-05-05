@@ -5,7 +5,7 @@ $("#box-container").html("<%= escape_javascript(render :partial => "boxes/compon
   		var arr3 =  <%= raw @position_box_names %>;
  		var arr4 = 	<%= raw @position_box_ids %>;
 		var shelf_rack_id = <%= @shelf_rack.id%>;
-		var debug = true;
+		var debug = false;
 
 	if(debug){
 	console.log('arr1 length = '+arr1.length);
@@ -65,21 +65,6 @@ $("#box-container").html("<%= escape_javascript(render :partial => "boxes/compon
     		}
     });
 
-    //Drag and Drop
-function updateShelfRack(id, param){
-	$.ajax({
-			url : '/boxes/'+id+'/update_shelf_rack',
-			type: 'patch',
-			data: param,
-			success: function(data){
-				console.log("success")
-				},
-			error: function(data) { 
-				console.log("error")
-				},
-			})
-}
-
 //
 $('.out-slot').droppable({
 		drop: function(event, ui){
@@ -93,10 +78,6 @@ $('.out-slot').droppable({
 			//
 			updateShelfRack(box_id, param);
 			//
-			$(this).popover({
-				html: true,
-  				container: 'body'
-			});
 		},
 		over: function(event, ui){
 			console.log('Over');
@@ -106,3 +87,4 @@ $('.out-slot').droppable({
 			$(this).attr('class', 'bg-default')
 		}
 	});
+$('[data-toggle="popover"]').popover({html:true, container: 'body'});

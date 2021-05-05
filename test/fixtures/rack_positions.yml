@@ -1,0 +1,12 @@
+rack_position1:
+  name: "1"
+  shelf_rack_id: "1"
+rack_position2:
+  name: "2"
+  shelf_rack_id: "1"
+rack_position1:
+  name: "1"
+  shelf_rack_id: "2"
+rack_position2:
+  name: "2"
+  shelf_rack_id: "2"

@@ -43,17 +43,11 @@ class User < ActiveRecord::Base
     
     email = self.email
     team_name = self.teams.nil? ? '-' : self.teams.map{|t| t.name}.to_sentence
-    location_name = self.location.nil? ? '-' : self.location.name
-    tel1 = self.tel1.nil? ? '-' : self.tel1
-    tel2 = self.tel1.nil? ? '-' : self.tel2
     
      block = " 
           <div class='col-lg-12 col-md-12 col-sm-12'>
             <div class='row'> <strong> <a href = 'mailto:#{self.email}'>#{self.full_name}</a> </strong> </div>
-            <div class='row'><strong>Team : </strong> #{ team_name } </div>
-            <div class='row'><strong>Location : </strong> #{ location_name } </div>
-            <div class='row'><strong>Tel1. : </strong> #{ self.tel1 } </div>
-            <div class='row'><strong>Tel2. : </strong> #{ self.tel2 } </div>"
+            <div class='row'><strong>Team : </strong> #{ team_name } </div>"
       self.recap = block
       self.save!
   end
@@ -108,7 +102,7 @@ class User < ActiveRecord::Base
   
   def create_option
      if self.options.empty?
-      self.options.create(:display_all=> false, :display_all_users=> false, :display_all_contracts=> false)
+      self.options.create()
     end
   end
     

@@ -1,3 +1,6 @@
+<h3>
+  <%= content_for :title, User.model_name.human %>
+</h3>
 <%= simple_form_for @user, remote: false do |f| %>
     <%= f.error_notification %>
     <ul>
@@ -6,87 +9,53 @@
     <% end %>
   </ul>
     <div class="container">
-   <div class="row">
-   		<div class="col-md-5 col-sm-4">
-    			<%=f.input :firstname, label: t('users.firstname'), required: true%>
+   <div class="row margin-top-row-20">
+   		<div class="col-xs-6">
+    			<%=f.input :firstname, label: "First name", required: true, input_html:  {class: "col-xs-12"}%>
    	 	</div>
-   	 	<div class="col-md-5 col-sm-4">
-    			<%=f.input :lastname, label: t('users.lastname'), required: true%>
+   	 	<div class="col-xs-6">
+    			<%=f.input :lastname, label: "Last name", required: true, input_html:  {class: "col-xs-12"}%>
     		</div>
   </div>
-   <div class="row">
-   		<div class="col-md-12 col-sm-12">
-    			<%= f.association :teams, label:t('menu.teams'),
-    									collection: current_user.teams,
+   <div class="row margin-top-row-20">
+   		<div class="col-xs-12">
+    			<%= f.association :teams, label: "Teams",
+    									collection: Team.all,
 									label_method: lambda { |team| "#{team.name}"},
 									prompt: 'Select a team.',
-									disabled: !isAdmin,
-									input_html:  {class: "select2-select"},
+									input_html:  {class: "select2-select col-xs-12"},
 									include_blank: false,
 									include_hidden: false,
 									required: true
 									 %>
 		</div>
   </div>
+  <div class="row margin-top-row-20">
+		<div class="col-xs-12">
+    			<%= f.input :email, label: "E-mail", required: true, input_html:  {class: " col-xs-12"}%>
+    </div>
+  </div>
   <div class="row">
-		<div class="col-lg-5 col-md-5 col-sm-4">
-    			<%= f.input :email, label: "E-mail", required: true, disabled: !isAdmin%>
-    			<%= f.input :tel1, label: "Tel1"%>
-    			<%= f.input :tel2, label: "Tel2"%>
-    		</div>
-  </div>
-   <div class="row">
-   		<div class="col-md-12 col-sm-12">
-   			<%= f.association :positions, :label => t('users.position'),
-												label_method: lambda { |position| "#{position.name}"},
-												prompt: 'Select a position.',
-												disabled: !isManager,
-												input_html: {class: "select2-select"},
-												include_blank: false,
-												include_hidden: false
-												%>
-		</div>
-  </div>
-    <div class="row">
-  		<div class="col-md-5 col-sm-4">
-   			<%= f.association :location, :label => t('menu.location'),
-												label_method: lambda { |location| "#{location.name}"},
-												value_method: :id,
-												prompt: 'Select a location.',
-												input_html: {class: "select2-select"},
-												include_blank: false,
-												include_hidden: false
-												%>
-		</div>
-  </div>
-
- <div class="row">
-		<div class="col-md-6 col-lg-6 col-sm-6">
-		  	<%= f.input :role,
-		  	:collection => set_roles_list(current_user),
-			label_method: :second, value_method: :first,
-		  	required: true, 
-		  	input_html:  {class: "select2-select"},
-		  	disabled: !isManager %>
-  		</div>
+    <div class="col-md-6 col-lg-6 col-sm-6">
+        <%= f.input :role,
+        collection: ["administrator", "user", "guest"],
+        required: true, 
+        input_html:  {class: "select2-select col-xs-12"}%>
+      </div>
  </div>
- 
-<div class="panel panel-primary">
-	<div class="panel-heading">
-		<%= t('users.enter_password') %>
-	</div>
-	<div class="panel-body">
-	<div class="col-lg-4 col-md-4 col-sm-4">
+<% if (params[:action] == "new") && (['superadmin'].include? current_user.role) %>
+ <div class="row margin-top-row-20">
+	<div class="col-xs-6">
   		<% if @minimum_password_length %>
   				<em>(<%= @minimum_password_length %> characters minimum)</em>
   		<% end %>
-	    <%= f.input :password , label: t('users.password'), required: true%>
-    		<%= f.input :password_confirmation, required: true %>
+	    <%= f.input :password, required: true, input_html:  {class: " col-xs-12"}%>
+    		<%= f.input :password_confirmation, required: true, input_html:  {class: " col-xs-12"} %>
     	</div>
   </div>
-  </div>
+  <%end%>
 
-  <div class="row">
+  <div class="row margin-top-row-20">
   	<div class="btn-group">
     <%= f.submit :class => "btn btn-default" %>
     <%= link_to t(".back"), users_path, :class => "btn btn-default" %>

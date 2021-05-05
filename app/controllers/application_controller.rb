@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   #before_action :current_collections
   
+  include Pagy::Backend
+
   ActiveRecord::Base.connection.tables.each do |t|
    ActiveRecord::Base.connection.reset_pk_sequence!(t)
   end
@@ -15,7 +17,7 @@ class ApplicationController < ActionController::Base
   
   def configure_permitted_parameters
     added_attrs = [:username, :email, :encrypted_password, :firstname, :lastname, :location_id, :recap, :role, :password, :password_confirmation, :remember_me,
-      {team_ids: []}, {position_ids: []}, teams_attributes:[:id, :name, :acronym]]
+      {team_ids: []}, {position_ids: []}, teams_attributes:[:id, :name]]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs

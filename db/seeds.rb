@@ -12,6 +12,15 @@ colors = Color.create([{name: 'Blue', code: '#0275d8'},
 	{name: 'Green', code: '##5cb85c'},
 	{name: 'Yellow', code: '#f0ad4e'},
 	{name: 'Red', code: '#d9534f'},
-	{name: 'White', code: '#f7f7f7'},
+	{name: 'Light grey', code: '#f7f7f7'},
 	{name: 'White', code: '#C0C0C0'}]
 	)
+batch_types = BatchType.create([{name: "Fibroblasts"},
+							{name: "iPS cells"},
+							{name: "Müller glial cells"},
+							{name: "Photoreceptors"},
+							{name: "Retinal ganglion cells"},
+							{name: "Retinal organoids"},
+							{name: "Retinal pigmented cells"},
+							{name: "Retinal progenitors"},
+							{name: "Other"}])

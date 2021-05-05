@@ -1,0 +1,19 @@
+vial1: 
+  name: "vial1"
+  volume: "2"
+  comment: "xxx"
+  batch_id: 1
+  out: false
+  barcode: "V00001"
+  position_id: 1
+  recap: "xxx"
+
+vial2: 
+  name: "vial2"
+  volume: "2"
+  comment: "xxx"
+  batch_id: 1
+  out: false
+  barcode: "V00002"
+  position_id: 2
+  recap: "xxx"

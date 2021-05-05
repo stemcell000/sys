@@ -1,0 +1,25 @@
+Shelf1:
+  name: "1"
+  container_id: 1
+  rack_number: 5
+  rack_position_number: 10
+Shelf2:
+  name: "2"
+  container_id: 1
+  rack_number: 5
+  rack_position_number: 10
+Shelf3:
+  name: "3"
+  container_id: 1
+  rack_number: 5
+  rack_position_number: 10
+Shelf4:
+  name: "4"
+  container_id: 1
+  rack_number: 5
+  rack_position_number: 10
+Shelf5:
+  name: "5"
+  container_id: 1
+  rack_number: 5
+  rack_position_number: 10

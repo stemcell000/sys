@@ -1,0 +1,65 @@
+<h3>
+  Batch
+</h3>
+<div class="panel panel-default">
+		<div class="panel-body">
+<%= simple_form_for (@batch), html: {class: 'vertical-form'} do |f|  %>
+	<div class="panel panel-default">
+		<div class="panel-body">
+
+	<%= f.error_notification %>
+	<ul class="errors"></ul>
+	<div class="container">
+	<div class="row margin-top-row-20">
+			<div class="col-xs-4">
+				<%=f.input :name%>
+			</div>
+			<div class="col-xs-4 ">
+				<%=f.input :date, :as => :string, :input_html => { :value => (f.object.date.strftime("%B %e, %Y") if f.object.date), "data-behaviour" => "datepicker", class: 'col-xs-12'} %>
+			</div>
+			<div class="col-xs-4 ">
+				<%=f.association :batch_type, label_method: :name %>
+			</div>
+	</div>
+	<div class="row margin-top-row-20">
+		<div class="col-xs-6">
+			<%=f.association :user, label_method: lambda { |user| "#{user.firstname} #{user.lastname}"}, input_html: {class: "col-xs-12"}%>
+		</div>
+	</div>
+	<div class="row margin-top-row-20">
+		<div class="col-xs-12">
+			<%=f.input :description, input_html: {class: "col-xs-12"}%>
+		</div>
+	</div>
+
+	<div class="row margin-top-row-20">
+		<%if controller_name == 'batches' && action_name == 'new'%>
+		<div class="col-xs-3">
+			<%=f.input :vial_nb, label: "Number of vials", input_html: {class: "col-xs-12"}%>
+		</div>
+		<%else%>
+		<div class="col-xs-3">
+			<%=f.input :vial_nb, label: "Number of vials", input_html: {class: "col-xs-12"}, disabled: true%>
+		</div>
+		<%end%>
+	</div>
+</div>
+</div>
+	<div class="panel-footer">
+	 		<div class="btn-group" role="group" aria-label="...">
+	 			<%if controller_name == 'batches' && action_name == 'new'%>
+	 				<%str = "Save & add vials"%>
+	 			<%else%>
+	 				<%str = "Save & update vials"%>
+	 			<%end%>
+	    		<%= f.submit(str, :class => "btn btn-default", :title => "Save") %>
+	    		<% if can? :manage, Batch%>
+		    		<% if params[:action] == 'edit' %>
+		    		<%= link_to 'Destroy', @batch, method: :delete, data: { confirm: 'Are you sure you want to destroy this batch ? Every related vial will be destroyed too.' }, :class => "btn btn-default" %>
+		    		<%end%>
+		    	<%end%>
+	        	<%= link_to "Cancel", root_path, :class => "btn btn-default"%>
+	        </div>
+	</div>
+</div>
+<% end %>

@@ -1,5 +1,7 @@
-class AddSuperadmin < ActiveRecord::Migration
-  def up    
+class AddSuperadmin < ActiveRecord::Migration[5.0]
+  def up  
+          team = Team.new
+          team.name = 'Local'
           u = User.new
           u.email     = 'marc.lechuga@inserm.fr'
           u.username = 'mlechuga'
@@ -11,9 +13,8 @@ class AddSuperadmin < ActiveRecord::Migration
           u.role = 'superadmin'
           u.save!(validate: false)
           u.options.create(display_all: false)
-          t = Team.new(name: "Admin", acronym: "ADM")
           u.save!(validate: false)
-          u.teams << t
+          u.teams << team
   end
   
   def down

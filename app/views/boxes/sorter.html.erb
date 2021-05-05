@@ -1,9 +1,10 @@
 <% provide(:title, "Box sorter") %>
  <div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12">
-		<h3>Box sorter</h3>
+		<h1>Box sorter</h1>
 	</div>
 </div>
+<%unless Container.all.empty?%>
 		<div id="info-container">
 					<div class="row">
 						<div id="box-container" class="col-xs-3">
@@ -29,3 +30,6 @@
 						</div><!--End of col-xs-6-->
 				</div><!--End of row-->
 			</div><!-- End of info-container-->
+<%else%>
+<p><em>Create a container first !</em></p>
+<%end%>

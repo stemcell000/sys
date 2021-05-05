@@ -1,0 +1,46 @@
+<div class="container">
+	<div class="panel panel-default">
+		<div class="panel-heading"><h4><%= @batch.name %></h4></div>
+		<div class="panel-body">
+			<div class="row margin-top-row-20">
+			<div class="col-xs-4 ">
+				<strong>Date : </strong><%=@batch.date.nil? ? "Unknown" : @batch.date.strftime("%B %e, %Y") %>
+			</div>
+			<div class="col-xs-4 ">
+				<strong>Type : </strong><%=@batch.batch_type.nil? ? "Unknown" : @batch.batch_type.name%>
+			</div>
+			<div class="col-xs-3">
+				<strong>Number of vials : </strong><%=@batch.vial_nb.blank? ? "-" : @batch.vial_nb%>
+			</div>
+	</div>
+	<div class="row margin-top-row-20">
+		<div class="col-xs-6">
+			<strong>User : </strong><%=@batch.user.nil? ? "Unknown" : @batch.user.full_name %>
+		</div>
+	</div>
+	<div class="row margin-top-row-20">
+		<div class="col-xs-12">
+			<strong>Decription : </strong><%= @batch.description.blank? ? "-" : @batch.description %>
+		</div>
+	</div>
+	<div class="row margin-top-row-20">
+	<div class="col-xs-12 text-center" style="overflow: auto;">
+			<div class="panel panel-default">
+				<div class="panel-heading">Vials</div>
+					<div class="panel-body">
+						<%= render partial: 'vials/list_components/list' %>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div class="panel-footer">
+	    		<% if can? :manage, Batch %>
+	    			 <div class="btn-group" role="group" aria-label="...">
+		    			<%= link_to 'Edit', edit_batch_path(@batch), :class => "btn btn-default" %>
+		    		</div>
+		    	<%end%>
+	 </div>
+
+</div><!--End or panel-->
+</div>

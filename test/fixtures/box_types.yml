@@ -4,8 +4,16 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
+9x9:
+  name: '9x9'
+  vertical_max: 9
+  horizontal_max: 9
+  max_position: 81
+  comment: "No comment."
 #
-two: {}
-#  column: value
+8x12:
+  name: '12x8'
+  vertical_max: 8
+  horizontal_max: 12
+  max_position: 96
+  comment: "No comment."

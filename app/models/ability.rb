@@ -17,15 +17,26 @@ class Ability
           can :manage, Vial
           can :manage, Position
           can :manage, Box
-          can :manage, Container
-          can :manage, Rack
+          can :manage, BoxType
+          can :manage, Color
+          cannot :manage, ContainerType
+          cannot :manage, Location
+          cannot :manage, Organization
+          can :update, Container
+          can :update, RackPosition
+          can :update, ShelfRack
+          can :manage, VialType
      elsif user.role? :user
           can :read, :all
           can :manage, Vial
           can :manage, Position
           can :manage, Box
+          can :update, Option
+          cannot :manage, ContainerType
+          cannot :manage, Location
+          cannot :manage, Organization
      else
-          can :read, :all
+          cannot :read, :all
     end
     
    ActiveAdmin::ResourceController.class_eval do

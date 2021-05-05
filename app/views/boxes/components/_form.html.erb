@@ -1,0 +1,38 @@
+<h3>
+  <%= content_for :title, Box.model_name.human %>
+</h3>
+<%= simple_form_for(@box) do |f| %>
+  <%= f.error_notification %>
+  <div class="container">
+    <div class="row margin-top-row-20">
+      <%= f.input :name, :input_html => {class: "col-xs-6"} %>
+    </div>
+    <div class="row margin-top-row-20">
+      <%= f.input :barcode, :input_html => {class: "col-xs-6"} %>
+    </div>
+    <div class="row margin-top-row-20">
+      <%= f.association :color, :collection=>Color.all, :input_html => {class: "col-xs-6"}   %>
+    </div>
+    <div class="row margin-top-row-20">
+      <% if @box.persisted? %>
+        <%= f.association :box_type, label_method: :name, disabled: true, :input_html => {class: "col-xs-6"} %>
+        <%= f.association :box_type, label_method: :name, as: :hidden, :input_html => {class: "col-xs-6"} %>
+      <% else %>
+        <%= f.association :box_type, :collection=>BoxType.all, :input_html => {class: "col-xs-6"} %>
+      <% end %>
+    </div>
+    <%if ["superadmin", "administrator"].include? current_user.role  %>
+      <div class="row margin-top-row-20">
+        <%= f.association :team, :collection=>Team.all, :input_html => {class: "col-xs-6"} %>
+      </div>
+    <%else%>
+        <%= f.association :team, :collection=>current_user.teams, :input_html => {class: "col-xs-6"} %>
+    <%end%>
+      <div class="row margin-top-row-20">
+    <div class="btn-group">
+    <%= f.submit :class => "btn btn-default" %>
+    <%= link_to t(".back"), users_path, :class => "btn btn-default" %>
+    </div>
+  </div>
+  </div>
+<% end %>

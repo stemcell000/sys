@@ -1,0 +1,28 @@
+<%if box.rack_position%>
+	<% rows = ('a'..'z').to_a[0..(h_max-1)] %>
+	<% cols = (1..26).to_a[0..(v_max-1)] %>
+	<% slot_size = 42%>
+	<div class="row">
+					<div class="col-xs-11 text-left"><h6 style="color: <%=box.color.code%>"><%="#{box.name} #{box.barcode}"%></h6>
+					</div>
+	</div>
+			<table>
+			<% cols.each do |c| %>
+				<tr>
+					<% rows.each do |r| %>
+						<td style="padding: 1px;">
+							<div class="col-lg-1 col-md-1 col-sm-1 slot draggableContainer outer-div" 
+							style="min-width: <%=slot_size%>px; min-height: <%=slot_size%>px; max-width: <%=slot_size%>px; max-height: <%=slot_size%>px; border: 1px solid black; border-radius: 2px;">
+								<div class="location-label text-left text-primary"></div>
+							</div>
+						</td>
+					<%end%>
+				</tr>
+			<%end%>
+			</table>
+		</div>
+<%else%>
+	<div class="row">
+		<p>This box is unvailable.</p>
+	</div>
+<%end%>

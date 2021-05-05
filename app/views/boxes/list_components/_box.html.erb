@@ -1,0 +1,11 @@
+  <td class="text-left">
+    <div style="width: 10px; height: 10px; background-color: <%=box.color.code%>"></div>
+  </td>
+  <td class="text-left"><%=link_to box.name, fetch_vials_box_path(box.id), :remote => true%></td>
+  <td class="text-left"><small><%= box.barcode %></small></td>
+  <td class="text-left"><small><%= str %></small></td>
+<td class="actions text-right">
+<% if can? :manage, Box %>
+      <%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_box_path(box), method: :get %> 
+  <%end%>
+</td>

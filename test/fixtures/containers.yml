@@ -1,0 +1,10 @@
+container1:
+  name: "model_row"
+  barcode: "C00001"
+  locaction_id: 1
+  container_type_id: 1
+
+container1:
+  name: "model_column"
+  barcode: "C00002"
+  locaction_id: 2

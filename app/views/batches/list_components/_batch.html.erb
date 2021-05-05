@@ -1,0 +1,44 @@
+  <td class="text-left">
+  		<%=object.name%>
+  </td>
+    <td class="text-left">
+    <%=object.batch_type.name%>
+  </td>
+  <td class="text-center">
+    <%=object.vial_nb%>
+  </td>
+  <td class="actions text-right">
+    <div class="aligned-div">
+    <a tabindex="0" data-toggle="popover" data-placement="left" data-trigger="focus" data-html = "true" data-container="body"
+                        title='
+                          <div class="row"> 
+                            <div class="col-xs-9 text-left">
+                              <strong><%=object.name%></strong>
+                            </div>
+                              <div class="col-xs-3 text-right">
+  
+                          </div>
+                            </div>'
+                        data-content='
+                          <div class="col-xs-12 text-left">
+                            <small>
+                            <strong>Date : </strong><%= object.date.nil? ?  "-" : object.date.strftime("%h %e, %Y ") %><br />
+                            <strong>Type : </strong><%= object.batch_type.nil? ? "-" :  object.batch_type.name.capitalize() %> <br />
+                            <strong>Description : </strong><%= object.description.blank? ? "-" : object.description %><br />
+                            <strong>Number of vials : </strong><%= object.vial_nb || "-" %><br />
+                            </small>
+                          </div>
+                        '
+                      >
+                          <div class="center">
+                           <small><i class="fas fa-eye" data-id="<%=object.id %>"></i></small><br/>
+                          </div>
+                </a>
+              </div>
+<div style="display: inline-block;">
+  <%= link_to "<i class='fa fa-sticky-note'></i>".html_safe, batch_path(object), method: :get %>
+  <% if can? :manage, Batch %>
+      <%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_batch_path(object), method: :get %> 
+  <%end%> 
+</div>
+  </td>

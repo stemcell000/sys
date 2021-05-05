@@ -4,8 +4,26 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
+color1:
+  name: 'Blue'
+  code: '#0275d8'
 #
-two: {}
-#  column: value
+color2:
+  name: 'Green'
+  code: '##5cb85c'
+#
+color3:
+  name: 'Yellow'
+  code: '#f0ad4e'
+#
+color4:
+  name: 'Red'
+  code: '#d9534f'
+#
+color5:
+  name: 'Light grey'
+  code: '#f7f7f7'
+#
+color6:
+  name: 'White'
+  code: '#C0C0C0'

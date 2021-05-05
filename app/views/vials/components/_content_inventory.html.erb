@@ -10,7 +10,9 @@
 								<tr>
 									<% elt.each do |v|%>
 									<td>
-										<i class="fas fa-vial fa-2x <%=v.set_draggable%>" data-id="<%=v.id %>"></i><br/>
+										<div style="text-align: center;">
+											<i class="fas fa-vial fa-2x <%=v.set_draggable%>" data-id="<%=v.id %>"></i><br/>
+										</div>
 										<div class="col-lg-12 col-md-12 col-sm-12 draggableContainer center">
 											<a tabindex="0" data-toggle="popover" data-trigger="focus" data-html = "true" data-container="body"
 												title='
@@ -19,28 +21,24 @@
 															<strong><%=v.name%></strong>
 														</div>
 														<div class="col-lg-12 right">
-															<%unless v.trash%>
 																<%= link_to "Edit", edit_vial_path(v), :class =>"btn btn-primary btn-xs font80pc", :remote => true %>
-																<%= link_to "Discard", v, :method => :delete, :class =>"btn btn-danger btn-xs font80pc", :title=>"Discard box", :remote => false %>
-															<%end%>	
 														</div>	
 													</div>'
 												data-content='
 													<div class="col-lg-12 text-left">
 														<small>
 														<strong>Barcode : </strong><%= v.barcode.nil? ? "-" : v.barcode %><br />
-														<strong>Date : </strong><%= v.date.nil? ?  "-" : v.date.strftime("%h %e, %Y ") %><br />
+														<strong>Date : </strong><%= v.batch.nil? ?  "-" : v.batch.date.strftime("%h %e, %Y ") %><br />
 														<strong>Volume : </strong><%= v.volume.nil? ? "-" : v.volume %><br />
 														<strong>Box : </strong><%= v.position.nil? ? "-" : v.position.box.name %> <br />
 														<strong>Slot : </strong><%= v.position.nil? ? "-" : v.position.name.upcase() %> <br />
 														<strong>Comments : </strong><br /><%= v.comment || "-" %><br />
-														<strong>Description : </strong><br /><%= v.description || "-" %><br />
 														</small>
 													</div>
 												'
 											>
 													<div class="center">
-														<small><small><%= v.name %></small></small>
+														<small><small><%= v.name%></small></small>
 													</div>
 											</a>	
 											</div>

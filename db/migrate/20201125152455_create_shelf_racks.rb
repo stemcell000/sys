@@ -1,4 +1,4 @@
-class CreateShelfRacks < ActiveRecord::Migration
+class CreateShelfRacks < ActiveRecord::Migration[5.0]
   def change
     create_table :shelf_racks do |t|
     	t.string :name

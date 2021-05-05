@@ -1,18 +1,18 @@
 <% rows = ('a'..'z').to_a[0..(h_max-1)] %>
 <% cols = (1..26).to_a[0..(v_max-1)] %>
-<% slot_size = 55%>
-<div class="row" style="background-color:">
-				<div class="col-xs-1 text-left"><div style="width: 20px; height: 20px; background-color: <%=box.color.code%>"></div></div>
+<% slot_size = 55 %>
+<div class="row">
+				<div class="col-xs-1 text-left"><div style="width: 30px; height: 20px; background-color: <%=box.color.code%>"></div></div>
 
-				<div class="col-xs-10 text-left"><h5 style="color: <%=box.color.code%>"><%="#{box.name} #{box.barcode}"%><%=storage_status%></h5></div>
+				<div class="col-xs-11 text-left"><h6 style="color: <%=box.color.code%>"><%="#{box.name} #{box.barcode}"%><%=storage_status%></h6></div>
 		</div>
 		<table>
 		<% cols.each do |c| %>
 			<tr>
 				<% rows.each do |r| %>
 					<td style="padding: 1px;">
-						<div class="col-lg-1 col-md-1 col-sm-1 slot draggableContainer" 
-						style="min-width: <%=slot_size%>px; min-height: <%=slot_size%>px; max-width: <%=slot_size%>px; max-height: <%=slot_size%>px;">
+						<div class="slot draggableContainer" 
+						style="min-width: <%=slot_size%>px; min-height: <%=slot_size%>px; max-width: <%=slot_size%>px; max-height: <%=slot_size%>px; border: 1px solid black; border-radius: 2px;">
 							<div class="location-label text-left text-primary"></div>
 						</div>
 					</td>

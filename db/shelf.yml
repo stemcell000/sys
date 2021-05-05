@@ -1,0 +1,9 @@
+shelf1:
+  name: "1"
+  container_id: 1
+  rack_number: 2
+
+shelf2:
+  name: "2"
+  container_id: 1
+  rack_number: 2

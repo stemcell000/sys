@@ -2,15 +2,16 @@
     <div class="text-left container_rack_label">
       rack#<%=shelf_rack.name%>
     </div>
+
         <%shelf_rack.rack_positions.each do |position|%>
-            <div class = "col-xs-11  bg-default container_rack_position draggableContainer slot" data-id=<%=position.id%> data-name=<%=position.name%> >
+            <div class = "col-xs-11 bg-default container_rack_position draggableContainer slot outer-div" data-id=<%=position.id%> data-name=<%=position.name%>>
             	<%unless position.box.nil? %>
-	            	<span align="center" class="box-location draggable" >
-						<div class="box" style="background-color: <%=position.box.color.code%>"></div>
-					</span>
+	            	<div class="box-location draggable  inner-div">
+						<div class="box" style="background-color: <%=position.box.color.code%>;"></div>
+					</div>
             	<%end%>
             </div>
-            <div class="col-xs-1" style="font-size: 75%; padding: 0 2% 0 2%;"><%=position.name%>
+            <div class="col-xs-1" style="font-size: 75%; padding: 0 0 0 0;"><%=position.name%>
             </div>
         <%end%>
 </div>

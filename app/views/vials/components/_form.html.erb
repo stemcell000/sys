@@ -1,0 +1,55 @@
+<h3>
+  <%= content_for :title, Vial.model_name.human %>
+</h3>
+<%= simple_form_for @vial, html: {class: 'vertical-form'} do |f|  %>
+	<%= f.error_notification %>
+	<ul class="errors"></ul>
+	<div class="container">
+	  	<div class="row margin-top-row-20">
+			<div class="col-xs-4">
+				<%=f.input :name, :input_html => { :value => f.object.name || @name, class: 'col-xs-12' } %>
+			</div>
+
+			<div class="col-xs-4">
+				<%=f.input :barcode, input_html: { class: 'col-xs-12' } %>
+			</div>
+		</div>
+		<div class="row margin-top-row-20">
+			 <div class="col-xs-6">
+  				<%=f.association :batch, :label => "batch", :collection => Batch.all, :placeholder => "Select a batch.", input_html: { class: 'col-xs-12' }%>
+			</div>
+		</div>
+		<div class="row margin-top-row-20">
+	  		<div class="col-xs-2">
+	  			<%= f.input :volume, :label => "Volume in µL: ", input_html: { class: 'col-xs-12' }%>
+	  		</div>
+			<div class="col-xs-5">
+				<%= f.input :comment, :label => "Comment :", input_html: { class: 'col-xs-12' } %>
+			</div>
+		</div>
+		<div class="row margin-top-row-20">
+			<div class="col-xs-2">
+				<%= f.input :out, :label => "Out of stock"%>
+			</div>
+			<div class="col-xs-4 ">
+				<%=f.input :exit_date, :as => :string, :input_html => { :value => (f.object.exit_date.strftime("%B %e, %Y") if f.object.exit_date), "data-behaviour" => "datepicker"} %>
+			</div>
+			<div class="col-xs-6">
+			<%=f.association :user, label: "Client",label_method: lambda { |user| "#{user.firstname} #{user.lastname}"}, input_html: {class: "col-xs-12"}%>
+			</div>
+		</div>
+		</div>
+	</div>
+<div class="row margin-top-row-20">
+ 		<div class="btn-group" role="group" aria-label="...">
+    		<%= f.submit("Save", :class => "btn btn-default", :title => "Save") %>
+        	<%= f.submit 'Cancel', :type => :reset, :class => "btn btn-default", "aria-hidden" => "true" %>
+        	<% if can? :manage, Vial%>
+		    		<% if params[:action] == 'edit' %>
+		    		<%= link_to 'Destroy', @vial, method: :delete, data: { confirm: 'Are you sure you want to do that ?' }, :class => "btn btn-default" %>
+		    		<%end%>
+		    	<%end%>
+	        	<%= link_to "Cancel", root_path, :class => "btn btn-default"%>
+        </div>
+</div>
+<% end %>

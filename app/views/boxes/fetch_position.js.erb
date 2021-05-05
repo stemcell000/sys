@@ -3,13 +3,16 @@ console.log("fetch position")
 if(<%= !@box_type.nil?%>){
 	
 //Affichage du partial
-$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/map", :locals => {:box => @box, :box_type => @box_type, :v_max => @v_max, :h_max => @h_max, :position_ids => @position_ids, :position_names => @position_names, :position_vial_names => @position_vial_names, :storage_status=> @storage_status}) %>");
+$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/map_small", :locals => {:box => @box, :box_type => @box_type, :v_max => @v_max, :h_max => @h_max, :position_ids => @position_ids, :position_names => @position_names, :position_vial_names => @position_vial_names, :storage_status => @storage_status}) %>");
+$("#container-map-container").html("<%= escape_javascript(render :partial =>  "containers/components/front_view_v_small", :locals => {container: @container, box: @box})%>");
+$("#map-shelf-rack").html("<%= escape_javascript(render :partial =>  "shelf_racks/components/single_rack_map_small", :locals => {shelf_rack: @shelf_rack, box: @box})%>");	
 	
 	var arr1 =  <%= raw @position_ids %>;
 	var arr2 =  <%= raw @position_names %>;
 	var arr3 = 	<%= raw @position_batch_names%>;
-	var arr4 = <%= raw @position_batch_ids%>
-	var box_id= <%=@box.id %>;
+	var arr3_short = <%= raw @position_batch_names_slots%>;
+	var arr4 = 	<%= raw @position_batch_ids%>
+	var box_id = <%= @box.id %>;
 	
 	console.log('arr1 length = '+arr1.length);
 	console.log('arr2 length = '+arr2.length);
@@ -23,22 +26,26 @@ $('.location-label').each(function(index){
 
 $('.location').each(function(index){
 	console.log('Ajout de id des elts locations');
+	$(this).attr('id',arr1[index]);
 	$(this).append(arr3[index]);
 });
 
 $('.slot').each(function(index){
 	console.log('Ajout du dataset des elts draggableContainer');
-	$(this).attr({'id': arr1[index], 'data-name': arr2[index]});
+	$(this).attr({'data-id': arr1[index], 'data-name': arr2[index], 'id': arr1[index]});
 	if(arr3[index]){
-		$(this).append("<%= escape_javascript(render :partial => "vials/components/tube")%>")
-		$(this).find('.location').append(arr3[index]+" ("+arr4[index]+")");
+		$(this).append("<%= escape_javascript(render :partial => "vials/components/tube_medium")%>")
+		$(this).find('.location').append(arr3_short[index]);
 	}else{
 		$(this).addClass('empty-slot')
 	}
 });
 
-$("#<%=@vial.position.id%>").css('background-color', '#A6F5F7');
-$("#vial-recap").html("<%= escape_javascript( render :partial =>  "boxes/components/vial", :locals => {:vial => @vial})%>");
+$("#<%=@vial.position.id%>").css('background-color', '#a6f7b9');
+
 }else{
 	$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/no_map") %>");
 }
+
+$('[data-toggle="popover"]').popover({html:true, container: 'body'});
+

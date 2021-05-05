@@ -3,10 +3,6 @@ class UsersController < ApplicationController
   before_action :set_option, only: [:index]
   before_action :set_roles, only: [:edit, :edit_hr]
    
-  #Smart_listing
-  include SmartListing::Helper::ControllerExtensions
-  helper  SmartListing::Helper
-  
   def resource_name
     :user
   end
@@ -19,16 +15,17 @@ class UsersController < ApplicationController
     @devise_mapping ||= Devise.mappings[:user]
   end
   
-   def index
+  def index
     @departments = Department.all.order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']]}
     @teams = Team.where.not(name: 'All').order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']] }
     @q = User.ransack(params[:q])
     
-    @users = @q.result.includes(:teams).uniq
+    records = @q.result(distinct: true).includes(:teams)
+    records = records.where.not(role: 'superadmin')
 
     #Config de l'affichage des résultats.
-      @users = smart_listing_create(:users, @users, partial: "users/smart_listing/list", default_sort: {lastname: "asc"}, page_sizes: [ 10, 20, 30, 50, 100])
- end
+    @pagy, @users = pagy(records.order(:id), users: 30)
+  end
  
   
   def new
@@ -58,10 +55,12 @@ class UsersController < ApplicationController
   def edit
   end
   
-  def edit_hr
-  end
   
   def update
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
     @user.update_attributes(user_params)
     if @user.valid?
       flash.keep[:success] = "Profile udpated."
@@ -123,7 +122,7 @@ class UsersController < ApplicationController
  def set_roles
      @roles_list = [["superadmin", "superadmin"],
       ["administrator", "administrator"],
-      ["user" , "user"]]
+      ["user" , "user"], ["guest" , "guest"]]
  end
  
 end

@@ -1,12 +1,12 @@
 <%if container%>
-   <%if container.container_type_id == 1%>
+   <%if container.container_type_id == 2%>
     <% container.shelves.each do |shelf| %>
       <div class="row">
           <div class="col-xs-1 container_shelf_label_small">Shelf <%=shelf.name%></div>
            <% shelf.shelf_racks.each do |rack| %>
-                  <div class="col-xs-1 container_rack_row_small btn" id=<%=rack.name%> data-id=<%=rack.id%>>
+                  <div class="col-xs-1 container_rack_row_small rack btn" id=<%=rack.name%> data-id=<%=rack.id%>>
                         <div class="text-left container_rack_label_small">
-                          rack#<%=rack.name%><br/>
+                          rack#<%=rack.name%>
                         </div>
                   </div>
             <%end%>
@@ -16,8 +16,10 @@
   <% container.shelves.each do |shelf| %>
     <div style="display: inline-block; text-align: middle; margin: 0 0 0 0;">
          <% shelf.shelf_racks.each do |rack| %>
-                <div class="container_rack_top rack" data-id=<%=rack.id%> >
+                <div class="container_rack_top_medium rack" id=<%=rack.name%> data-id=<%=rack.id%> >
+                  <div class="text-left container_rack_label_small">
                     rack#<%=rack.name%>
+                  </div>
                 </div>
           <%end%>
     </div>

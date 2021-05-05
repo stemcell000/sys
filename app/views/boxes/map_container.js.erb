@@ -7,10 +7,10 @@ console.log('container manager');
 
 $(".btn").on("click", function() {
     //Changement de couleur du fond du rack cliqué
-    //$(this).css("background", "#5cb85c");
     $(this).toggleClass("#5cb85c");
     //
     getShelfRackMap($(this).data("id"), '#map-shelf-rack');
+    //
 })
 
 $("#map-shelf-rack").html("<%= escape_javascript(render :partial =>  "shelf_racks/components/single_rack_map", :locals => {shelf_rack: @shelf_rack})%>");
@@ -43,7 +43,7 @@ console.log("map_self_rack");
 	}else{
 		$(this).addClass('empty-slot');
 	}
-	});
+});
 
 	$('.empty-slot').droppable({
 		drop: function(event, ui){
@@ -111,10 +111,6 @@ $('.out-slot').droppable({
 			//
 			updateShelfRack(box_id, param);
 			//
-			$(this).popover({
-				html: true,
-  				container: 'body'
-			});
 		},
 		over: function(event, ui){
 			console.log('Over');
@@ -124,3 +120,4 @@ $('.out-slot').droppable({
 			$(this).attr('class', 'bg-default')
 		}
 	});
+$('[data-toggle="popover"]').popover({html:true, container: 'body'});

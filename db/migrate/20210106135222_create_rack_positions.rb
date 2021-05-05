@@ -1,4 +1,4 @@
-class CreateRackPositions < ActiveRecord::Migration
+class CreateRackPositions < ActiveRecord::Migration[5.0]
   def change
     create_table :rack_positions do |t|
     	t.string :name

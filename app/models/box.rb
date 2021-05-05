@@ -4,23 +4,23 @@ class Box < ActiveRecord::Base
   after_update :generate_recaps
 
   has_many :positions, :dependent => :destroy
+  has_many :vials, through: :positions
   belongs_to :box_type
+  belongs_to :team
   belongs_to :rack_position
   belongs_to :color
 
-  validates :name, :box_type, :presence => true
-  #validates :shelf, :presence => true
+  validates :name, :box_type, :team_id, :presence => true
+  validates :name, :format => { with: /\A[a-zA-Z0-9._ ]+\z/ }
   
   accepts_nested_attributes_for :positions
   accepts_nested_attributes_for :rack_position
   accepts_nested_attributes_for :color
+  accepts_nested_attributes_for :team
   
   def generate_positions
     position_name = []
     max_position = self.box_type.vertical_max*self.box_type.horizontal_max
-    
-    #horizontal_max = nb de lignes
-    #vertical_max = nb de colonnes
     
     rows = ('a'..'z').to_a[0..(self.box_type.vertical_max-1)]
     cols = (1..26).to_a[0..(self.box_type.horizontal_max-1)]

@@ -3,28 +3,49 @@
     		<%=link_to(image_tag("/images/Logo-A.png", size: "80x30", alt: "SYS"), root_path, class: "navbar-brand")%>
     	</div>
       <ul class="nav navbar-nav">
-          	<li class="dropdown">
-          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Boxes<span class="caret"></span></a>
-          		<ul class="dropdown-menu">
-          			<%= content_tag(:li, link_to( "Inventory", boxes_path, class: "nav-link"), remote: true)%>
-          			<%= content_tag(:li, link_to( "Sorter", sorter_boxes_path, class: "nav-link"), remote: true)%>
-                <%= content_tag(:li, link_to( "New", new_box_path, class: "nav-link"), remote: true)%>    
-          		</ul>
-          	</li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Batches<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <%= content_tag(:li, link_to( "Inventory", batches_path, class: "nav-link"))%>
+                <%= content_tag(:li, link_to( "New batch", new_batch_path, class: "nav-link"))%>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vials<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <%= content_tag(:li, link_to( "Sorter", sorter_vials_path, class: "nav-link"), remote: true)%>
-                <%= content_tag(:li, link_to( "New", new_vial_path, class: "nav-link"), remote: true)%>
+                <%= content_tag(:li, link_to( "Inventory", vials_path, class: "nav-link"))%>
+                <%= content_tag(:li, link_to( "New vial", new_vial_path, class: "nav-link"))%>
+                <%= content_tag(:li, link_to( "Sorter", sorter_vials_path, class: "nav-link"))%>
+                <%= content_tag(:li, link_to( "Out of the store", out_vials_vials_path, class: "nav-link"))%>
               </ul>
             </li>
-          	<%= content_tag(:li, link_to( "Containers", containers_path, class: "nav-link"), remote: true)%>
-            <%= content_tag(:li, link_to( "Users", users_path, class: "nav-link"), remote: true)%>
+          	<li class="dropdown">
+          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Boxes<span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+          			<%= content_tag(:li, link_to( "Sorter", sorter_boxes_path, class: "nav-link"))%>
+                <%= content_tag(:li, link_to( "New box", new_box_path, class: "nav-link"))%>    
+          		</ul>
+          	</li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Container<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              <%= content_tag(:li, link_to( "Containers", containers_path, class: "nav-link"))%>
+                <%= content_tag(:li, link_to( "New container", new_container_path, class: "nav-link"))%>    
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              <%= content_tag(:li, link_to( "Users", users_path, class: "nav-link"))%>
+                <%= content_tag(:li, link_to( "New user", new_user_path, class: "nav-link"))%>
+              </ul>
+            </li>
+
 	</ul>
      		<span class="navbar-text">
 	     		<small>
 					<% if signed_in? %>
-		    				<small><%=t('menu.sign_in_as')%> : <strong><%= current_user.full_name %></strong> - <%=role_set(current_user.role)%>
+		    				<small>Signed-in as : <strong><%= current_user.full_name %></strong> - <%=current_user.role%>
 		    					<%=current_user.teams.nil? ? 'Team':'Team'.pluralize(current_user.teams.count)%> : <%=current_user.teams.nil? ? "-":current_user.teams.pluck(:name).to_sentence.truncate(27, separator: ' ')%>
 			    			<%= link_to user_path(current_user.id), method: :get do %><i class="fa fa-user"></i><%end%>
 			    			<%= link_to destroy_user_session_path, method: :get do %><i class="fa fa-sign-out-alt"></i><%end%>

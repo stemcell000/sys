@@ -5,18 +5,12 @@ end
 
 def role_set(name)
   case name
-   when "superadmin"
-     t("roles.superadmin")
    when "administrator"
      t("roles.administrator")
-   when "HR_administrator"
-     t("roles.hr_administrator")
-   when "inventory_manager"
-     t("roles.inventory_manager")
-   when "team_leader"
-     t("roles.team_leader")
    when "user"
      t("roles.user")
+    when "guest"
+     t("roles.guest")
    else
      t("role.unknown")
   end
@@ -36,16 +30,15 @@ def role_set(name)
        if user.role == "superadmin"
              roles_list = [["superadmin", t("roles.superadmin")],
               ["administrator", t("roles.administrator")],
-              ["HR_administrator", t("roles.hr_administrator")],
-              ["inventory_manager", t("roles.inventory_manager")],
-              ["team_leader" , t("roles.team_leader")],
-              ["user" , t("roles.user")]]
+              ["user" , t("roles.user")],
+              ["guest" , t("roles.guest")]]
         elsif user.role =="administrator" || user.role == "HR_administrator"
-          roles_list = [["team_leader" , t("roles.team_leader")],
-              ["user" , t("roles.user")]]
+          roles_list = [["administrator", t("roles.administrator")],
+              ["user" , t("roles.user")],
+              ["guest" , t("roles.guest")]]
         elsif can? :update, user
-          roles_list = [["inventory_manager", t("roles.inventory_manager")],
-              ["team_leader" , t("roles.team_leader")]]
+          roles_list = [["user" , t("roles.user")],
+              ["guest" , t("roles.guest")]]
         end
         return roles_list
  end
