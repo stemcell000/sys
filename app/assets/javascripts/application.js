@@ -10,7 +10,6 @@
 //= require bootstrap/bootstrap-rails-popover
 //= require datepicker
 //= require jquery_nested_form
-//= require smart_listing
 //= require_tree .
 //= require nprogress
 //= require nprogress-ajax

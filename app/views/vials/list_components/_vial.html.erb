@@ -1,7 +1,7 @@
-  <td class="text-left"><small>
+  <small><td class="text-left">
   	<%if object.position %>
   		<%box = object.position.box%>
-  		<%=link_to "#{object.name}", box_fetch_position_path(:vial_id=>object.id, :box_id => box.id), :remote => true %></small>
+  		<%=link_to "#{object.name}", box_fetch_position_path(:vial_id=>object.id, :box_id => box.id), :remote => true %>
   	<%else%>
     <div class="<%=object.set_color_from_status%>">
   		<%=object.name%>

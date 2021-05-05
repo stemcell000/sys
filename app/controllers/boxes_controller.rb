@@ -1,8 +1,4 @@
 class BoxesController < InheritedResources::Base
-       
-    #Smart_listing
-    include SmartListing::Helper::ControllerExtensions
-    helper  SmartListing::Helper
     
     before_action :set_box, only:[:delete, :edit, :show, :update]
   
@@ -144,9 +140,10 @@ private
 
     def set_variables
       @q = Vial.ransack(params[:q])
-      @vials = @q.result.order(:id).where(out: false)
-      @vials = @vials.includes(:position)
-      @vials = smart_listing_create(:vials, @vials, partial: "vials/smart_listing/list", default_sort: {id: "asc"}, page_sizes: [5, 10, 20, 30, 50, 100])
+      records = @q.result.order(:id).where(out: false)
+      records = records.includes(:position)
+      @pagy, @vials = pagy(records, vials: 30)
+      
       if @box.box_type
         @box_type = @box.box_type
         @v_max = @box_type.vertical_max

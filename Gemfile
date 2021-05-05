@@ -66,7 +66,6 @@ gem 'carrierwave-aws'
 gem 'remotipart'
 gem 'mini_magick','~> 4.9.4'
 gem 'fog-aws'
-gem "smart_listing"
 gem 'jasny-bootstrap-rails'
 gem 'ransack'
 gem 'puma'

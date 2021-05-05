@@ -2,10 +2,6 @@ class VialsController < ApplicationController
   
 before_action :set_vial, only:[:delete, :edit, :show, :update]
 
-      #Smart_listing
-    include SmartListing::Helper::ControllerExtensions
-    helper  SmartListing::Helper
-
 def index
       #Formattage des dates
       start_time = params[:date_gteq].to_date rescue Date.current

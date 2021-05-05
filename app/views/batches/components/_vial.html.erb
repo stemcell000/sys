@@ -1,17 +1,22 @@
-  <td class="text-left">
+  <small>
+    <td class="text-left">
     <div class="<%=object.set_color_from_status%>">
-  		<%=object.name%>
+      <%=object.name%>
     </div>
   </td>
   <td class="text-left">
-      <%= object.position.nil? ? "-" : object.position.box.name %>
+    <%=object.position.nil? ? "": object.position.box.name%>
   </td>
-  <td class="text-left">
-      <%= object.position.nil? ? "-" : object.position.box.barcode %>
+    <td class="text-left">
+    <%=object.position.nil? ? "" : object.position.box.barcode%>
   </td>
-  <td class="text-left">
-      <%= object.position.nil? ? "-" : object.position.box.rack_position.shelf_rack.shelf.container.name %>
+    <td class="text-left">
+    <%=object.position.nil? ? "" : (object.position.nb+1).to_s%>
   </td>
+    <td class="text-left">
+      <%unless object.position.box.nil?%>
+    <%=object.position.box.rack_position.nil? ? "" : object.position.box.rack_position.shelf_rack.shelf.container.name%>
+    <%end%>
   </td>
   <td class="actions text-right">
     <div style="display: inline-block;">
@@ -21,15 +26,6 @@
                             <div class="col-xs-9 text-left">
                               <strong><%=object.name%></strong>
                             </div> 
-                            <div class="col-xs-3" text-right>
-                                <% if can? :manage, Vial%>
-                                  <%= smart_listing_item_actions [
-                                  {name: :custom, url: edit_vial_path(object),
-                                    method: :get, 
-                                    icon: "fa fa-edit",
-                                    title: "Edit"}]%>
-                                <%end%>
-                              </div>
                           </div>'
                         data-content='
                           <div class="col-xs-12 text-left">
@@ -60,6 +56,9 @@
                             <i class="fas fa-eye" data-id="<%=object.id %>"></i><br/>
                           </div>
                       </a>  
-    </div>
-  </small>
-</td>
+</div>
+<% if can? :manage, Vial %>
+      <%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_vial_path(object), method: :get %> 
+  <%end%>
+</small>
+  </td>

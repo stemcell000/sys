@@ -1,4 +1,4 @@
-  <td class="text-left">
+  <small><td class="text-left">
     <div class="<%=object.set_color_from_status%>">
   		<%=object.name%>
     </div>
@@ -45,12 +45,8 @@
                       </a>
                     </div>
                     
-<% if can? :manage, Container%>
-      <%= smart_listing_item_actions [
-      {name: :custom, url: edit_vial_path(object),
-        method: :get, 
-        icon: "fa fa-edit",
-        title: "Show"}]%>
-    <%end%> 
-</div>
+<% if can? :manage, Vial %>
+      <%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_vial_path(object), method: :get %> 
+  <%end%>
   </td>
+</small>

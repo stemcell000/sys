@@ -1,8 +1,4 @@
 class ContainersController < InheritedResources::Base
-  
-    #Smart_listing
-    include SmartListing::Helper::ControllerExtensions
-    helper  SmartListing::Helper
     
     before_action :set_container, only:[:delete, :edit, :show, :update, :destroy, :set_container_map]
   
@@ -59,8 +55,8 @@ class ContainersController < InheritedResources::Base
   def fetch_vials
   @box = Box.find(params[:id])
   set_variables
-    @vials = Vial.where(position_id: @position_ids)
-    @vials = smart_listing_create(:vials, @vials, partial: "vials/smart_listing/list", default_sort: {name: "asc"}, page_sizes: [20, 30, 50, 100])
+    records = Vial.where(position_id: @position_ids)
+    @pagy, @vials = pagy(records, vials: 30)
   end
   
   private
