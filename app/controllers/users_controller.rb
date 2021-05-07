@@ -16,8 +16,6 @@ class UsersController < ApplicationController
   end
   
   def index
-    @departments = Department.all.order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']]}
-    @teams = Team.where.not(name: 'All').order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']] }
     @q = User.ransack(params[:q])
     
     records = @q.result(distinct: true).includes(:teams)
