@@ -16,7 +16,7 @@ class Container < ActiveRecord::Base
   
   def generate_recap
   location_name = self.location.nil? ? '-' : self.location.name
-  building_name = self.location.building.nil? ? '-' : self.location.building.name
+  building_name = self.location.nil? ? '-' : self.location.building.name
   block = "#{location_name} #{building_name}"
   self.update_columns(:recap => block)
   end

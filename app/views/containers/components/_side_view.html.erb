@@ -2,6 +2,7 @@
     <%col_class = "col-xs-"+(12/container.shelves.count).to_s %>
     <% container.shelves.each do |shelf| %>
     <div style="display: inline-block; text-align: middle; margin: 0 0 0 0;">
+        <center><strong>col. <%=shelf.name%></strong></center>
        <% shelf.shelf_racks.each do |rack| %>
               <div class="container_rack_row">
                     

@@ -1,6 +1,7 @@
   <h5>Top view</h5>
   <% container.shelves.each do |shelf| %>
     <div style="display: inline-block; text-align: middle; margin: 0 0 0 0;">
+      <center><strong>col. <%=shelf.name%></strong></center>
          <% shelf.shelf_racks.each do |rack| %>
                 <div class="container_rack_top_medium">
                     rack#<%=rack.name%>
