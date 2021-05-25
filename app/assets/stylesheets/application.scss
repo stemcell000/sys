@@ -1,25 +1,17 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 
-@import 'bootstrap/bootstrap-rails-tooltip';
-@import 'bootstrap/bootstrap-rails-popover';
 @import 'popover_custom';
-
-@import "multi-select";
 
 @import "bootstrap-sprockets";
 @import 'bootstrap';
 
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
-@import "select2";
-@import "select2-bootstrap";
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap/glyphicons";
 @import "bootstrap/bootstrap-rails-tooltip";
 @import "bootstrap/bootstrap-rails-popover";
-
 @import "select2";
 @import "select2-bootstrap";
 @import "multi-select";

@@ -9,19 +9,14 @@ $(document).ready(function() {
 		    tokenSeparators: [',', ' '],
 		    allowClear: true
 		});
-		
-//Activation des chevron sur le bootstrap panel collapse
-function toggleChevron(e) {
-    $(e.target)
-        .prev('.panel-heading')
-        .find("i.indicator")
-        .toggleClass('fa-chevron-down fa-chevron-right');
-	};
 	
 	$('[data-toggle="popover"]').popover({html:true});
+  $('#accordion').on('hidden.bs.collapse', toggleChevron);
+  $('#accordion').on('shown.bs.collapse', toggleChevron); 
+});
 		
 	$(document).on("focus", "[data-behaviour~='datepicker']", function(e){
-    $(this).datepicker({
+   /* $(this).datepicker({
     		dateFormat: 'dd-mm-yy',
     		autoclose: true,
     		todayBtn: true,
@@ -30,14 +25,12 @@ function toggleChevron(e) {
     		todayHighlight: true,
     		changeYear: true,
     		changeMonth: true
-    		});
+    		});*/
     });
     
    	$('#accordion').on('hidden.bs.collapse', toggleChevron);
 	$('#accordion').on('shown.bs.collapse', toggleChevron); 
 	
-
-});
 
 
 $(document).on('nested:fieldAdded', function(event){
@@ -138,3 +131,15 @@ function reset_fields(){
 $("#container-map-container").html("");
 $("#map-shelf-rack").html("");  
 }
+
+//Activation des chevron sur le bootstrap panel collapse
+function toggleChevron(e) {
+    $(e.target)
+        .prev('.panel-heading')
+        .find("i.indicator")
+        .toggleClass('fa-chevron-down fa-chevron-right');
+  };
+
+$(document).on("turbolinks:load", () => {
+  $('.select2').select2()
+})

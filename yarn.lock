@@ -2,3 +2,17 @@
 # yarn lockfile v1
 
 
+jquery@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
+  integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
+
+select2-bootstrap-theme@^0.1.0-beta.10:
+  version "0.1.0-beta.10"
+  resolved "https://registry.yarnpkg.com/select2-bootstrap-theme/-/select2-bootstrap-theme-0.1.0-beta.10.tgz#b9426ecfc03bf4a235e76a132377574310469ac0"
+  integrity sha1-uUJuz8A79KI152oTI3dXQxBGmsA=
+
+select2@^4.1.0-rc.0:
+  version "4.1.0-rc.0"
+  resolved "https://registry.yarnpkg.com/select2/-/select2-4.1.0-rc.0.tgz#ba3cd3901dda0155e1c0219ab41b74ba51ea22d8"
+  integrity sha512-Hr9TdhyHCZUtwznEH2CBf7967mEM0idtJ5nMtjvk3Up5tPukOLXbHUNmh10oRfeNIhj+3GD3niu+g6sVK+gK0A==

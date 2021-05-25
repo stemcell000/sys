@@ -25,7 +25,6 @@ class Ability
           can :update, Container
           can :update, RackPosition
           can :update, ShelfRack
-          can :manage, VialType
      elsif user.role? :user
           can :read, :all
           can :manage, Vial

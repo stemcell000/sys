@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
     $('.datepicker').datepicker({
     	    	format: "M. dd, yyyy",
     	    	autoclose: true,
@@ -8,5 +8,5 @@ $(document).ready(function(){
     		todayHighlight: true
     		}
     );
-  });
+  });*/
   
