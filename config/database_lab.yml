@@ -27,3 +27,4 @@ production:
   pool: 5
   timeout: 5000
   username: marc
+  password: ve2n8w74
