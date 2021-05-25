@@ -11,19 +11,19 @@
       <%= f.input :barcode, :input_html => {class: "col-xs-6"} %>
     </div>
     <div class="row margin-top-row-20">
-      <%= f.association :color, :collection=>Color.all, :input_html => {class: "col-xs-6"}   %>
+      <%= f.association :color, :collection=>Color.all, :input_html => {class: "col-xs-6 select2-select"}   %>
     </div>
     <div class="row margin-top-row-20">
       <% if @box.persisted? %>
-        <%= f.association :box_type, label_method: :name, disabled: true, :input_html => {class: "col-xs-6"} %>
-        <%= f.association :box_type, label_method: :name, as: :hidden, :input_html => {class: "col-xs-6"} %>
+        <%= f.association :box_type, label_method: :name, disabled: true, :input_html => {class: "select2-select col-xs-6"} %>
+        <%= f.association :box_type, label_method: :name, as: :hidden, :input_html => {class: "select2-select col-xs-6"} %>
       <% else %>
-        <%= f.association :box_type, :collection=>BoxType.all, :input_html => {class: "col-xs-6"} %>
+        <%= f.association :box_type, :collection=>BoxType.all, :input_html => {class: "select2-select col-xs-6"} %>
       <% end %>
     </div>
     <%if ["superadmin", "administrator"].include? current_user.role  %>
       <div class="row margin-top-row-20">
-        <%= f.association :team, :collection=>Team.all, :input_html => {class: "col-xs-6"} %>
+        <%= f.association :team, :collection=>Team.all, :input_html => {class: "select2-select col-xs-6"} %>
       </div>
     <%else%>
         <%= f.association :team, :collection=>current_user.teams, :input_html => {class: "col-xs-6"} %>

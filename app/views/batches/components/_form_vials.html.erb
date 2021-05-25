@@ -37,7 +37,7 @@
 						<%=ff.input :exit_date, :as => :string, :input_html => {"data-behaviour" => "datepicker", class: 'col-xs-12'} %>
 					</div>
 					<div class="col-xs-4">
-					<%=ff.association :user, label_method: lambda { |user| "#{user.firstname} #{user.lastname}"}, input_html: {class: "col-xs-12"}%>
+					<%=ff.association :user, label_method: lambda { |user| "#{user.firstname} #{user.lastname}"}, input_html: {class: "select2-select col-xs-12"}%>
 					</div>
 				</div>
 			

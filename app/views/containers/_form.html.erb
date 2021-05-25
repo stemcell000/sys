@@ -6,11 +6,13 @@
 <%= simple_nested_form_for(@container) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  <div class="form-inputs"></div>
+  <div class="row">
   <%= f.input :name %>
   <%= f.input :barcode %>
-  <%= f.association :location, label_method: :name %>
-  <%= f.association :container_type, label_method: :name %>
+  <%= f.association :location, label_method: :name, :input_html => {class: "select2-select col-xs-6"} %>
+  <%= f.association :container_type, label_method: :name, :input_html => {class: "select2-select col-xs-6"} %>
+  </div>
+  <div class="row top-buffer">
 <div class="panel panel-primary">
   <div class="panel-heading">Shelves/Columns</div>
   <div class="panel-body">
@@ -21,6 +23,7 @@
     <%= s.link_to_remove "remove" %>
   <% end %>
   <%= f.link_to_add "Add shelf/column", :shelves %>
+</div>
 </div>
 </div>
 
