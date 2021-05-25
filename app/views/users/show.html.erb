@@ -12,7 +12,8 @@
 						<%if @user == current_user%>
 							<%= link_to "Edit my profile", edit_user_path(current_user.id), method: :get%>
 						<%elsif ["superadmin", "administrator"].include? current_user.role %>
-							<%= link_to "Edit", edit_user_path(@user), method: :get%>
+							<%= link_to "Edit", edit_user_path(@user), method: :get, :class => "btn btn-default"%>
+							<%= link_to "Back", users_path, :class => "btn btn-default" %>
 						<%end%>
 					</div>
 				</div>
