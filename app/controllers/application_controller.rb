@@ -27,19 +27,6 @@ class ApplicationController < ActionController::Base
     @current_user = current_user
     @current_user.toggle(:display)
   end
-  
-  def check_for_orphans
-   # if current_user
-    #  unless Item.by_teams(@current_user_teams_ids).orphan.nil?
-     #   orphans = Item.by_teams(@current_user_teams_ids).orphan
-      #  n_orphans = orphans.size
-      #  orphans_bc = orphans.pluck(:barcode)
-      #  if n_orphans > 0
-      #    flash.now[:error] = "<small>#{t('items.flash_orphans')} #{t('items.orphan_item', count: n_orphans)} : #{orphans_bc.to_sentence}</small>".html_safe
-      #  end
-      # end
-#   end
-   end
       
    rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
@@ -50,17 +37,8 @@ class ApplicationController < ActionController::Base
   end
   
   # path for redirection after user sign_in, depending on user role
-  def after_sign_in_path_for(user)
-   user.role == "superadmin"? admin_dashboard_path : root_path 
-  end
-
-private
-#  def current_collections
- #   if current_user
-  #    @current_user_teams_ids = current_user.teams.map {|team| team.id}
-  #    @current_teams_items = Item.by_teams(@current_user_teams_ids)
-  #    @current_teams_categories = @current_teams_items.map{|i| i.category}
-  #  end
- # end
+  #def after_sign_in_path_for(user)
+  # user.role == "superadmin"? admin_dashboard_path : root_path 
+  #end
 end
 
