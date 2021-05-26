@@ -1,7 +1,8 @@
 if(<%= !@box_type.nil?%>){
 	
 //Affichage du partial
-$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/map_small", :locals => {:box => @box, :box_type => @box_type, :v_max => @v_max, :h_max => @h_max, :position_ids => @position_ids, :position_names => @position_names, :position_vial_names => @position_vial_names, :storage_status => @storage_status}) %>");
+$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/map_small", locals: {:box => @box, :box_type => @box_type, :v_max => @v_max, :h_max => @h_max, :position_ids => @position_ids, :position_names => @position_names, :position_vial_names => @position_vial_names, :storage_status => @storage_status}) %>");
+$("#vials-container").html("<%= escape_javascript( render :partial =>"vials/list_components/list", locals: {vials: @vials}) %>");
 
 	var arr1 =  <%= raw @position_ids %>;
 	var arr2 =  <%= raw @position_names %>;

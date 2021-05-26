@@ -1,6 +1,6 @@
 <%if box.rack_position%>
         <div class="text-left container_rack_label_small">
-          rack#<%=box.rack_position.shelf_rack.name%>
+          <strong>rack#<%=box.rack_position.shelf_rack.name%></strong>
         </div>
     <div class="container_rack_small">
             <%box.rack_position.shelf_rack.rack_positions.each do |position|%>

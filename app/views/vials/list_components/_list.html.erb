@@ -1,7 +1,6 @@
 <%if @vials.empty? %>
 <span>No vial</span>
 <%else%>
-<small>
 	  <table class="table table-striped">
 	    <thead>
 	    <th class="col-xs-6">Name</th>
@@ -21,5 +20,4 @@
     <%== pagy_bootstrap_nav_js(@pagy) %>
   </div>
 </div>
-</small>
 <%end%>

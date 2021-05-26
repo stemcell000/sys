@@ -21,7 +21,9 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Vials</div>
 				<div class="panel-body">
-					<%= render partial: 'vials/list_components/list', locals: {vials: @vials} %>
+					<div id="vials-container">
+						<%= render partial: 'vials/list_components/list', locals: {vials: @vials} %>
+					</div>
 				</div>
 			</div>
 	</div>

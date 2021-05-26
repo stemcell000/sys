@@ -23,7 +23,9 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Vials</div>
 						<div class="panel-body">
-							<%= render partial: 'vials/list_components/list' %>
+							<div id="vials-container">
+								<%= render partial: 'vials/list_components/list', locals: {vials: @vials} %>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -32,18 +34,18 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Selected box</div>
 					<div class="panel-body">
-						<div id="map-container" class="col-xs-12 text-center">
+							<div id="map-container" class="col-xs-12 text-center">
 						</div>
 					</div>
-				</div>
+			</div>
 		</div>
 		<div class="col-xs-3 text-center" style="overflow: auto;">
 				<div class="panel panel-default">
 					<div class="panel-heading">Container</div>
 					<div class="panel-body">
 						<div class="col-xs-12">
-							<div id="container-map-container"></div>
-							<div id="map-shelf-rack" class="col-xs-6"></div>
+							<div id="container-map-container" style="width: 150px;"></div>
+							<div id="map-shelf-rack" style="width: 50px; margin-top: 10px;"></div>
 						</div>
 					</div>
 				</div>

@@ -4,6 +4,8 @@ if(<%= !@box_type.nil?%>){
 $("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/map_small", :locals => {:box => @box, :box_type => @box_type, :v_max => @v_max, :h_max => @h_max, :position_ids => @position_ids, :position_names => @position_names, :position_vial_names => @position_vial_names, :storage_status => @storage_status}) %>");
 $("#container-map-container").html("<%= escape_javascript(render :partial =>  "containers/components/front_view_v_small", :locals => {container: @container, box: @box})%>");
 $("#map-shelf-rack").html("<%= escape_javascript(render :partial =>  "shelf_racks/components/single_rack_map_small", :locals => {shelf_rack: @shelf_rack, box: @box})%>");	
+$("#vials-container").html("<%= escape_javascript( render :partial =>"vials/list_components/list", locals: {vials: @vials}) %>");	
+	
 	var arr1 =  <%= raw @position_ids %>;
 	var arr2 =  <%= raw @position_names %>;
 	var arr3 = 	<%= raw @position_batch_names %>;
@@ -15,6 +17,7 @@ $("#map-shelf-rack").html("<%= escape_javascript(render :partial =>  "shelf_rack
 	console.log('arr2 length = '+arr2.length);
 	console.log('arr3 length = '+arr3.length);
 	console.log('box_id = '+box_id);
+	console.log('vial list = '+<%=raw @vials.pluck(:name)%>);
 
 $('.location-label').each(function(index){
 	console.log('Ajout des noms de batch des elts location-label');

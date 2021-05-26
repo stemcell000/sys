@@ -8,7 +8,7 @@ def index
      box_ids = @boxes.pluck(:id)
      
      if params[:q].blank?
-      @vials = Vial.all.order(:id)
+      record_vials = Vial.all.order(:id)
      else
       positions = Position.where(box_id: box_ids) 
       record_vials = Vial.order(:id).where(position_id: positions.pluck(:id))
@@ -32,17 +32,20 @@ end
 
 def fetch_vials
   @box = Box.find(params[:id])
+  @q = @box.vials.ransack(params[:q])
   set_variables
 end
 
 def fetch_position
   @vial = Vial.find(params[:vial_id])
   @box = Box.find(params[:box_id])
+  @q = @box.vials.ransack(params[:q])
   set_variables
 end
 
 def fetch_box
   @box = Box.find(params[:id])
+  @q = @box.vials.ransack(params[:q])
   set_variables
 end
  
@@ -139,7 +142,7 @@ private
     end
 
     def set_variables
-      @q = Vial.ransack(params[:q])
+      #@q = Vial.ransack(params[:q])
       records = @q.result.order(:id).where(out: false)
       records = records.includes(:position)
       @pagy, @vials = pagy(records, vials: 30)

@@ -1,4 +1,4 @@
-  <small><td class="text-left">
+<td class="text-left">
   	<%if object.position %>
   		<%box = object.position.box%>
   		<%=link_to "#{object.name}", box_fetch_position_path(:vial_id=>object.id, :box_id => box.id), :remote => true %>
@@ -50,5 +50,4 @@
 <% if can? :manage, Vial %>
       <%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_vial_path(object), method: :get %> 
   <%end%>
-</small>
   </td>

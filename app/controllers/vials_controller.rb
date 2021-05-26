@@ -13,7 +13,6 @@ def index
       @batch_types_all = @batch_types_all.map{ |obj| [obj['name'], obj['id']] }
       @batches_all = Batch.all.order(name: "asc").uniq
       @batches_all = @batches_all.map{ |obj| [obj['name'], obj['id']] }
-      @container_all = Container.all
       #
       @q = Vial.ransack(params[:q])
       records = @q.result.order(:id).where(out: false)
@@ -80,7 +79,7 @@ def update
     @vial.update_attributes(vial_params)
      if @vial.valid?
        flash.keep[:success] = "Task completed!"
-       if @vial.out == false
+       if @vial.out == true
         @vial.update_columns(position_id: nil)
       end
        redirect_to vial_path
