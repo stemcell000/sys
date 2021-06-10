@@ -5,7 +5,7 @@ class BoxesController < InheritedResources::Base
 def index
      @q = Box.ransack(params[:q])
      records = @q.result(distinct: true)
-     box_ids = @boxes.pluck(:id)
+     box_ids = records.pluck(:id)
      
      if params[:q].blank?
       record_vials = Vial.all.order(:id)
