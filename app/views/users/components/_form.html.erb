@@ -5,7 +5,7 @@
     <%= f.error_notification %>
     <ul>
     <% @user.errors.full_messages.each do |message| %>
-    <li class="text-danger"><%= message %></li>
+    <li class="error"><%= message %></li>
     <% end %>
   </ul>
    <div class="row margin-top-row-20">

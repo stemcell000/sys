@@ -3,6 +3,10 @@
 </h3>
 <%= simple_form_for(@box) do |f| %>
   <%= f.error_notification %>
+      <ul>
+    <% @box.errors.full_messages.each do |message| %>
+    <li class="error"><%= message %></li>
+    <% end %>
   <div class="container">
     <div class="row margin-top-row-20">
       <%= f.input :name, :input_html => {class: "col-xs-6"} %>

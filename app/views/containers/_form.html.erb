@@ -5,7 +5,10 @@
 <div class="fieldset"></div>
 <%= simple_nested_form_for(@container) do |f| %>
   <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <ul>
+    <% @container.errors.full_messages.each do |message| %>
+    <li class="error"><%= message %></li>
+    <% end %>
   <div class="row">
   <%= f.input :name %>
   <%= f.input :barcode %>
