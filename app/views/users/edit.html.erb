@@ -1,5 +1,2 @@
-<h3>Edit Profile</h3>
-	<% isSysAdmin = can? :manage, :all %>
-    <% isAdmin = can? :manage, Organization %>
-    <% isManager= ['superadmin', 'administrator', 'inventory_manager'].include? current_user.role%>
-<%= render partial: '/users/components/form', locals: {isAdmin: isAdmin, isManager: isManager, isSysAdmin: isSysAdmin} %>
+<h3>Edit Profile : <%=@user.full_name%></h3>
+<%= render partial: '/users/components/form' %>

@@ -38,12 +38,6 @@ class UsersController < ApplicationController
       #
       set_adds(@user)
       #
-      if ['superadmin', 'administrator'].include? @user.role
-        @user.teams.destroy_all
-        Team.all.each do |team|
-          @user.teams << team
-         end
-      end
       @user.generate_recap
     else
       render :action => :new
@@ -51,6 +45,10 @@ class UsersController < ApplicationController
   end
   
   def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   
@@ -62,13 +60,7 @@ class UsersController < ApplicationController
     @user.update_attributes(user_params)
     if @user.valid?
       flash.keep[:success] = "Profile udpated."
-      if ['superadmin', 'administrator'].include? @user.role
-        @user.teams.destroy_all
-        Team.all.each do |team|
-          @user.teams << team
-        end
-        set_adds(@user)
-      end
+      set_adds(@user)
       @user.generate_recap
       redirect_to user_path
     else
