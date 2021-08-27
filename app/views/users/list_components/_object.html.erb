@@ -2,11 +2,7 @@
 <td ><small><a href = 'mailto:<%=object.email%>'><%=object.email%></a></small></td>
 <td ><small><%=object.role.capitalize%></a></small></td>
 <td ><small>
-	<%if ["superadmin", "administrator", "HR_administrator"].include? object.role  %>
-		Administration
-	<%else%>
 	<%= object.teams.pluck(:name).to_sentence unless object.teams.nil? %><br />
-	<%end%>
 	</small>
 </td>
 <td class="actions">
