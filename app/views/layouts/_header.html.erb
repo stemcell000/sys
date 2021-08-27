@@ -43,15 +43,14 @@
 
 	</ul>
      		<span class="navbar-text">
-	     		<small>
+
 					<% if signed_in? %>
-		    				<small>Signed-in as : <strong><%= current_user.full_name %></strong> - <%=current_user.role%>, 
+		    				<span style="margin-left: 150px;">Signed-in as : <strong><%= current_user.full_name %></strong> - <%=current_user.role%>, 
 		    					<%=current_user.teams.nil? ? 'Team':'Team'.pluralize(current_user.teams.count)%> : <%=current_user.teams.nil? ? "-":current_user.teams.pluck(:name).to_sentence.truncate(27, separator: ' ')%>
-			    			<%= link_to user_path(current_user.id), method: :get do %><i class="fa fa-user"></i><%end%>
-			    			<%= link_to destroy_user_session_path, method: :get do %><i class="fa fa-sign-out-alt"></i><%end%>
-		    				</small>
+			    			 <span style="margin-left: 10px;"><%= link_to user_path(current_user.id), method: :get do %><i class="fa fa-user"></i><%end%></span>
+			    			 <span style="margin-left: 10px;"><%= link_to destroy_user_session_path, method: :get do %><i class="fa fa-sign-out-alt"></i><%end%></span></span>
 		    			<%end%>
-	    			</small>
+	 
      		</span>
 </nav>
 	
