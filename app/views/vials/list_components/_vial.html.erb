@@ -7,9 +7,8 @@
   		<%=object.name%>
     </div>
   	<%end%>
-  </td>
-  <td class="actions text-right">
-    <div style="display: inline-block;">
+</td>
+<td class="actions text-right" margin: auto auto auto auto; word-wrap: break-word;">
     <a tabindex="0" data-toggle="popover" data-placement="left" data-trigger="focus" data-html = "true" data-container="body"
                         title='
                           <div class="row"> 
@@ -42,12 +41,11 @@
                           </div>
                         '
                       >
-                          <div class="center">
-                            <i class="fas fa-eye" data-id="<%=object.id %>"></i><br/>
-                          </div>
+                   
+                            <small><i class="fas fa-eye" data-id="<%=object.id %>"></i></small>
                       </a>  
-</div>
+
 <% if can? :manage, Vial %>
-      <%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_vial_path(object), method: :get %> 
+      <small><%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_vial_path(object), method: :get %></small>
   <%end%>
   </td>
