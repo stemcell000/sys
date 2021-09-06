@@ -7,8 +7,9 @@ class Batch < ActiveRecord::Base
 
 
 	#validations
-  validates :name, :user_id, :date, :batch_type_id, :vial_nb, :presence => true
+  validates :name, :user_id, :date, :batch_type_id, :presence => true
   validates :name, length: { in: 2..25 }
+  validates :name, uniqueness: true
   validates :description, length: { maximum: 500 }, allow_blank: true
   validates :name, length: { maximum: 25,
     too_long: "%{count} characters is the maximum allowed",
