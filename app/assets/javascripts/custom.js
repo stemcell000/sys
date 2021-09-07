@@ -17,7 +17,7 @@ $(document).ready(function() {
 });
 		
 	$(document).on("focus", "[data-behaviour~='datepicker']", function(e){
-   /* $(this).datepicker({
+    $(this).datepicker({
     		dateFormat: 'dd-mm-yy',
     		autoclose: true,
     		todayBtn: true,
@@ -26,7 +26,7 @@ $(document).ready(function() {
     		todayHighlight: true,
     		changeYear: true,
     		changeMonth: true
-    		});*/
+    		});
     });
     
    	$('#accordion').on('hidden.bs.collapse', toggleChevron);
