@@ -21,17 +21,14 @@
 }
 
 .container_rack_small {
-  display: block;
+  //display: block;
   overflow: auto;
   min-height: 150px;
   max-height: auto;
-  text-align: center;
+  //text-align: center;
   border: 1px solid black;
   border-radius: 2px; 
-  padding:0 0 0 0;
-  float: none;
   padding: 0 0 5% 5%;
-  margin-top: 10px;
 }
 
 .container_rack_row {
@@ -62,10 +59,10 @@
 }
 
 .container_rack_top_medium {
-  min-width: 50px;
-  min-height: 50px;
-  max-width: 50px;
-  max-height: 50px;
+  min-width: 70px;
+  min-height: 70px;
+  max-width: 70px;
+  max-height: 70px;
   border: 1px solid black;
   border-radius: 2px; 
   padding: 0 0 0 7% ;
@@ -104,10 +101,10 @@
 }
 
 .container_rack_position_small {
-  min-width: 30px;
-  min-height: 10px;
-  max-width: 30px;
-  max-height: 10px;
+  //min-width: 30px;
+  //min-height: 10px;
+  //max-width: 30px;
+  //max-height: 10px;
   border:1px solid grey;
   border-radius: 2px;
   background-color: lightgrey;

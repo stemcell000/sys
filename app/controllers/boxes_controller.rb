@@ -1,6 +1,6 @@
 class BoxesController < InheritedResources::Base
     
-    before_action :set_box, only:[:delete, :edit, :show, :update]
+    before_action :set_box, only:[:delete, :edit, :show, :update, :set_variables]
   
 def index
      @q = Box.ransack(params[:q])
@@ -16,7 +16,7 @@ def index
       records = records.includes(:positions, :rack_position, :vials).order(:name)
       records = records.where(rack_position_id: RackPosition.all.pluck(:id)) 
       @pagy, @boxes = pagy(records, boxes: 10)
-      @pagy, @vials = pagy(record_vials, vials: 24)
+      @pagy_vials, @vials = pagy(record_vials.order(name: :asc), items: 25, page_param: :page_vial)
 end
 
 def box_inventory
@@ -34,6 +34,10 @@ def fetch_vials
   @box = Box.find(params[:id])
   @q = @box.vials.ransack(params[:q])
   set_variables
+  respond_to do |format|
+    format.js
+    format.html
+  end
 end
 
 def fetch_position
@@ -47,6 +51,10 @@ def fetch_box
   @box = Box.find(params[:id])
   @q = @box.vials.ransack(params[:q])
   set_variables
+  respond_to do |format|
+    format.js
+    format.html
+  end
 end
  
 def new
@@ -142,10 +150,8 @@ private
     end
 
     def set_variables
-      #@q = Vial.ransack(params[:q])
-      records = @q.result.order(:id).where(out: false)
-      records = records.includes(:position)
-      @pagy, @vials = pagy(records, vials: 30)
+      @q = Box.ransack(params[:q])
+      records = @q.result
       
       if @box.box_type
         @box_type = @box.box_type
@@ -162,6 +168,9 @@ private
         @position_ids = []
         @position_names = []
       end
+      @pagy, @boxes = pagy(records.order(name: :asc), items: 10)
+      vial_records=Vial.where(position_id: @position_ids)
+      @pagy_vials, @vials = pagy(vial_records.order(name: :asc), items: 10, page_param: :page_vial, link_extra: 'data-remote="true"')
         #
       if @box.rack_position
         @container = @box.rack_position.shelf_rack.shelf.container

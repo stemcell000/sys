@@ -9,45 +9,27 @@
 <div class="row" style="overflow: auto;">
 	<div class="col-xs-12 text-center">
 		<div class="panel panel-default">
-			<div class="panel-heading">Boxes</div>
 			<div class="panel-body">
-				<%= render partial: 'boxes/list_components/list', locals: {boxes: @boxes} %>
+				<h4>Boxes</h4>
+				<%= render partial: 'boxes/list_components/list', locals: {boxes: @boxes, pagy: @pagy } %>
 			</div>
 		</div>
 		</div>
-	</div>
+</div>
 <div class="row">
-	<div class="col-xs-3 text-center" style="overflow: auto;">
+	<div class="col-xs-4 text-center" style="overflow: auto;">
 			<div class="panel panel-default">
-				<div class="panel-heading">Vials</div>
 				<div class="panel-body">
 					<div id="vials-container">
-						<%= render partial: 'vials/list_components/list', locals: {vials: @vials} %>
+						<%= render partial: 'vials/list_components/list', locals: {vials: @vials, pagy: @pagy_vials } %>
 					</div>
 				</div>
 			</div>
 	</div>
-
-	<div class="col-xs-7 text-center" style="overflow: auto;">
-			<div class="panel panel-default">
-				<div class="panel-heading">Selected box</div>
-				<div class="panel-body">
-					<div id="map-container" class="col-xs-12 text-center">
-					</div>
-				</div>
-			</div>
+	<div class="col-xs-8 text-center" style="overflow: auto;">
+					<div id="map-container" class="col-xs-12 text-center"></div>
 	</div>
-	<div class="col-xs-2 text-center" style="overflow: auto;">
-			<div class="panel panel-default">
-				<div class="panel-heading">Container</div>
-				<div class="panel-body">
-					<div class="col-xs-12">
-						<div id="container-map-container" text-center"></div>
-						<div id="map-shelf-rack" class="col-xs-12 text-center"></div>
-					</div>
-				</div>
-			</div>
-	</div>
+</div>
 
 </div>
 </div>

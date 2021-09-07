@@ -1,30 +1,28 @@
 <%if container%>
-<div><span><strong><%=container.name%></strong></span></div><br />
    <%if container.container_type_id == 2%>
     <% container.shelves.each do |shelf| %>
       <div class="row">
-        <div class="col-xs-12">
+          <div class="col-xs-1 container_shelf_label_small">Shelf <%=shelf.name%></div>
            <% shelf.shelf_racks.each do |rack| %>
            <% bg_color = box.rack_position.shelf_rack.id == rack.id ? '#5cb85c' : '#337ab7' %>
-                    <div class="container_rack_row_v_small col-xs-1" id=<%=rack.name%> data-id=<%=rack.id%> style="background-color: <%=bg_color%>;">
+                  <div class="col-xs-1 container_rack_row_small rack btn" id=<%=rack.name%> data-id=<%=rack.id%> style="background-color: <%=bg_color%>;">
                         <div class="text-left container_rack_label_small">
-                          <%=rack.name%><br/>
+                          rack#<%=rack.name%>
                         </div>
                   </div>
             <%end%>
-          </div>
-      </div>
+        </div>
       <%end%>
     <%else%>
   <% container.shelves.each do |shelf| %>
-    <div style="display: inline-flex; text-align: middle; margin: 0 0 0 0;">
+    <div style="display: inline-block; text-align: middle; margin: 0 0 0 0;">
          <% shelf.shelf_racks.each do |rack| %>
          <% bg_color = box.rack_position.shelf_rack.id == rack.id ? '#5cb85c' : '#337ab7' %>
-                <div class="container_rack_top_small" id=<%=rack.name%> data-id=<%=rack.id%> style="background-color: <%=bg_color%>;">
-                        <div class="text-left container_rack_label_small">
-                          <%=rack.name%><br/>
-                        </div>
+                <div class="container_rack_top_medium rack" id=<%=rack.name%> data-id=<%=rack.id%> style="background-color: <%=bg_color%>;">
+                  <div class="text-left container_rack_label_small">
+                    rack#<%=rack.name%>
                   </div>
+                </div>
           <%end%>
     </div>
   <%end%>
