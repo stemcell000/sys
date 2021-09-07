@@ -34,5 +34,5 @@ Rails.application.routes.draw do
   end
 
   #Root
-  root 'vials#index'
+  root 'boxes#index'
 end

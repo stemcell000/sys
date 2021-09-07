@@ -16,7 +16,7 @@ def index
       records = records.includes(:positions, :rack_position, :vials).order(:name)
       records = records.where(rack_position_id: RackPosition.all.pluck(:id)) 
       @pagy, @boxes = pagy(records, boxes: 10)
-      @pagy_vials, @vials = pagy(record_vials.order(name: :asc), items: 25, page_param: :page_vial)
+      @pagy_vials, @vials = pagy(record_vials.order(name: :asc), items: 15, page_param: :page_vial)
 end
 
 def box_inventory
@@ -160,7 +160,7 @@ private
         @position_ids = @box.positions.order(:nb).pluck(:id)
         @position_names = @box.positions.order(:nb).map{|p|(p.nb+1).to_s}
         @position_batch_names = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name}
-        @position_batch_names_slots = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name.truncate(15)}
+        @position_batch_names_slots = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name.truncate(10)}
         @position_batch_ids = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.id}
       else
         @v_max = 0
@@ -170,7 +170,7 @@ private
       end
       @pagy, @boxes = pagy(records.order(name: :asc), items: 10)
       vial_records=Vial.where(position_id: @position_ids)
-      @pagy_vials, @vials = pagy(vial_records.order(name: :asc), items: 10, page_param: :page_vial, link_extra: 'data-remote="true"')
+      @pagy_vials, @vials = pagy(vial_records.order(name: :asc), items: 15, page_param: :page_vial, link_extra: 'data-remote="true"')
         #
       if @box.rack_position
         @container = @box.rack_position.shelf_rack.shelf.container

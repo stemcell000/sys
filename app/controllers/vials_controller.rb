@@ -24,12 +24,12 @@ def index
       if params[:q].blank?
         record_boxes = Box.all.order(:id)
       else
-        record_boxes = Box.joins(:positions).where(positions: {id: position_ids})
+        record_boxes = Box.joins(:positions).where(positions: {id: position_ids}).distinct
       end
 
       #Config de l'affichage des résultats.
-      @pagy, @vials = pagy(records, vials: 30)
-      @pagy, @boxes = pagy(record_boxes, boxes: 30)
+      @pagy, @boxes = pagy(record_boxes, boxes: 10)
+      @pagy_vials, @vials = pagy(records.order(name: :asc), items: 15, page_param: :page_vial)
 end
 
 def out_vials
