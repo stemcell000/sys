@@ -16,7 +16,7 @@ def index
       #
       @q = Vial.ransack(params[:q])
       records = @q.result.order(:id).where(out: false)
-      records = records.includes(:position)
+      records = records.includes(:position, :box)
 
       vial_ids = records.pluck(:id)
       position_ids = records.pluck(:position_id)
@@ -28,7 +28,7 @@ def index
       end
 
       #Config de l'affichage des résultats.
-      @pagy, @boxes = pagy(record_boxes, boxes: 10)
+      @pagy, @boxes = pagy(record_boxes, boxes: 10, page_param: :page_box)
       @pagy_vials, @vials = pagy(records.order(name: :asc), items: 15, page_param: :page_vial)
 end
 

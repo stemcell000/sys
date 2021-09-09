@@ -4,7 +4,7 @@ class Vial < ActiveRecord::Base
   after_update :generate_recap
 
   belongs_to :position
-  belongs_to :box
+  has_one :box, through: :position
   belongs_to :batch
   belongs_to :user
   
