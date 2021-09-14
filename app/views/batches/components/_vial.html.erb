@@ -14,7 +14,7 @@
     <%=object.position.nil? ? "" : (object.position.nb+1).to_s%>
   </td>
     <td class="text-left">
-      <%unless object.position.box.nil?%>
+      <%unless object.position.nil? or object.position.box.nil? %>
     <%=object.position.box.rack_position.nil? ? "" : object.position.box.rack_position.shelf_rack.shelf.container.name%>
     <%end%>
   </td>
