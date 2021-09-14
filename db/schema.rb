@@ -39,7 +39,9 @@ ActiveRecord::Schema.define(version: 2021_05_04_152435) do
     t.string "name"
     t.integer "batch_type_id"
     t.text "description"
-    t.date "date"
+    t.integer "passage_nb"
+    t.string "patient_nb"
+    t.string "clone_nb"
     t.integer "user_id"
     t.integer "vial_nb"
   end
@@ -173,6 +175,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_152435) do
     t.integer "position_id"
     t.text "recap"
     t.date "exit_date"
+    t.date "freezing_date"
     t.integer "user_id"
   end
 

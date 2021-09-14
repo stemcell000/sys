@@ -4,7 +4,9 @@ class CreateBatch < ActiveRecord::Migration[5.0]
       t.string :name
       t.integer :batch_type_id
       t.text :description
-      t.date :date
+      t.integer :passage_nb
+      t.string :patient_nb
+      t.string :clone_nb
       t.integer :user_id
       t.integer :vial_nb
     end

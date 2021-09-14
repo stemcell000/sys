@@ -14,19 +14,18 @@ class Vial < ActiveRecord::Base
   validates :name, :presence => true
   validates :name, length: { in: 2..25 }
   validates :comment, length: { maximum: 500 }, allow_blank: true
-  validates :name, length: { maximum: 25,
-    too_long: "%{count} characters is the maximum allowed"}
-  validates :name, :comment, :format => { with: /\A[a-zA-Z0-9 ._]*\z/ ,
+  validates :name, :comment, :format => { with: /\A[a-zA-Z0-9 ._-]*\z/ ,
     :message => 'no special characters, only letters and numbers'}
   
 def generate_recap
-  block = "#{self.name.nil? ? "":self.name} <br />
-            #{self.id.nil? ? "":self.id} <br />
-            #{self.barcode.nil? ? "":self.barcode} <br />
-            #{self.volume.nil? ? "":self.volume} µL <br />
-            #{self.comment.nil? ? "":self.comment} <br />
-            #{self.box.nil? ? "unsorted":self.box.name} <br />
-            #{self.position.nil? ? "unsorted":self.position.name} <br />"
+  block = "#{self.name.nil? ? "": self.name}<br />
+            #{self.id.nil? ? "": self.id}<br />
+            #{self.barcode.nil? ? "": self.barcode}<br />
+            #{self.volume.nil? ? "": self.volume} µL<br />
+            #{self.comment.nil? ? "": self.comment}<br />
+            #{self.freezing_date.nil? "": self.freezing_date}<br />
+            #{self.box.nil? ? "unsorted": self.box.name}<br />
+            #{self.position.nil? ? "unsorted": self.position.name}<br />"
   self.update_columns(:recap => block)
 end
 

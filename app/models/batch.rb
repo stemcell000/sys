@@ -14,6 +14,6 @@ class Batch < ActiveRecord::Base
   validates :name, length: { maximum: 25,
     too_long: "%{count} characters is the maximum allowed",
     minimum: 2}
-  validates :name, :description, :format => { with: /\A[a-zA-Z0-9 ]*\z/ ,
+    validates :name, :description, :format => { with: /\A[a-zA-Z0-9 ._-]*\z/ ,
     :message => 'no special characters, only letters and numbers'}
 end
