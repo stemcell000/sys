@@ -7,7 +7,7 @@ class Batch < ActiveRecord::Base
 
 
 	#validations
-  validates :name, :user_id, :date, :batch_type_id, :presence => true
+  validates :name, :batch_type_id, :presence => true
   validates :name, length: { in: 2..25 }
   validates :name, uniqueness: true
   validates :description, length: { maximum: 500 }, allow_blank: true

@@ -1,7 +1,7 @@
 class BatchesController < ApplicationController
 
 	before_action :set_batch, only:[:destroy, :edit, :add_vials, :show, :update, :update_vials]
-
+	before_action :set_collections, only:[:new, :edit]
 	def resource_name
     :batch
   	end
@@ -81,11 +81,15 @@ class BatchesController < ApplicationController
 		@batch = Batch.find(params[:id])
 	end
 
+	def set_collections
+		@users = User.all.where.not(name: "superadmin")
+	end
+
 	def batch_params
       params.require(:batch).permit(
-        :name, :batch_type_id, :description, :date, :user_id, :vial_nb,
+        :name, :batch_type_id, :description, :user_id, :vial_nb,
         vials_attributes: [:id, :name, :barcode, :volume, :box_id,
-                                   :position_id, :out, :comment, :exit_date,
+                                   :position_id, :out, :comment,
                                    :barcode, :recap, :batch_id])
     end
 end

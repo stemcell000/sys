@@ -1,7 +1,7 @@
 class VialsController < ApplicationController
   
 before_action :set_vial, only:[:delete, :edit, :show, :update]
-
+before_action :set_collections, only: [:new, :edit]
 def index
       #Formattage des dates
       start_time = params[:date_gteq].to_date rescue Date.current
@@ -131,7 +131,7 @@ end
     def vial_params
       params.require(:vial).permit(:id, :name, :barcode, :volume, :box_id,
                                    :position_id, :out, :comment, :exit_date,
-                                   :barcode, :recap, :batch_id, :user_id,
+                                   :barcode, :recap, :batch_id, :user_id, :freezing_date,
       :batch_attributes =>[:id, :name, :date, :description, :batch_type_id])                         
     end
     
@@ -141,6 +141,7 @@ end
 
     def set_collections
       @batches = Batch.all.order(:name).uniq 
+      @users = User.all.where.not(name: "superadmin")
     end
     
     def set_unsorted_collection
