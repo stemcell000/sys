@@ -1,0 +1,24 @@
+id;name;vial_nb;batch_type_id;patient_nb;clone_nb;passage_nb;description
+1;F 2634 p1;1;1;2634;;1;500 000 cell
+2;F 2634 p2;3;1;2634;;2;500 000 cell
+3;F 2634 p3;2;1;2634;;3;500 000 cell
+4;iPS 2634 c1p12;1;2;2634;c1;12;Nantes : hiN.Fs.f.F2634.001 p12 MEF
+5;iPS 2634 c1p13;1;2;2634;c1;13;Nantes : hiN.Fs.f.F2634.001 P13 MEF
+6;iPS 2634 c1p19;3;2;2634;c1;19;Nantes : hiN.Fs.f.F2634.001P19(14)
+7;iPS 2634 c1p20;5;2;2634;c1;20;Nantes : hiN.Fs.f.F2634.001P20(14)
+8;iPS 2634 c2p13;2;2;2634;c2;13;Nantes : hiN.Fs.f.F2634.002P13 MEF
+9;iPS 2364 c2p19;3;2;2634;c2;19;Nantes : hiN.Fs.f.F2634.002P19(14)
+10;iPS 2364 c2p20;5;2;2634;c2;20;Nantes : hiN.Fs.f.F2634.002P20(14)
+11;iPS 2634 c3p13;2;2;2634;c3;13;Nantes : hiN.Fs.f.F2634.003P13 MEF
+12;iPS 2634 c3p19;3;2;2634;c3;19;Nantes : hiN.Fs.f.F2634.003P19(14)
+13;iPS 2634 c3p20;5;2;2634;c3;20;Nantes : hiN.Fs.f.F2634.003P20(14)
+14;iPS 2634c2p27;6;2;2634;c2;27;FF gros cluster
+15;iPS 2634c1p22-A;4;2;2634;c1;22;FF gros cluster
+16;iPS 2634c1p22-B;4;2;2634;c1;22;FF gros cluster
+17;iPS 2634c2p22-A;4;2;2634;c2;22;FFnoté p28mais p22 
+18;iPS 2634c2p22-B;4;2;2634;c2;22;FFnoté p28mais p22 
+19;iPS 2634c3p22-A;4;2;2634;c3;22;FF gros cluster
+20;iPS 2634c3p22-B;4;2;2634;c3;22;FFgros cluster
+21;iPS 2634c3p24;2;2;2634;c3;24;FF gros cluster
+22;iPS 2634c2p26;4;2;2634;c2;26;FF gros cluster
+23;iPS 2634c2p28;6;2;2634;c2;28;FF gros cluster

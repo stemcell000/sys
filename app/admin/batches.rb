@@ -1,10 +1,11 @@
 ActiveAdmin.register Batch do
 
 #Import csv   
- active_admin_import validate: false,
+ active_admin_import validate: true,
               csv_options: {col_sep: ";" },
-              before_batch_import: ->(importer) {   
-                #Vial.where(id: importer.values_at('id')).delete_all
+               before_batch_import: ->(importer) {
+
+                Batch.where(id: importer.values_at('id')).delete_all
               }
 
 
