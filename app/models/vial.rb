@@ -23,7 +23,7 @@ def generate_recap
             #{self.barcode.nil? ? "": self.barcode}<br />
             #{self.volume.nil? ? "": self.volume} µL<br />
             #{self.comment.nil? ? "": self.comment}<br />
-            #{self.freezing_date.nil? "": self.freezing_date}<br />
+            #{self.freezing_date.nil? ? "" : self.freezing_date}<br />
             #{self.box.nil? ? "unsorted": self.box.name}<br />
             #{self.position.nil? ? "unsorted": self.position.name}<br />"
   self.update_columns(:recap => block)
