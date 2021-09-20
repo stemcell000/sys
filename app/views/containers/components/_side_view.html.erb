@@ -4,20 +4,9 @@
     <div style="display: inline-block; text-align: middle; margin: 0 0 0 0;">
         <center><strong>col. <%=shelf.name%></strong></center>
        <% shelf.shelf_racks.each do |rack| %>
-              <div style="  min-width: 70px;
-                          min-height: 200px;
-                          max-width: 70px;
-                          max-height: auto;
-                          text-align: center;
-                          border: 1px solid black;
-                          border-radius: 2px; 
-                          padding:0;
-                          margin-left: 1%;
-                          margin-right: 1%;
-                          margin-top: 2%;
-                          margin-bottom: 2%;">
+              <div class="container_rack_row">
                     
-                    <div class="text-left text-primary" style="margin: 0 0 0 5%;">
+                    <div class="text-left text-primary container_rack_label">
                       rack#<%=rack.name%>
                     </div>
 
