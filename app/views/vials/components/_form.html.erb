@@ -42,7 +42,7 @@
 				<%=f.input :exit_date, :as => :string, :input_html => { :value => (f.object.exit_date.strftime("%B %e, %Y") if f.object.exit_date), "data-behaviour" => "datepicker"} %>
 			</div>
 			<div class="col-xs-6">
-			<%=f.association :user, label: "Client",label_method: lambda { |user| "#{user.firstname} #{user.lastname}"}, input_html: {class: "select2-select col-xs-12"}%>
+			<%=f.association :user, label: "Client",collection: User.all.where.not(role: "superadmin"), label_method: lambda { |user| "#{user.firstname} #{user.lastname}"}, input_html: {class: "select2-select col-xs-12"}%>
 			</div>
 		</div>
 		</div>
