@@ -9,7 +9,7 @@
 types = ContainerType.create([{name: 'Horizontal layout'}, {name: 'Vertical layout'}])
 box_types = BoxType.create([{name: '9x9', vertical_max: 9, horizontal_max: 9}, {name: '12x8', vertical_max: 8, horizontal_max: 12}])
 colors = Color.create([{name: 'Blue', code: '#0275d8'},
-	{name: 'Green', code: '##5cb85c'},
+	{name: 'Green', code: '#5cb85c'},
 	{name: 'Yellow', code: '#f0ad4e'},
 	{name: 'Red', code: '#d9534f'},
 	{name: 'Light grey', code: '#f7f7f7'},
