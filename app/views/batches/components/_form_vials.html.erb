@@ -5,7 +5,7 @@
 	<%= f.error_notification %>
 	
 <div class="container">
-	<%= f.simple_fields_for :vials, f.object.vials.order(:name) do |ff| %>
+	<%= f.simple_fields_for :vials, f.object.vials.order(:id) do |ff| %>
 	<div class="row margin-top-row-20">
 	<div class="panel panel-default">
 		<div class="panel-body">

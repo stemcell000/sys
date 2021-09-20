@@ -82,7 +82,7 @@ class BatchesController < ApplicationController
 	end
 
 	def set_collections
-		@users = User.all.where.not(name: "superadmin")
+		@users = User.all.where.not(role: "superadmin")
 	end
 
 	def batch_params

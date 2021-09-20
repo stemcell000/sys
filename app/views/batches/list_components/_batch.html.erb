@@ -22,7 +22,6 @@
                         data-content='
                           <div class="col-xs-12 text-left">
                             <small>
-                            <strong>Date : </strong><%= object.date.nil? ?  "-" : object.date.strftime("%h %e, %Y ") %><br />
                             <strong>Type : </strong><%= object.batch_type.nil? ? "-" :  object.batch_type.name.capitalize() %> <br />
                             <strong>Description : </strong><%= object.description.blank? ? "-" : object.description %><br />
                             <strong>Number of vials : </strong><%= object.vial_nb || "-" %><br />

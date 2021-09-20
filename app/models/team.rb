@@ -7,6 +7,6 @@ class Team < ActiveRecord::Base
   belongs_to :department
   
   validates :name, presence: true
-  validates :name, :format => { with: /\A[a-zA-Z0-9 ]+\z/ }
+  #validates :name, :format => { with: /\A[a-zA-Z0-9 ]+\z/ }
 
 end

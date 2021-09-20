@@ -1,7 +1,7 @@
 <%if @vials.empty? %>
 <span>No vial</span>
 <%else%>
-<small>
+
 	  <table class="table table-striped">
 	    <thead>
 	    <th class="col-xs-6">Name</th>
@@ -17,7 +17,7 @@
 	    <tbody>
 		  	<% @vials.each do |s| %>
 	      		<tr class="editable" data-id = "<%= s.id %>">
-	          		<%= render  partial: "vials/list_components/vial", locals: {object: s} %>
+	          		<%= render  partial: "vials/list_components/vial_out", locals: {object: s} %>
 	        		</tr>
 	      	<% end %>
 	    </tbody>
@@ -28,5 +28,5 @@
     <%== pagy_bootstrap_nav_js(@pagy) %>
   </div>
 </div>
-</small>
+
 <%end%>

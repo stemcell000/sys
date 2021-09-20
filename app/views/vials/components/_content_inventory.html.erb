@@ -16,11 +16,12 @@
 										<div class="col-lg-12 col-md-12 col-sm-12 draggableContainer center">
 											<a tabindex="0" data-toggle="popover" data-trigger="focus" data-html = "true" data-container="body"
 												title='
+												<div style="width: 200px;"
 													<div class="row"> 
-														<div class="col-lg-5 text-left">
+														<div class="col-lg-8 text-left">
 															<strong><%=v.name%></strong>
 														</div>
-														<div class="col-lg-12 right">
+														<div class="col-lg-4 right">
 																<%= link_to "Edit", edit_vial_path(v), :class =>"btn btn-primary btn-xs font80pc", :remote => true %>
 														</div>	
 													</div>'
@@ -28,13 +29,14 @@
 													<div class="col-lg-12 text-left">
 														<small>
 														<strong>Barcode : </strong><%= v.barcode.nil? ? "-" : v.barcode %><br />
-														<strong>Date : </strong><%= v.batch.nil? ?  "-" : v.batch.date.strftime("%h %e, %Y ") %><br />
+														<strong>Freezing date : </strong><%= v.freezing_date.nil? ?  "-" : v.freezing_date.strftime("%h %e, %Y ") %><br />
 														<strong>Volume : </strong><%= v.volume.nil? ? "-" : v.volume %><br />
 														<strong>Box : </strong><%= v.position.nil? ? "-" : v.position.box.name %> <br />
 														<strong>Slot : </strong><%= v.position.nil? ? "-" : v.position.name.upcase() %> <br />
 														<strong>Comments : </strong><br /><%= v.comment || "-" %><br />
 														</small>
 													</div>
+												</div>
 												'
 											>
 													<div class="center">

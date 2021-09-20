@@ -1,4 +1,4 @@
-  <small><td class="text-left">
+<td class="text-left">
     <div class="<%=object.set_color_from_status%>">
   		<%=object.name%>
     </div>
@@ -25,7 +25,7 @@
 
                             <strong>Freezing date : </strong><%= object.nil? ?  "-" : object.freezing_date.strftime("%h %e, %Y ") %><br />
 
-                            <strong>User : </strong><%= object.batch.nil? ?  "-" : object.batch.user.full_name %><br />
+                            <strong>User : </strong><%= object.batch.user.nil? ?  "-" : object.batch.user.full_name %><br />
       
                               <strong>Exit date : </strong><%= object.exit_date.nil? ?  "-" : object.exit_date.strftime("%h %e, %Y ") %><br />
 
@@ -49,4 +49,3 @@
       <%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_vial_path(object), method: :get %> 
   <%end%>
   </td>
-</small>
