@@ -2,10 +2,10 @@
   		<%=object.name%>
   </td>
     <td class="text-left">
-    <%=object.batch_type.name%>
+    <%=object.batch_type.nil? ? "":object.batch_type.name%>
   </td>
   <td class="text-center">
-    <%=object.vial_nb%>
+    <%=object.vials.count%>
   </td>
   <td class="actions text-right">
     <div class="aligned-div">

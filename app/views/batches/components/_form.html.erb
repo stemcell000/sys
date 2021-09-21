@@ -34,11 +34,7 @@
 	</div>
 
 	<div class="row margin-top-row-20">
-		<%if controller_name == 'batches' && action_name == 'new'%>
-		<div class="col-xs-3">
-			<%=f.input :vial_nb, label: "Number of vials", input_html: {class: "col-xs-12"}%>
-		</div>
-		<%else%>
+		<%if params[:action]=='new'%>
 		<div class="col-xs-3">
 			<%=f.input :vial_nb, label: "Number of vials", input_html: {class: "col-xs-12"}%>
 		</div>

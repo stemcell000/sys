@@ -57,6 +57,7 @@ class BatchesController < ApplicationController
 	def update_vials
 		@batch.update_attributes(batch_params)
 		if  @batch.valid?
+			@batch.update_columns(vial_nb: @batch.vials.count)
 			flash.keep[:success] = "Batch updated !"
 			redirect_to @batch
 		else

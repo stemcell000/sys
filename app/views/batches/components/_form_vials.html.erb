@@ -41,17 +41,21 @@
 					</div>
 				</div>
 			
-				<%= ff.link_to_remove "remove" %>
+				<%= ff.link_to_remove "<i class='fa fa-trash'></i> ".html_safe %>
 			<%end%>
+					
 			</div>	
 		</div>
 	</div>
 				 <%end%>
-
- 
+				<% if can? :manage, Vial%>
+				<div style="margin-bottom: 20px;">
+				 	<%= f.link_to_add "<i class='fas fa-plus'></i>".html_safe, :vials, :class => "btn btn-default pull-right" %>
+				 </div>
+				 <%end%>
 </div>
 
-<div class="panel-footer">
+<div class="row">
  		<div class="btn-group" role="group" aria-label="...">
     		<%= f.submit("Save", :class => "btn btn-default", :title => "Save") %>
     		<%= link_to 'Back', edit_batch_path(@batch), :class => "btn btn-default" %>
