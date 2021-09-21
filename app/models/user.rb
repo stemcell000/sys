@@ -32,7 +32,9 @@ class User < ActiveRecord::Base
   end
     
    def role?(r)
+    unless role.nil?
      role.include? r.to_s
+   end
    end
    
    def full_name
