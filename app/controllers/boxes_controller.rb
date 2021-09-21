@@ -17,6 +17,7 @@ def index
       records = records.where(rack_position_id: RackPosition.all.pluck(:id)) 
       @pagy, @boxes = pagy(records, boxes: 10)
       @pagy_vials, @vials = pagy(record_vials.order(name: :asc), items: 15, page_param: :page_vial)
+      @pagy_vials_count = @pagy_vials.count
 end
 
 def box_inventory
@@ -171,6 +172,7 @@ private
       @pagy, @boxes = pagy(records.order(name: :asc), items: 10)
       vial_records=Vial.where(position_id: @position_ids)
       @pagy_vials, @vials = pagy(vial_records.order(name: :asc), items: 15, page_param: :page_vial, link_extra: 'data-remote="true"')
+      @pagy_vials_count = @pagy_vials.count
         #
       if @box.rack_position
         @container = @box.rack_position.shelf_rack.shelf.container

@@ -30,6 +30,7 @@ def index
       #Config de l'affichage des résultats.
       @pagy, @boxes = pagy(record_boxes, boxes: 10, page_param: :page_box)
       @pagy_vials, @vials = pagy(records.order(name: :asc), items: 15, page_param: :page_vial)
+      @pagy_vials_count = @pagy_vials.count
 end
 
 def out_vials
