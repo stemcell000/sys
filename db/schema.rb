@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_152435) do
     t.text "description"
     t.integer "passage_nb"
     t.string "patient_nb"
-    t.string "clone_nb"
+    t.integer "clone_nb"
     t.integer "user_id"
     t.integer "vial_nb"
   end
