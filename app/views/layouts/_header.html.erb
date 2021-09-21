@@ -30,7 +30,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Container<span class="caret"></span></a>
               <ul class="dropdown-menu">
               <%= content_tag(:li, link_to( "Containers", containers_path, class: "nav-link"))%>
-              <% if can :manage, Container%>
+              <% if can? :manage, Container%>
                 <%= content_tag(:li, link_to( "New container", new_container_path, class: "nav-link"))%> 
                 <%end%>
               </ul>
