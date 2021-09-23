@@ -26,8 +26,6 @@ def generate_recap
             #{self.freezing_date.nil? ? "" : self.freezing_date}<br />
             #{self.user.nil? ? "" : self.user.full_name}<br />
             #{self.box.nil? ? "unsorted": self.box.name}<br />
-            #{self.patient_nb.nil? ? "-": self.patient_nb}<br />
-            #{self.clone_nb.nil? ? "unsorted": self.clone_nb}<br />
             #{self.position.nil? ? "unsorted": self.position.name}<br />"
   self.update_columns(:recap => block)
 end

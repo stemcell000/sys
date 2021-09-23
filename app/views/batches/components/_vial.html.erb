@@ -36,7 +36,7 @@
 
                             <strong>Date : </strong><%= object.freezing_date.nil? ?  "-" : object.freezing_date.strftime("%h %e, %Y ") %><br />
 
-                            <strong>User : </strong><%= object.batch.nil? ?  "-" : object.batch.user.full_name %><br />
+                            <strong>User : </strong><%= object.batch.user.nil? ?  "-" : object.batch.user.full_name %><br />
                             <strong>Volume : </strong><%= object.volume.nil? ? "-" : object.volume %><br />
                             <strong>Box : </strong><%= object.position.nil? ? "-" : object.position.box.name %> <br />
 
