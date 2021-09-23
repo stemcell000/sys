@@ -177,6 +177,8 @@ ActiveRecord::Schema.define(version: 2021_05_04_152435) do
     t.date "exit_date"
     t.date "freezing_date"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

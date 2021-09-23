@@ -10,8 +10,9 @@ class Box < ActiveRecord::Base
   belongs_to :rack_position
   belongs_to :color
 
-  validates :name, :box_type, :team_id, :presence => true
+  validates :name, :box_type, :team_id, :color, :presence => true
   validates :name, :format => { with: /\A[a-zA-Z0-9._ ]+\z/ }
+  validates :name, uniqueness: true
   
   accepts_nested_attributes_for :positions
   accepts_nested_attributes_for :rack_position

@@ -13,6 +13,7 @@ class Container < ActiveRecord::Base
 
   validates :name, presence: true
   validates_associated :location, :container_type, :shelves
+  validates :name, uniqueness: true
   
   def generate_recap
   location_name = self.location.nil? ? '-' : self.location.name
