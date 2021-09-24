@@ -26,7 +26,7 @@ module ApplicationHelper
   end
 
 def boolean_to_human(bool)
-  st = bool? ? "Yes":"No"
+  st = bool==true ? "Yes":"No"
   return st
 end
 
