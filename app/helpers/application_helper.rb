@@ -25,5 +25,11 @@ module ApplicationHelper
     end
   end
 
+def boolean_to_human(bool)
+  st = bool? ? "Yes":"No"
+  return st
+end
+
   include Pagy::Frontend
+
 end
