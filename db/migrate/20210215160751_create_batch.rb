@@ -6,7 +6,7 @@ class CreateBatch < ActiveRecord::Migration[5.0]
       t.text :description
       t.integer :passage_nb
       t.string :patient_nb
-      t.integer :clone_nb
+      t.string :clone_nb
       t.integer :user_id
       t.integer :vial_nb
     end

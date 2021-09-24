@@ -170,7 +170,7 @@ end
       @position_batch_names = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name.truncate(15)}
       @position_batch_ids = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.id}
       @arr = @vials.each_slice(2).to_a
-      @users = User.all
+      @users = User.all.where.not(role: "superadmin")
     end
   end
 end

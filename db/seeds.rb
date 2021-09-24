@@ -23,4 +23,5 @@ batch_types = BatchType.create([{name: "Fibroblasts"},
 							{name: "Retinal organoids"},
 							{name: "Retinal pigmented cells"},
 							{name: "Retinal progenitors"},
+							{name: "hPBMC"},
 							{name: "Other"}])

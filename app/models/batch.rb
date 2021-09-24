@@ -1,6 +1,6 @@
 class Batch < ActiveRecord::Base
 
-	has_many :vials, dependent: :destroy, after_add: :add_to_vials, after_remove: :add_to_vials
+	has_many :vials, dependent: :destroy
 	belongs_to :batch_type
 	belongs_to :user
 
@@ -21,8 +21,5 @@ class Batch < ActiveRecord::Base
   validates :name, length: { maximum: 25,
     too_long: "%{count} characters is the maximum allowed",
     minimum: 2}
-  validates :clone_nb, numericality: { only_integer: true }, allow_blank: true
-    #validates :name, :description, :format => { with: /\A[a-zA-Z0-9 ._-]*\z/ ,
-    #:message => 'no special characters, only letters and numbers'}
 
 end

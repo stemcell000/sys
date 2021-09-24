@@ -73,7 +73,8 @@ class BatchesController < ApplicationController
 
 	def show
 		records = @batch.vials
-		@pagy, @vials = pagy(records.order(:id), vials: 10)
+		#@pagy, @vials = pagy(records.order(:id), vials: 10)
+		@pagy_vials, @vials = pagy(records.order(name: :asc), items: 15, page_param: :page_vial)
 	end
 
 	private
@@ -88,7 +89,7 @@ class BatchesController < ApplicationController
 
 	def batch_params
       params.require(:batch).permit(
-        :name, :batch_type_id, :description, :user_id, :vial_nb,
+        :name, :batch_type_id, :description, :user_id, :vial_nb, :passage_nb, :patient_nb, :clone_nb, :culture, :corrected, :technique,
         vials_attributes: [:id, :name, :barcode, :volume, :box_id,
                                    :position_id, :out, :comment,
                                    :barcode, :recap, :batch_id])

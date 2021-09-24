@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_152435) do
+ActiveRecord::Schema.define(version: 2021_09_23_141333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,9 +41,12 @@ ActiveRecord::Schema.define(version: 2021_05_04_152435) do
     t.text "description"
     t.integer "passage_nb"
     t.string "patient_nb"
-    t.integer "clone_nb"
+    t.string "clone_nb"
     t.integer "user_id"
     t.integer "vial_nb"
+    t.string "culture"
+    t.boolean "corrected"
+    t.string "technique"
   end
 
   create_table "box_types", id: :serial, force: :cascade do |t|
@@ -177,8 +180,6 @@ ActiveRecord::Schema.define(version: 2021_05_04_152435) do
     t.date "exit_date"
     t.date "freezing_date"
     t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
