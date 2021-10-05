@@ -1,7 +1,7 @@
-<%= search_form_for @q, :url => batches_path, :remote => true do |f| %>
+<%= search_form_for @q, :url => batches_path, :remote => false do |f| %>
 		 	<div class="form-group row">
 		 		<div class="col_lg_11 col-md-11 col-sm-11">
-				  	<%= f.search_field :name_cont, class: "col-md-9"%>
+				  	<%= f.search_field :name_or_batch_type_name_cont, class: "col-md-9"%>
 				</div>	
 			</div>
 			<div class="form-row">

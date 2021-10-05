@@ -23,12 +23,12 @@
                             <strong>Type : </strong><%= object.batch.nil? ? "-" :  object.batch.batch_type.name.capitalize() %> <br />
 
                             <strong>Freezing date : </strong><%= object.freezing_date.nil? ?  "-" : object.freezing_date.strftime("%h %e, %Y ") %><br />
-                            <strong>Patient # : </strong><%= object.batch.patient_nb.nil? ? "-" : object.batch.patient_nb %><br />
-                            <strong>Clone  #: </strong><%= object.batch.clone_nb.nil? ? "-" : object.batch.clone_nb %><br />
+                            <strong>Patient # : </strong><%= object.batch.patientnb.nil? ? "-" : object.batch.patientnb %><br />
+                            <strong>Clone  #: </strong><%= object.batch.clonenb.nil? ? "-" : object.batch.clonenb %><br />
                             <strong>User : </strong><%= object.batch.user.nil? ?  "-" : object.batch.user.full_name %><br />
                             <strong>Clone : </strong><%= object.batch.corrected.nil? ? "-" :  object.batch.corrected %> <br />
                             <strong>Culture : </strong><%= object.batch.culture.nil? ? "-" :  object.batch.culture %> <br />
-                            <strong>Passage : </strong><%= object.batch.passage_nb.nil? ? "-" :  object.batch.passage_nb %> <br />
+                            <strong>Passage : </strong><%= object.batch.passage·nb.nil? ? "-" :  object.batch.passagenb %> <br />
                             <strong>Corrected : </strong><%= object.batch.corrected.nil? ? "-" :  object.batch.corrected %> <br />
                             <strong>Correction technique : </strong><%= object.batch.technique.nil? ? "-" :  object.batch.technique %> <br />
                             <strong>Vial description : </strong><%= object.batch.description.blank? ? "-" : object.batch.description %><br />

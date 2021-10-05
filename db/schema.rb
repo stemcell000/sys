@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_23_141333) do
+ActiveRecord::Schema.define(version: 2021_10_05_090535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 2021_09_23_141333) do
     t.string "name"
     t.integer "batch_type_id"
     t.text "description"
-    t.integer "passage_nb"
-    t.string "patient_nb"
-    t.string "clone_nb"
+    t.integer "passagenb"
+    t.string "patientnb"
+    t.string "clonenb"
     t.integer "user_id"
     t.integer "vial_nb"
     t.string "culture"

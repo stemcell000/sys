@@ -1,6 +1,6 @@
 class VialsController < ApplicationController
   
-before_action :set_vial, only:[:delete, :edit, :show, :update]
+before_action :set_vial, only:[:destroy, :edit, :show, :update]
 before_action :set_collections, only: [:new, :edit]
 def index
       #Formattage des dates
@@ -16,7 +16,7 @@ def index
       #
       @q = Vial.ransack(params[:q])
       records = @q.result.order(:id).where(out: false)
-      records = records.includes(:position, :box)
+      records = records.includes(:position, :box, :batch)
 
       vial_ids = records.pluck(:id)
       position_ids = records.pluck(:position_id)
@@ -92,6 +92,13 @@ end
 def show
   
 end
+
+def destroy
+    @batch = @vial.batch
+    redirect_to batch_path(@batch)
+    @vial.destroy
+    flash.keep[:success] = "Vial destroyed !"
+end
   
  def sorter
    set_unsorted_collection
@@ -133,7 +140,7 @@ end
       params.require(:vial).permit(:id, :name, :barcode, :volume, :box_id,
                                    :position_id, :out, :comment, :exit_date,
                                    :barcode, :recap, :batch_id, :user_id, :freezing_date,
-      :batch_attributes =>[:id, :name, :date, :description, :batch_type_id])                         
+      :batch_attributes =>[:id, :name, :date, :passagenb, :patientnb, :clonenb, :culture, :corrected, :technique, :batch_type_id])                         
     end
     
     def set_vial
