@@ -81,7 +81,7 @@ def update
     @box.update_attributes(box_params)
      if @box.valid?
        flash.keep[:success] = "Task completed!"
-       redirect_to boxes_path
+       redirect_to params[:source]
     else
         render :action => 'edit'
     end

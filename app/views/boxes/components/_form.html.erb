@@ -7,6 +7,7 @@
     <% @box.errors.full_messages.each do |message| %>
     <li class="error"><%= message %></li>
     <% end %>
+    <%=hidden_field_tag :source, params[:source]%>
   <div class="container">
     <div class="row margin-top-row-20">
       <%= f.input :name, :input_html => {class: "col-xs-6"} %>

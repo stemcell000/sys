@@ -22,14 +22,14 @@ def index
       position_ids = records.pluck(:position_id)
 
       if params[:q].blank?
-        record_boxes = Box.all.order(:id)
+        record_boxes = Box.all
       else
         record_boxes = Box.joins(:positions).where(positions: {id: position_ids}).distinct
       end
 
       #Config de l'affichage des résultats.
-      @pagy, @boxes = pagy(record_boxes, boxes: 10, page_param: :page_box)
-      @pagy_vials, @vials = pagy(records.order(name: :asc), items: 15, page_param: :page_vial)
+      @pagy, @boxes = pagy(record_boxes.order(:name), boxes: 10, page_param: :page_box)
+      @pagy_vials, @vials = pagy(records.distinct.order(name: :asc), items: 15, page_param: :page_vial)
       @pagy_vials_count = @pagy_vials.count
 end
 
