@@ -5,6 +5,12 @@
     <%=object.batch_type.nil? ? "":object.batch_type.name%>
   </td>
   <td class="text-center">
+    <%=object.clonenb.nil? ? "":object.clonenb%>
+  </td>
+  <td class="text-center">
+    <%=object.passagenb.nil? ? "":object.passagenb%>
+  </td>
+  <td class="text-center">
     <%=object.vials.count%>
   </td>
   <td class="actions text-right">
@@ -20,12 +26,40 @@
                           <div class="col-xs-12 text-left">
                             <small>
                             <strong>Type : </strong><%= object.batch_type.nil? ? "-" :  object.batch_type.name.capitalize() %> <br />
-                            <strong>Patient : </strong><%= object.patient_nb.nil? ? "-" :  object.patient_nb%><br />
-                            <strong>Clone : </strong><%= object.clone_nb.nil? ? "-" :  object.clone_nb%><br />
+                            <strong>Patient : </strong><%= object.patientnb.nil? ? "-" :  object.patientnb%><br />
+                            <strong>Clone : </strong><%= object.clonenb.nil? ? "-" :  object.clonenb%><br />
                             <strong>Correction : </strong><%= object.corrected.nil? ? "-" :  boolean_to_human(object.corrected)%><br />
                             <strong>Technique : </strong><%= object.technique.nil? ? "-" :  object.technique%><br />
                             <strong>Description : </strong><%= object.description.blank? ? "-" : object.description %><br />
-                            <strong>Number of vials : </strong><%= object.vial_nb || "-" %><br />
+                            <strong>Number of vials : </strong><%= object.vials.count || "-" %><br />
+                            <%unless object.vials.empty? %>
+                            <strong>Vials : </strong><br />
+                            <table class="table table-bordered">
+                              <thead>
+                                <th>Name</th>
+                                <th>Container</th>
+                                <th>Rack</th>
+                                <th>Box</th>
+                                <th>Position</th>
+                              </thead>
+                              <tbody>
+                                <%object.vials.each do |vial|%>
+                                  <td><%=vial.name.nil? ? "-": "#{link_to vial.name, vial_path(vial)}" %></td>
+                                  <td><%=(vial.position.nil? || vial.position.box.rack_position.nil? || vial.position.box.rack_position.shelf_rack.nil? || vial.position.box.rack_position.shelf_rack.shelf.nil? || vial.position.box.rack_position.shelf_rack.shelf.container.nil? ) ? "-":vial.position.box.rack_position.shelf_rack.shelf.container.name%></td>
+                                  <td class="text-center"><%=(vial.position.nil? || vial.position.box.rack_position.nil? || vial.position.box.rack_position.shelf_rack.nil?) ? "-":vial.position.box.rack_position.shelf_rack.name%></td>
+                                  <td>
+                                    <%unless vial.out?%>
+                                      <%=vial.position.box.nil? ? "-":vial.position.box.name%>
+                                    <%else%>
+                                    out
+                                    <%end%>
+                                  </td>
+                                  <td class="text-center"><%=vial.position.nil? ? "-":vial.position.nb.to_s+" ("+vial.position.name.upcase+")"%></td>
+                                  <tr> 
+                                <%end%>
+                                
+                              </tbody>  
+                            <%end%>
                             </small>
                           </div>
                         '
