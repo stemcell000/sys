@@ -16,7 +16,7 @@ colors = Color.create([{name: 'Blue', code: '#0275d8'},
 	{name: 'Orange', code: '#E67E22'},
 	{name: 'Purple', code: '#A04FFC'},
 	{name: 'Pink', code: '#F979FB'},
-	{name: 'Black', code: '#000000'}]
+	{name: 'Turquoise', code: '#04FBE8'}]
 	)
 batch_types = BatchType.create([{name: "Fibroblasts"},
 							{name: "iPS cells"},

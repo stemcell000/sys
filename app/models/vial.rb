@@ -11,7 +11,8 @@ class Vial < ActiveRecord::Base
   accepts_nested_attributes_for :position, :batch
   
   #validations
-  validates :name, :batch_id, :presence => true
+  validates :name, :batch_id, presence: true
+  validates :name, uniqueness: true
   validates :name, length: { in: 2..25 }
   validates :comment, length: { maximum: 500 }, allow_blank: true
   validates :name, :comment, :format => { with: /\A[a-zA-Z0-9 ._-]*\z/ ,
