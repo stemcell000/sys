@@ -49,7 +49,7 @@
                                   <td class="text-center"><%=(vial.position.nil? || vial.position.box.rack_position.nil? || vial.position.box.rack_position.shelf_rack.nil?) ? "-":vial.position.box.rack_position.shelf_rack.name%></td>
                                   <td>
                                     <%unless vial.out?%>
-                                      <%=vial.position.box.nil? ? "-":vial.position.box.name%>
+                                      <%=(vial.position.nil? || vial.position.box.nil?) ? "-":vial.position.box.name%>
                                     <%else%>
                                     out
                                     <%end%>
