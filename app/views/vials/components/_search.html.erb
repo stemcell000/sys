@@ -48,7 +48,7 @@
 					  	<%= f.select(:batch_clonenb_eq, Batch.all.order(clonenb: "asc").pluck(:clonenb).uniq, {:include_blank => " "}, {class: "col-xs-12 select2-select"}) %>
 				</div>
 				<div class="col-xs-4">
-						<%= f.label "Clone"%>
+						<%= f.label "Passage"%>
 					  	<%= f.select(:batch_passagenb_eq, Batch.all.order(passagenb: "asc").pluck(:passagenb).uniq, {:include_blank => " "}, {class: "col-xs-12 select2-select"}) %>
 				</div>
 			</div>

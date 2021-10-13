@@ -54,7 +54,7 @@
                                     out
                                     <%end%>
                                   </td>
-                                  <td class="text-center"><%=vial.position.nil? ? "-":vial.position.nb.to_s+" ("+vial.position.name.upcase+")"%></td>
+                                  <td class="text-center"><%=vial.position.nil? ? "-":(vial.position.nb+1).to_s+" ("+vial.position.name.upcase+")"%></td>
                                   <tr> 
                                 <%end%>
                                 
