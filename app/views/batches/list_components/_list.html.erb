@@ -1,19 +1,19 @@
 	  <table class="table table-striped">
 	    <thead>
 	    <th class="col-xs-4">
-	        Name
+	        <%= sort_link(@q, :name, 'Name') %>
 	    </th>
 	   	<th class="col-xs-3">
-	        Type
+	        <%= sort_link(@q, :batch_type_id, 'Type') %>
 	    </th>
 	    <th class="col-xs-1">
-	        Clone
+	        <%= sort_link(@q, :clonenb, 'Clone') %>
 	    </th>
 	    <th class="col-xs-1">
-	        Passage
+	        <%= sort_link(@q, :passagenb, 'Passage') %>
 	    </th>
 	   	<th class="col-xs-1">
-	        Vials
+	        <%= sort_link(@q, :nb, 'Vials') %>
 	    </th>
 	    <th class="col-xs-2"></th>
 	    

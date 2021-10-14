@@ -26,6 +26,7 @@
                           <div class="col-xs-12 text-left">
                             <small>
                             <strong>Type : </strong><%= object.batch_type.nil? ? "-" :  object.batch_type.name.capitalize() %> <br />
+                            <strong>User : </strong><%= object.user.nil? ? "-" :  object.user.full_name%><br />
                             <strong>Patient : </strong><%= object.patientnb.nil? ? "-" :  object.patientnb%><br />
                             <strong>Clone : </strong><%= object.clonenb.nil? ? "-" :  object.clonenb%><br />
                             <strong>Correction : </strong><%= object.corrected.nil? ? "-" :  boolean_to_human(object.corrected)%><br />

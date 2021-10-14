@@ -1,7 +1,7 @@
 class BatchesController < ApplicationController
 
 	before_action :set_batch, only:[:destroy, :edit, :add_vials, :show, :update, :update_vials]
-	before_action :set_collections, only:[:new, :edit]
+	before_action :set_collections, only:[:new, :edit, :index]
 	def resource_name
     :batch
   	end
@@ -85,6 +85,9 @@ class BatchesController < ApplicationController
 
 	def set_collections
 		@users = User.all.where.not(role: "superadmin")
+		@users_collection = User.all.order(lastname: "asc").where.not(role: 'superadmin').uniq.map{ |obj| [obj.full_name, obj['id']] }
+		@patients_collection = Batch.all.order(patientnb: "asc").pluck(:patientnb).uniq	
+		@clones_collection = Batch.all.order(clonenb: "asc").pluck(:clonenb).uniq
 	end
 
 	def batch_params
