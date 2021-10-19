@@ -1,18 +1,18 @@
-<h1><i class="fa_icon fa fa-search"></i>Batches</h1>
 <div class="container">
+	<div class="row">
+		<h1><i class="fa_icon fa fa-search"></i>Batches</h1>
+	</div>
 <div class="row">
-	<div class="col-lg-12 col-md-12 col-sm-12">
-		<%= render 'batches/components/search' %>
+	<div class="col-xs-12">
+		<%= render 'batches/components/search'%>
 	</div>
 </div>
-<div class="container">
 <% unless @batches.empty? %>
 	<div class="row">
 		<div class="col-xs-12 text-center" style="overflow: auto;">
 			<%= render partial: "batches/list_components/list", locals: {batches: @batches} %>
 				</div>
 		</div>
-	</div>
 </div>
 <%else%>
 <p><em>No batches</em></p>

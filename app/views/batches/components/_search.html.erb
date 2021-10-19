@@ -1,10 +1,10 @@
 <%= search_form_for @q, :url => batches_path, :remote => false do |f| %>
-		 	<div class="form-group row">
-		 		<div class="col_lg_11 col-md-11 col-sm-11">
-				  	<%= f.search_field :name_or_batch_type_name_cont, class: "col-md-9"%>
-				</div>	
-			</div>
-			<div class="row margin-top-row-20">
+<div class="row">
+	<div class="col-xs-12">
+  		<%= f.search_field :name_or_batch_type_name_cont, class: "col-xs-12", placeholder: "Search by vial, batch, box name, rack, shelf, container or any other key word."%>
+	</div>	
+</div>
+	<div class="row margin-top-row-20">
 	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 		
 	  <div class="panel panel-default">
