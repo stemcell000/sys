@@ -1,6 +1,6 @@
 <%= simple_form_for (@batch), html: {class: 'vertical-form'} do |f|  %>
 
-	<%= f.error_notification %>
+<%= f.error_notification %>
 <ul>
     <% @batch.errors.full_messages.each do |message| %>
     <li class="error"><%= message %></li>
