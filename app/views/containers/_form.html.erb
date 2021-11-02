@@ -7,7 +7,7 @@
   <%= f.error_notification %>
       <ul>
     <% @container.errors.full_messages.each do |message| %>
-    <li class="error"><%= message %></li>
+    <li style="color: red;"><%= message %></li>
     <% end %>
   <div class="row">
   <%= f.input :name %>
