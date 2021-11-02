@@ -1,5 +1,5 @@
 $("#map-shelf-rack").html("<%= escape_javascript(render :partial =>  "shelf_racks/components/single_rack_map", :locals => {shelf_rack: @shelf_rack})%>");
-$("#box-container").html("<%= escape_javascript(render :partial => "boxes/components/content_inventory", :locals => {:boxes => @boxes})%>");
+//$("#box-container").html("<%= escape_javascript(render :partial => "boxes/components/content_inventory", :locals => {:boxes => @boxes})%>");
 
 	  	var arr1 =  <%= raw @position_ids  %>;
   		var arr3 =  <%= raw @position_box_names %>;

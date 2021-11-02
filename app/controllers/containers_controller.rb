@@ -75,7 +75,7 @@ class ContainersController < InheritedResources::Base
   end
 
   def set_container_map
-      @boxes = Box.where(rack_position_id: nil).order(:name)
+      @boxes = Box.without_rack_postion.order(:name)
       @arr = @boxes.each_slice(5).to_a
 
         begin
