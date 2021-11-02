@@ -18,6 +18,8 @@ class Box < ActiveRecord::Base
   accepts_nested_attributes_for :rack_position
   accepts_nested_attributes_for :color
   accepts_nested_attributes_for :team
+
+  scope :without_rack_postion, -> {where_assoc_not_exists(:rack_position)}
   
   def generate_positions
     position_name = []

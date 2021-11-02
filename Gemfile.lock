@@ -68,6 +68,8 @@ GEM
       activesupport (= 6.0.3)
     activerecord-import (1.0.8)
       activerecord (>= 3.2)
+    activerecord_where_assoc (1.1.2)
+      activerecord (>= 4.1.0)
     activestorage (6.0.3)
       actionpack (= 6.0.3)
       activejob (= 6.0.3)
@@ -400,6 +402,7 @@ PLATFORMS
 DEPENDENCIES
   active_admin_import
   activeadmin
+  activerecord_where_assoc (~> 1.0)
   acts_as_list
   amoeba
   better_errors

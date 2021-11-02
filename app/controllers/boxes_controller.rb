@@ -138,7 +138,7 @@ private
     end
 
     def set_rack_map
-      @boxes = Box.where(rack_position_id: nil).order(:name)
+      @boxes = Box.without_rack_postion.order(:name)
       @arr = @boxes.each_slice(2).to_a
       if params[:shelf_rack_id]
         @shelf_rack = ShelfRack.find(params[:shelf_rack_id])
