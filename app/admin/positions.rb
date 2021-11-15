@@ -7,4 +7,11 @@ ActiveAdmin.register Position do
                 Prosition.where(id: importer.values_at('id')).delete_all
               }
   
+csv force_quotes: false, col_sep: ';', column_names: true do
+  column :id
+  column :name
+  column :nb
+  column :box_id
+end  
+
 end
