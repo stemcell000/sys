@@ -2,7 +2,6 @@ ActiveAdmin.register Vial do
 #Import csv   
  active_admin_import validate: false,
               csv_options: {col_sep: ";" },
-              headers_rewrites: { 'box' => :box_id},
               before_batch_import: ->(importer) {   
                 Vial.where(id: importer.values_at('id')).delete_all
               }
