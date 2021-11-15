@@ -29,7 +29,7 @@ def index
 
       #Config de l'affichage des résultats.
       @pagy, @boxes = pagy(record_boxes.order(:name), boxes: 10, page_param: :page_box)
-      @pagy_vials, @vials = pagy(records.distinct, items: 15, page_param: :page_vial)
+      @pagy_vials, @vials = pagy(records.order(:name), items: 15, page_param: :page_vial)
       @pagy_vials_count = @pagy_vials.count
 end
 
