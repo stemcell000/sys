@@ -15,7 +15,7 @@ class Vial < ActiveRecord::Base
   validates :name, uniqueness: true
   validates :name, length: { in: 2..25 }
   validates :comment, length: { maximum: 500 }, allow_blank: true
-  validates :name, :comment, :format => { with: /\A[a-zA-Z0-9 ._-]*\z/ ,
+  validates :name, :format => { with: /\A[a-zA-Z0-9 ._-]*\z/ ,
     :message => 'no special characters, only letters and numbers'}
   
 def generate_recap

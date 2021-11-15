@@ -51,7 +51,7 @@
                       </a>  
                       
 <% if can? :cru, Vial %>
-      <small><%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_vial_path(object), method: :get %></small>
+      <small><%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_vial_path(object, source: source), method: :get %></small>
   <%end%>
 <%= link_to "<i class='fa fa-sticky-note'></i>".html_safe, vial_path(object), method: :get %>
 <%if can? :destroy, Vial %>
