@@ -54,10 +54,12 @@
 </div>
 </div>
 <div class="row margin-top-row-20">
+	<% inventory_url = @vial.out ? "/vials/out_vials" : "/vials" %>
  		<div class="btn-group" role="group" aria-label="...">
         	<% if can? :manage, Vial%>
 		    		<%= link_to 'Edit', edit_vial_path(@vial, source: source), :class => "btn btn-default" %>
 		    	<%end%>
+		    	<%= link_to 'Back to inventory', inventory_url, :class => "btn btn-default" %>
         </div>
 </div>
 </div>
