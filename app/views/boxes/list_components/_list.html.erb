@@ -18,7 +18,7 @@
 		  	<% @boxes.each do |s| %>
 	      		<tr class="editable" data-id = "<%= s.id %>">
 	      			<% str = s.rack_position.nil? ? "Not in container" : "in "+s.rack_position.shelf_rack.shelf.container.name %>
-	          		<%= render partial: "boxes/list_components/box", locals: {box: s, str: str, source: source} %>
+	          		<%= render partial: "boxes/list_components/box", locals: {box: s, str: str} %>
 	        		</tr>
 	      	<% end %>
 	      <%else%>

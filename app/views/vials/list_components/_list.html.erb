@@ -9,7 +9,7 @@
 	    <tbody>
 		  	<% @vials.each do |s| %>
 	      		<tr class="editable" data-id = "<%= s.id %>">
-	          		<%= render  partial: "vials/list_components/vial", locals: {object: s} %>
+	          		<%= render  partial: "vials/list_components/vial", locals: {object: s, source: source} %>
 	        	</tr>
 	      	<% end %>
 	    </tbody>

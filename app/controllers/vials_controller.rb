@@ -81,7 +81,7 @@ def update
        if @vial.out == true
         @vial.update_columns(position_id: nil)
       end
-       redirect_to vial_path
+       redirect_to params[:source]
     else
         render :action => 'edit'
     end
@@ -138,6 +138,7 @@ end
       params.require(:vial).permit(:id, :name, :barcode, :volume, :box_id,
                                    :position_id, :out, :comment, :exit_date,
                                    :barcode, :recap, :batch_id, :user_id, :freezing_date,
+                                   :source,
       :batch_attributes =>[:id, :name, :date, :passagenb, :patientnb, :clonenb, :culture, :corrected, :technique, :batch_type_id])                         
     end
     

@@ -6,6 +6,6 @@
   <td class="text-left"><small><%= str %></small></td>
 <td class="actions text-right">
 <% if can? :manage, Box %>
-      <%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_box_path(box, source: source), method: :get %> 
+      <%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_box_path(box), method: :get %> 
   <%end%>
 </td>
