@@ -53,7 +53,7 @@
 <div class="row margin-top-row-20">
  		<div class="btn-group" role="group" aria-label="...">
     		<%= f.submit("Save", :class => "btn btn-default", :title => "Save") %>
-        	<%= link_to "Cancel", @vial,:class => "btn btn-default", "aria-hidden" => "true" %>
+        	<%= link_to "Cancel", params[:source],:class => "btn btn-default", "aria-hidden" => "true" %>
         	<% if can? :manage, Vial%>
 		    		<% if params[:action] == 'edit' %>
 		    		<%= link_to 'Destroy', @vial, method: :delete, data: { confirm: 'Are you sure you want to do that ?' }, :class => "btn btn-default" %>

@@ -3,7 +3,6 @@ class VialsController < ApplicationController
 before_action :set_vial, only:[:destroy, :edit, :show, :update]
 before_action :set_collections, only: [:new, :edit]
 def index
-      @source = '/vials'
       #Formattage des dates
       start_time = params[:date_gteq].to_date rescue Date.current
       start_time = start_time.beginning_of_day # sets to 00:00:00
@@ -33,7 +32,6 @@ def index
 end
 
 def out_vials
-@source = 'vials/out_vials'
 #Formattage des dates
       start_time = params[:date_gteq].to_date rescue Date.current
       start_time = start_time.beginning_of_day # sets to 00:00:00
@@ -82,14 +80,14 @@ def update
        if @vial.out == true
         @vial.update_columns(position_id: nil)
       end
-       redirect_to @vial
+       redirect_to params[:source]
     else
         render :action => 'edit'
     end
 end
 
 def show
-  @source = 'vials/'+@vial.id.to_s
+
 end
 
 def destroy

@@ -1,7 +1,7 @@
   <td class="text-left">
     <div style="width: 10px; height: 10px; background-color: <%=box.color.nil? ? "":box.color.code%>"></div>
   </td>
-  <td class="text-left"><%=link_to box.name, fetch_vials_box_path(box.id), :remote => true%></td>
+  <td class="text-left"><%=link_to box.name, fetch_vials_box_path(id: box.id, source: source), :remote => true%></td>
   <td class="text-left"><small><%= box.barcode %></small></td>
   <td class="text-left"><small><%= str %></small></td>
 <td class="actions text-right">

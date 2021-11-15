@@ -1,4 +1,4 @@
-<% source = '/vials/'+@vial.id.to_s%>
+<%source = "/vials/"+@vial.id.to_s%>
 <h3>
   <%= content_for :title, Vial.model_name.human %>
 </h3>
@@ -56,7 +56,7 @@
 <div class="row margin-top-row-20">
  		<div class="btn-group" role="group" aria-label="...">
         	<% if can? :manage, Vial%>
-		    		<%= link_to 'Edit', edit_vial_path(@vial, source: @source), :class => "btn btn-default" %>
+		    		<%= link_to 'Edit', edit_vial_path(@vial, source: source), :class => "btn btn-default" %>
 		    	<%end%>
         </div>
 </div>
