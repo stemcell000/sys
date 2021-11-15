@@ -18,7 +18,7 @@ def index
       records = @q.result.order(:name).where(out: false)
       records = records.includes(:position, :box, :batch)
 
-      vial_ids = records.pluck(:id)
+      #vial_ids = records.pluck(:id)
       position_ids = records.pluck(:position_id)
 
       if params[:q].blank?
