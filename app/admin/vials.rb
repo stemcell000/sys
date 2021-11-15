@@ -15,12 +15,9 @@ csv force_quotes: false, col_sep: ';', column_names: true do
   column :comment
   column :out
   column :barcode
-  column :batch_id
-  column :box_id
-  column :position_id
-  column (:batch) { |vial| vial.batch.nil? ? "" : vial.batch.name }
-  column (:position) { |vial| vial.position.nil? ? "" : vial.position.name }
-  column (:box) { |vial| vial.position.nil? ? "" : vial.position.box.name }
+  column (:batch) { |vial| vial.batch.nil? ? "" : vial.batch.id }
+  column (:position) { |vial| vial.position.nil? ? "" : vial.position.id }
+  column (:box) { |vial| vial.position.nil? ? "" : vial.position.box.id }
 end              
 #Add Button to site
 end
