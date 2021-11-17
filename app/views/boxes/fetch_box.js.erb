@@ -32,7 +32,7 @@ $('.slot').each(function(index){
 	$(this).attr({'data-id': arr1[index], 'data-name': arr2[index]});
 	if(arr3[index]){
 		$(this).append("<%= escape_javascript(render :partial => "vials/components/tube_medium")%>")
-		$(this).find('.location').append(arr3[index]);
+		$(this).find('.location').append(arr3_short[index]);
 	}else{
 		$(this).addClass('empty-slot')
 	}
