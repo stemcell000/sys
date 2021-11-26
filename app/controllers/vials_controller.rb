@@ -151,12 +151,12 @@ end
     end
     
     def set_unsorted_collection
-     @vials = Vial.where(position_id: nil).order(:id)
+     @vials = Vial.where(position_id: nil, out: false).order(:id)
       @arr = @vials.each_slice(2).to_a
     end
 
     def set_box_map
-      @vials = Vial.where(position_id: nil).order(:id)
+      @vials = Vial.where(position_id: nil, out: false).order(:id)
     unless params[:box_id].nil?
       @box = Box.find(params[:box_id])
       @box_type = @box.box_type

@@ -11,7 +11,6 @@
 						</div>
 							<div class="col-xs-9">
 								<div class="panel panel-default">
-
 									<div class="panel-body" style="overflow-x: auto;">
 										<%=select_tag "box-select", options_from_collection_for_select(Box.all.order(:name), "id", "name"), :class => 'select2-select col-xs-12', include_blank: true, onchange: "getBoxMap(this.value, '#map-container')" %>
 											<span><em><small>Choose a box then drag and drop each vial into a slot.</small></em></span>
