@@ -92,7 +92,7 @@ class BatchesController < ApplicationController
 
 	def batch_params
       params.require(:batch).permit(
-        :name, :batch_type_id, :description, :user_id, :vial_nb, :passagenb, :patientnb, :clonenb, :culture, :corrected, :technique,
+        :name, :batch_type_id, :description, :user_id, :vial_nb, :passagenb, :patientnb, :clonenb, :culture, :corrected, :technique, :source,
         vials_attributes: [:id, :name, :barcode, :volume, :box_id,
                                    :position_id, :out, :comment,
                                    :barcode, :recap, :batch_id])
