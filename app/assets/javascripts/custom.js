@@ -14,6 +14,11 @@ $(document).ready(function() {
 	$('[data-toggle="popover"]').popover({html:true});
   $('#accordion').on('hidden.bs.collapse', toggleChevron);
   $('#accordion').on('shown.bs.collapse', toggleChevron); 
+
+
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 });
 		
 	$(document).on("focus", "[data-behaviour~='datepicker']", function(e){

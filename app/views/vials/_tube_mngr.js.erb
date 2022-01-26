@@ -10,6 +10,7 @@ $("#map-container").html("");
 	  	var arr1 =  <%= raw @position_ids  %>
   		var arr2 =  <%= raw @position_names %>
   		var arr3 = <%= raw @position_batch_names%>
+		var arr3_short = <%= raw @position_batch_names_slots%>;
  		var arr4 = <%= raw @position_batch_ids %>
 	
 	var box_id= <%= @box.id%>;
@@ -32,9 +33,9 @@ $("#map-container").html("");
 $('.slot').each(function(index){
 	console.log('Ajout du dataset des elts draggableContainer');
 	$(this).attr({'data-id': arr1[index], 'data-name': arr2[index]});
-	if(arr3[index]){
+	if(arr3_short[index]){
 		$(this).append("<%= escape_javascript(render :partial => "vials/components/tube_medium")%>")
-		$(this).find('.location').append(arr3[index]);
+		$(this).find('.location').append(arr3_short[index]);
 		$(this).find('.dot-medium').attr({'data-id': arr4[index]});
 	}else{
 		$(this).addClass('empty-slot')
@@ -45,6 +46,19 @@ $('.location-label').each(function(index){
 	console.log('Ajout des noms de batch des elts location-label');
 	$(this).append(arr2[index]);
 });
+
+$('.location').each(function(index){
+	console.log('Ajout de id des elts locations');
+	//ajout de l'attribut 'id'
+	$(this).attr('id',arr1[index]);
+
+});
+
+$('.location-tooltips').each(function(index){
+	console.log('Ajout de id des elts locations pour les tooltips');
+	$(this).attr('id',arr1[index]);
+	$(this).attr('title', arr3[index]);
+})
 
 $('.empty-slot').droppable({
 		drop: function(event, ui){

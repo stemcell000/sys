@@ -2,6 +2,7 @@ class VialsController < ApplicationController
   
 before_action :set_vial, only:[:destroy, :edit, :show, :update]
 before_action :set_collections, only: [:new, :edit]
+
 def index
       #Formattage des dates
       start_time = params[:date_gteq].to_date rescue Date.current
@@ -172,7 +173,8 @@ end
       #
       @position_ids = @box.positions.order(:nb).pluck(:id)
       @position_names = @box.positions.order(:nb).map{|p|(p.nb+1).to_s}
-      @position_batch_names = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name.truncate(15)}
+      @position_batch_names = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name}
+      @position_batch_names_slots = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name.truncate(6)}
       @position_batch_ids = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.id}
       @arr = @vials.each_slice(2).to_a
       @users = User.all.where.not(role: "superadmin")

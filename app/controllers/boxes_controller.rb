@@ -161,7 +161,7 @@ private
         @position_ids = @box.positions.order(:nb).pluck(:id)
         @position_names = @box.positions.order(:nb).map{|p|(p.nb+1).to_s}
         @position_batch_names = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name}
-        @position_batch_names_slots = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name.truncate(10)}
+        @position_batch_names_slots = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name.truncate(6)}
         @position_batch_ids = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.id}
       else
         @v_max = 0

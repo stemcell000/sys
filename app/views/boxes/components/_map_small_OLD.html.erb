@@ -1,0 +1,37 @@
+<%if box.rack_position%>
+	<% rows = ('a'..'z').to_a[0..(h_max-1)] %>
+	<% cols = (1..26).to_a[0..(v_max-1)] %>
+	<% slot_size = 42%>
+<div class="panel panel-default" style="max-height: 1000px;">
+	<div class="panel-body">
+	<h4>Maps</h4>
+	<div class="row">
+					<div class="col-xs-11 text-left"><h5 style="color: <%=box.color.code%>">Box : <%="#{box.name} "%></h6><%unless box.barcode.nil? or box.barcode.blank?%><h6>Barcode : <%="#{box.barcode}"%></h5><%end%>
+					</div>
+	</div>
+			<table>
+			<% cols.each do |c| %>
+				<tr>
+					<% rows.each do |r| %>
+						<td style="padding: 1px;">
+							<div class="col-lg-1 col-md-1 col-sm-1 slot draggableContainer outer-div" 
+							style="min-width: <%=slot_size%>px; min-height: <%=slot_size%>px; max-width: <%=slot_size%>px; max-height: <%=slot_size%>px; border: 1px solid black; border-radius: 2px;">
+								<div class="location-label text-left text-primary"></div>
+							</div>
+						</td>
+					<%end%>
+				</tr>
+			<%end%>
+			</table>
+			<div class="row" style="margin-top:20px;">
+				<div class="text-left col-xs-12" style="margin-bottom:10px;"><strong>Container : <%=box.rack_position.shelf_rack.shelf.container.name %></strong></div>
+					<div id="container-map-container" class="text-center col-xs-8"></div>
+					<div id="map-shelf-rack" class="col-xs-4 text-center"></div>
+			</div>
+		</div>
+	</div>
+<%else%>
+	<div class="row">
+		<p>This box is unvailable. It may not be in a container yet.</p>
+	</div>
+<%end%>
