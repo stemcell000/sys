@@ -28,7 +28,7 @@ def index
       end
 
       #Config de l'affichage des résultats.
-      @pagy, @boxes = pagy(record_boxes.order(:name), boxes: 10, page_param: :page_box)
+      @pagy, @boxes = pagy(record_boxes.order(:name), items: 10, page_param: :page_box)
       @pagy_vials, @vials = pagy(records.where(out: false), items: 15, page_param: :page_vial)
 end
 
