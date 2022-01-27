@@ -26,11 +26,12 @@
 			 <div class="col-xs-6">
   				<%=f.association :batch, :label => "Batch", :collection => Batch.all, :placeholder => "Select a batch.", input_html: { class: 'select2-select col-xs-12' }%>
 			</div>
-			<div class="col-xs-4">
+			<div class="col-xs-2">
 	  			<%= f.association :position, :collection => Position.all.is_empty, label_method: lambda { |object| "#{object.box.name} #{object.nb+1}"}, :placeholder => "Select a position", input_html: { class: 'select2-select col-xs-12' }%>
 	  		</div>
-	  		<div class="col-xs-2">
-	  			<%= if @vial.position ? "yes" : "No position" %>
+	  		<div class="col-xs-4">
+	  			<small><strong>Current location :</strong></br>
+	  				<%= @vial.position ? "Box : #{@vial.position.box.name} / Slot : #{@vial.position.nb+1}" : "No position" %></small>
 	  		</div>
 		</div>
 		<div class="row margin-top-row-20">
