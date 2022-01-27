@@ -30,35 +30,41 @@ $("#map-container").html("");
 	console.log('vmax = <%=@v_max%>');
 	};
 
+//start
+//1
 $('.slot').each(function(index){
 	console.log('Ajout du dataset des elts draggableContainer');
-	$(this).attr({'data-id': arr1[index], 'data-name': arr2[index]});
+	$(this).attr({'data-id': arr1[index], 'data-name': arr2[index], 'id': arr1[index]});
 	if(arr3_short[index]){
 		$(this).append("<%= escape_javascript(render :partial => "vials/components/tube_medium")%>")
 		$(this).find('.location').append(arr3_short[index]);
-		$(this).find('.dot-medium').attr({'data-id': arr4[index]});
 	}else{
 		$(this).addClass('empty-slot')
 	}
+	});
+//2
+$('.location-tooltips').each(function(index){
+	console.log('Ajout de id des elts locations pour les tooltips');
+	$(this).attr('id',arr1[index]);
+	$(this).attr('title', arr3[index]);
+
 })
 
+//3
 $('.location-label').each(function(index){
 	console.log('Ajout des noms de batch des elts location-label');
 	$(this).append(arr2[index]);
 });
 
+//4
 $('.location').each(function(index){
 	console.log('Ajout de id des elts locations');
 	//ajout de l'attribut 'id'
 	$(this).attr('id',arr1[index]);
-
+	//$(this).append(arr3_short[index]);
 });
 
-$('.location-tooltips').each(function(index){
-	console.log('Ajout de id des elts locations pour les tooltips');
-	$(this).attr('id',arr1[index]);
-	$(this).attr('title', arr3[index]);
-})
+//end
 
 $('.empty-slot').droppable({
 		drop: function(event, ui){
