@@ -22,22 +22,19 @@ $("#map-shelf-rack").html("<%= escape_javascript(render :partial =>  "shelf_rack
 $('.slot').each(function(index){
 	console.log('Ajout du dataset des elts draggableContainer');
 	$(this).attr({'data-id': arr1[index], 'data-name': arr2[index], 'id': arr1[index]});
-	if(arr3_short[index]){
+	if(arr3[index]){
 		$(this).append("<%= escape_javascript(render :partial => "vials/components/tube_medium")%>")
 		$(this).find('.location').append(arr3_short[index]);
+		$(this).find('.location').attr('id',arr1[index]);
+		$(this).find('.location-label').append(arr2[index]);
+		$(this).find('.location-tooltips').attr('id', arr1[index]);
+		$(this).find('.location-tooltips').attr('title', arr3[index]);
 	}else{
 		$(this).addClass('empty-slot')
 	}
 	});
 
-$('.location-tooltips').each(function(index){
-	console.log('Ajout de id des elts locations pour les tooltips');
-	$(this).attr('id',arr1[index]);
-	$(this).attr('title', arr3[index]);
-
-})
-
-$('.location-label').each(function(index){
+/*$('.location-label').each(function(index){
 	console.log('Ajout des noms de batch des elts location-label');
 	$(this).append(arr2[index]);
 });
@@ -48,6 +45,13 @@ $('.location').each(function(index){
 	$(this).attr('id',arr1[index]);
 	//$(this).append(arr3_short[index]);
 });
+
+$('.location-tooltips').each(function(index){
+	console.log('Ajout de id des elts locations pour les tooltips');
+	$(this).attr('id',arr1[index]);
+	$(this).attr('title', arr3[index]);
+
+})*/
 //end
 
 $("#<%=@vial.position.id%>").css('background-color', '#a6f7b9');

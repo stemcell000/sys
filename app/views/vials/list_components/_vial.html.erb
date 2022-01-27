@@ -35,7 +35,7 @@
                             <strong>Volume : </strong><%= object.volume.nil? ? "-" : object.volume %><br />
                             <strong>Box : </strong><%= object.position.nil? ? "-" : object.position.box.name %> <br />
 
-                            <strong>Slot : </strong><%= object.position.nil? ? "-" : object.position.name.upcase() %> <br />
+                            <strong>Slot : </strong><%= object.position.nil? ? "-" : (object.position.nb+1).to_s%> <br />
                             <strong>Comments : </strong><%= object.comment.blank? ? "-" : object.comment %><br />
                             <%if object.out%>
                                   <strong>Exit date : </strong><%= object.exit_date.nil? ?  "-" : object.exit_date.strftime("%h %e, %Y ") %><br />

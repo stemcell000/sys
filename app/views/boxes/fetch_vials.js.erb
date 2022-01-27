@@ -18,35 +18,24 @@ $("#vials-container").html("<%= escape_javascript( render :partial =>"vials/list
 	console.log('arr3 length = '+arr3.length);
 	console.log('box_id = '+box_id);
 	console.log('vial list = '+<%=raw @vials.pluck(:name)%>);
-//Start
+
+//start
 $('.slot').each(function(index){
 	console.log('Ajout du dataset des elts draggableContainer');
 	$(this).attr({'data-id': arr1[index], 'data-name': arr2[index], 'id': arr1[index]});
-	if(arr3_short[index]){
+	if(arr3[index]){
 		$(this).append("<%= escape_javascript(render :partial => "vials/components/tube_medium")%>")
 		$(this).find('.location').append(arr3_short[index]);
+		$(this).find('.location').attr('id',arr1[index]);
+		$(this).find('.location-label').append(arr2[index]);
+		$(this).find('.location-tooltips').attr('id', arr1[index]);
+		$(this).find('.location-tooltips').attr('title', arr3[index]);
 	}else{
 		$(this).addClass('empty-slot')
 	}
-});
-
-$('.location').each(function(index){
-	console.log('Ajout de id des elts locations');
-	//ajout de l'attribut 'id'
-	$(this).attr('id',arr1[index]);
-});
-
-$('.location-label').each(function(index){
-	console.log('Ajout des noms de batch des elts location-label');
-	$(this).append(arr2[index]);
-});
-
-$('.location-tooltips').each(function(index){
-	console.log('Ajout de id des elts locations pour les tooltips');
-	$(this).attr('id',arr1[index]);
-	$(this).attr('title', arr3[index]);
-})
+	});
 //end
+
 }else{
 	$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/no_map") %>");
 	$("#container-map-container").html("");
