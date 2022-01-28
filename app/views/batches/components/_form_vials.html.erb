@@ -1,5 +1,5 @@
 <h3>
-  Add vials to batch <%=@batch.name%>
+  Add/modify vials to batch <%=@batch.name%>
 </h3>
 <%= simple_nested_form_for (@batch), url: update_vials_batch_path, html: {class: 'vertical-form'} do |f|  %>
 	<%= f.error_notification %>
@@ -41,14 +41,13 @@
 					</div>
 				</div>
 				<div class="row margin-top-row-20">
-					<div class="col-xs-2">
-	  			<%= ff.association :position, :collection => Position.all.is_empty, label_method: lambda { |object| "#{object.box.name} #{object.nb+1}"}, :placeholder => "Select a position", input_html: { class: 'select2-select col-xs-12' }%>
-	  		</div>
-	  		<div class="col-xs-4">
-	  			<small><strong>Current location :</strong></br>
-	  				<%= ff.object.position ? "Box : #{ff.object.position.box.name} / Slot : #{ff.object.position.nb+1}" : "No position" %></small>
-	  		</div>
+					<div class="col-xs-6">
+					<div class="text-info"><strong>Current location :</strong></div>
+	  				<div class="text-primary"><%= ff.object.position ? "Box : #{ff.object.position.box.name} / Slot : #{ff.object.position.nb+1}" : "No position" %></div>
+	  			<div><%= ff.association :position, label: "Location", :collection => Position.all.is_empty, label_method: lambda { |object| "#{object.box.name} #{object.nb+1}"}, :placeholder => "Select a position", input_html: { class: 'select2-select col-xs-12' }%>
 				</div>
+			</div>
+		</div>
 			<div class="pull-right">
 				<%= ff.link_to_remove "<i class='fa fa-trash'></i> ".html_safe %>
 			</div>
