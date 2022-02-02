@@ -3,7 +3,7 @@
 </h3>
 <%= simple_nested_form_for (@batch), url: update_vials_batch_path, html: {class: 'vertical-form'} do |f|  %>
 	<%= f.error_notification %>
-	
+	<%=hidden_field_tag :source, params[:source]%>
 <div class="container">
 	<%= f.simple_fields_for :vials, f.object.vials.order(:id) do |ff| %>
 	<div class="row margin-top-row-20">
@@ -41,10 +41,20 @@
 					</div>
 				</div>
 				<div class="row margin-top-row-20">
+						<% if ff.object.position%>
+							<% current_position_id = ff.object.position_id%>
+	  					<% available_positions = Position.is_empty%>
+	  					<% arr = available_positions.pluck(:id).push(current_position_id)%>
+	  					<% selected_positions = Position.joins(:box).order('boxes.name ASC').order('nb ASC').find(arr)%>
+  					<%else%>
+  						<% selected_positions = Position.joins(:box).order('boxes.name ASC').is_empty.order('nb')%>
+  					<%end%>
+
+
 					<div class="col-xs-6">
 					<div class="text-info"><strong>Current location :</strong></div>
 	  				<div class="text-primary"><%= ff.object.position ? "Box : #{ff.object.position.box.name} / Slot : #{ff.object.position.nb+1}" : "No position" %></div>
-	  			<div><%= ff.association :position, label: "Location", :collection => Position.all.is_empty, label_method: lambda { |object| "#{object.box.name} #{object.nb+1}"}, :placeholder => "Select a position", input_html: { class: 'select2-select col-xs-12' }%>
+	  			<div><%= ff.association :position, label: "Location", :collection =>selected_positions, label_method: lambda { |object| "Box: #{object.box.name} Slot : #{object.nb+1}"}, :placeholder => "Select a position", input_html: { class: 'select2-select col-xs-12' }%>
 				</div>
 			</div>
 		</div>

@@ -54,11 +54,12 @@
 
 	</div>
 	<div class="panel-footer">
-	    		<% if can? :manage, Batch %>
 	    			 <div class="btn-group" role="group" aria-label="...">
+	    			 	<% if can? :manage, Batch %>
 		    			<%= link_to 'Edit', edit_batch_path(@batch), :class => "btn btn-default" %>
+		    			<%end%>
+		    			<%= link_to 'Batches', batches_path, :class => "btn btn-default" %>
 		    		</div>
-		    	<%end%>
 	 </div>
 
 </div><!--End or panel-->
