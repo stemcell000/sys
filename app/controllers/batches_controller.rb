@@ -48,7 +48,8 @@ class BatchesController < ApplicationController
 		@batch.update_attributes(batch_params)
 		if  @batch.valid?
 			flash.keep[:success] = "Batch updated !"
-			redirect_to add_vials_batch_path(@batch)
+			#redirect_to add_vials_batch_path(@batch)
+			redirect_to params[:source]
 		else
 			render action: "edit"
 		end

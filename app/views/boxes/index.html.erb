@@ -1,3 +1,4 @@
+<% source = '/boxes'%>
 <h1><i class="fa_icon fa fa-search"></i> Boxes/vials</h1>
 <div class="container">
 <div class="row">
@@ -11,7 +12,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<h4>Boxes</h4>
-				<%= render partial: 'boxes/list_components/list', locals: {boxes: @boxes, pagy: @pagy, source: '/boxes' } %>
+				<%= render partial: 'boxes/list_components/list', locals: {boxes: @boxes, pagy: @pagy, source: source } %>
 			</div>
 		</div>
 		</div>

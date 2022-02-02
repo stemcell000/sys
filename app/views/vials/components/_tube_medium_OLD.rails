@@ -3,9 +3,3 @@
 		<div unselectable="on" class="location inner-div"></div>
 	</a>
 </div>
-
-<div class="dot-medium outer-div draggable">
-	<%= render :partial => "vials/components/tooltip", :locals => {v: v, source: source} %>
-</div>
-
-
