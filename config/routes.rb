@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     get :add_vials, :on=>:member
     patch :update_vials, :on=>:member
   end
+  resources :options do
+   patch :display_all_switch, on: :member
+  end
 
   #Root
   root 'vials#index'

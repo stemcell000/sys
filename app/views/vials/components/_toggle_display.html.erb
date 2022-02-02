@@ -1,0 +1,7 @@
+<%= simple_form_for @option, url: display_all_switch_option_path(@option),  html: { class: 'horizontal-form' }, :remote=> true do |f| %>
+	<div class="form-group">
+		<div class="">
+  				<%= f.input :display_all, :as => :boolean, :label =>"Display in & out vials", :input_html => {:onclick => "$('#option_display_all*').submit();"}, wrapper: :horizontal_collection%>
+  		</div>
+		</div>
+<%end%>

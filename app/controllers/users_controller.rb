@@ -106,7 +106,7 @@ class UsersController < ApplicationController
    user.generate_recap
    user.set_username
    user.humanize_name
-   user.create_option
+   #user.create_option : in the User model
  end
  
  def set_roles

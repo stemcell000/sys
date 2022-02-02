@@ -163,6 +163,12 @@ private
         @position_batch_names = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name}
         @position_batch_names_slots = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name.truncate(6)}
         @position_batch_ids = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.id}
+        @position_batch_volumes  = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" : "#{p.vial.volume}"}
+        @position_batch_bcs  = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" : "#{p.vial.barcode}"}
+        @position_batch_freez  = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" : "#{p.vial.freezing_date}"}
+        @position_batch_cmts = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" : "#{p.vial.comment}"}
+        @position_batch_recaps = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" :"#{p.vial.recap}"}
+
       else
         @v_max = 0
         @h_max = 0

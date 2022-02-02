@@ -88,10 +88,11 @@ console.log("param : "+param);
       });
 }
 
-function getBoxMap(id, containername) {
+function getBoxMap(id, containername, src) {
 console.log("Selected");
 console.log("Box ID : "+id);
-param = {box_id: id}; 
+param = {box_id: id, source: src};
+console.log("Source: "+src);
   $.ajax({
       url : '/vials/map_tube',
       data: param,

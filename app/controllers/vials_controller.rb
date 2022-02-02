@@ -18,7 +18,6 @@ def index
       @q = Vial.ransack(params[:q])
       records = @q.result.includes(:position, :box, :batch)
 
-      #vial_ids = records.pluck(:id)
       position_ids = records.pluck(:position_id)
 
       if params[:q].blank?
@@ -27,9 +26,15 @@ def index
         record_boxes = Box.joins(:positions).where(positions: {id: position_ids}).distinct
       end
 
+      @option = current_user.options.first
+
+      if @option.display_all == true
+        records = records.where.not(out: false)
+      end
+
       #Config de l'affichage des résultats.
       @pagy, @boxes = pagy(record_boxes.order(:name), items: 10, page_param: :page_box)
-      @pagy_vials, @vials = pagy(records.where(out: false), items: 15, page_param: :page_vial)
+      @pagy_vials, @vials = pagy(records, items: 15, page_param: :page_vial)
 end
 
 def out_vials
@@ -52,6 +57,7 @@ end
  
 def new
     @vial = Vial.new
+    @selected_positions = Position.joins(:box).order('boxes.name ASC').is_empty.order('nb')
 end
 
 
@@ -71,7 +77,10 @@ def create
 end
 
 def edit
-  
+  current_position_id = @vial.position_id
+  available_positions = Position.is_empty
+  arr = available_positions.pluck(:id).push(current_position_id)
+  @selected_positions = Position.joins(:box).order('boxes.name ASC').order('nb ASC').find(arr)
 end
 
 def update
@@ -105,6 +114,9 @@ end
  def map_tube
    unless params[:box_id].nil?
       set_box_map
+      unless params[:source].nil?
+        @source = params[:source]
+      end
    end
     @users = User.all
   end
@@ -173,9 +185,15 @@ end
       #
       @position_ids = @box.positions.order(:nb).pluck(:id)
       @position_names = @box.positions.order(:nb).map{|p|(p.nb+1).to_s}
-      @position_batch_names = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name}
-      @position_batch_names_slots = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name.truncate(6)}
-      @position_batch_ids = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.id}
+      @position_batch_names = @box.positions.order(:nb).map{|p| p.vial.nil? ? "" : p.vial.name}
+      @position_batch_names_slots = @box.positions.order(:nb).map{|p| p.vial.nil? ? "" : p.vial.name.truncate(6)}
+      @position_batch_ids = @box.positions.order(:nb).map{|p| p.vial.nil? ? "" : p.vial.id}
+      @position_batch_volumes  = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" : "#{p.vial.volume}"}
+      @position_batch_bcs  = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" : "#{p.vial.barcode}"}
+      @position_batch_freez  = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" : "#{p.vial.freezing_date}"}
+      @position_batch_cmts = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" : "#{p.vial.comment}"}
+      @position_batch_recaps = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" :"#{p.vial.recap}"}
+      #
       @arr = @vials.each_slice(2).to_a
       @users = User.all.where.not(role: "superadmin")
     end

@@ -8,6 +8,11 @@
 		<%= render 'vials/components/search'%>
 	</div>
 </div>
+<div class="row">
+	<div id="display-container" class="col-xs-12">
+		<%= render :partial => "vials/components/toggle_display", :locals => { :option => @option } %>
+	</div>
+</div>
 <% unless @boxes.empty? %>
 	<div class="row" style="overflow: auto;">
 		<div class="col-xs-12 text-center">
