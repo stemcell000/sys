@@ -29,8 +29,13 @@ $('.slot').each(function(index){
 	console.log('Ajout du dataset des elts draggableContainer');
 	$(this).attr({'data-id': arr1[index], 'data-name': arr2[index], 'id': arr1[index]});
 	if(arr3[index]){
+		arr5_value = arr5[index] ? arr5[index]+" µL" : "Unknown"
+		arr6_value = arr6[index] ? arr6[index] : "Unknown"
+		arr7_value = arr7[index] ? arr7[index] : "Unknown"
+		arr8_value = arr8[index] ? "<br />"+arr8[index] : "None"
 		title_str = "<div style='width: 200px;'<div class='row'><div class='col-lg-8 text-left'><strong>"+arr3[index]+"</strong></div><div class='col-lg-4 right'></div></div>"
-		content_str = "<div class='col-lg-12 text-left'><small><strong>Barcode : </strong>"+arr7[index]+"<br /><strong>Freezing date : </strong>"+arr6[index]+"<br /><strong>Volume : </strong>"+arr5[index]+" µL<br /><strong>Comments : </strong><br />"+arr8[index]+"<br /></small></div></div>"
+		content_str = "<div class='col-lg-12 text-left'><small><strong>Barcode : </strong>"+arr7_value+"<br /><strong>Freezing date : </strong>"+arr6_value+"<br /><strong>Volume : </strong>"+arr5_value+"<br /><strong>Comments : </strong>"+arr8_value+"</small></div></div>"
+		
 		$('[data-toggle="popover"]').popover({html:true});
 		$(this).append("<%= escape_javascript(render :partial => "vials/components/tube_medium")%>")
 		$(this).find('.dot-medium').attr('id', arr4[index])
