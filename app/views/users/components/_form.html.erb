@@ -36,8 +36,9 @@
   </div>
   <div class="row">
     <div class="col-md-6 col-lg-6 col-sm-6">
+      <% roles = current_user.role == "superadmin" ? ["superadmin", "administrator", "user", "guest"] : ["administrator", "user", "guest"] %>
         <%= f.input :role,
-        collection: ["administrator", "user", "guest"],
+        collection: roles,
         required: true, 
         input_html:  {class: "select2-select col-xs-12"}%>
       </div>
