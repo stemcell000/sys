@@ -1,5 +1,4 @@
-<% source = '/batches'%>
-<div class="container">
+<% source = request.url%>
 	<div class="row">
 		<h1><i class="fa_icon fa fa-search"></i>Batches</h1>
 	</div>
@@ -14,7 +13,6 @@
 			<%= render partial: "batches/list_components/list", locals: {batches: @batches} %>
 				</div>
 		</div>
-</div>
 <%else%>
 <p><em>No batches</em></p>
 <%end%>

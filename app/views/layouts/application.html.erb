@@ -14,20 +14,17 @@
     <%= favicon_link_tag asset_path('images/favicon.ico') %>
   </head>
   <body>
-  	<div class="container">
   		<%= render :partial => 'components/modal' %>
+      <div class="container-fluid">
 	<header">
 		<%= render partial: 'layouts/header' %>
 		<div id='flash-msg-container' class="container-fluid">
 				<%= render partial: "layouts/flash_messages", :flash => flash %>
 		</div>
 	</header>		
-
-			<div class="jumbotron jumbotron-fluid">
-        <div class="container">
+        <div class="container-fluid">
 				    	<%= yield %>
         </div>
-			</div>
 	</div>
 </body>
 	<%= render partial: 'layouts/footer' %>
