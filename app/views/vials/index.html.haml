@@ -7,7 +7,7 @@
   .col-xs-12.col-sm-12.col-md-12
     = render 'vials/components/search'
 .row
-  #display-container.col-xs-4.col-sm-4.col-md-4
+  #display-container.col-xs-5.col-sm-5.col-md-5
     = render :partial => "vials/components/toggle_display", :locals => { :option => @option }
 - unless @boxes.empty?
   .row{:style => "overflow: auto;"}
@@ -18,14 +18,14 @@
         .panel-body
           = render partial: 'boxes/list_components/list', locals: {boxes: @boxes, pagy: @pagy, source: source}
     .col-xs-4.col-sm-4.col-md-4{:style => "overflow: auto;"}
-      .panel.panel-default.h-800
+      .panel.panel-default{:style => "min-height:  800px;"}
         .panel-heading
           %h4 Vials
         .panel-body
           #vials-container
             = render partial: 'vials/list_components/list', locals: {vials: @vials, pagy: @pagy_vials, source: source }
     .col-xs-4.col-md-4.col-sm-4.text-center{:style => "overflow: auto;"}
-      #map-container.col-xs-12.col-sm-12.col-md-12.text-center.h-800
+      #map-container.col-xs-12.col-sm-12.col-md-12.text-center
 - else
   %p
     %em No box found
