@@ -3,13 +3,13 @@
 		<h1><i class="fa_icon fa fa-search"></i>Batches</h1>
 	</div>
 <div class="row">
-	<div class="col-xs-12">
+	<div class="col-xs-8 col-sm-8 col-xs-8">
 		<%= render 'batches/components/search'%>
 	</div>
 </div>
 <% unless @batches.empty? %>
 	<div class="row">
-		<div class="col-xs-12 text-center" style="overflow: auto;">
+		<div class="col-xs-8 col-sm-8 col-xs-8 text-center" style="overflow: auto;">
 			<%= render partial: "batches/list_components/list", locals: {batches: @batches} %>
 				</div>
 		</div>

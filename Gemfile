@@ -86,5 +86,6 @@ gem 'json', '2.3.0'
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 gem 'pagy'
 gem 'activerecord_where_assoc', '~> 1.0'
+gem 'haml'
 
 
