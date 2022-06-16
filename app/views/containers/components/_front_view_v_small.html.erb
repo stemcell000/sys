@@ -18,9 +18,9 @@
     <div style="display: inline-block; text-align: middle; margin: 0 0 0 0;">
          <% shelf.shelf_racks.each do |rack| %>
          <% bg_color = box.rack_position.shelf_rack.id == rack.id ? '#5cb85c' : '#337ab7' %>
-                <div id=<%=rack.name%> data-id=<%=rack.id%> style="background-color: <%=bg_color%>;   border: 1px solid black; border-radius: 2px; padding: 0 0 0 7% ;margin: 0 0 5% 0 ; width: 70px; height: 70px;">
+                <div id=<%=rack.name%> data-id=<%=rack.id%> style="background-color: <%=bg_color%>;   border: 1px solid black; border-radius: 2px; padding: 0 0 0 7% ;margin: 0 0 5% 0 ; width: 50px; height: 50px;">
                   <div class="text-left container_rack_label_small">
-                    rack#<%=rack.name%>
+                    <strong><%=rack.name%></strong>
                   </div>
                 </div>
           <%end%>
