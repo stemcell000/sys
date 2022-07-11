@@ -1,10 +1,10 @@
-<div class="container_rack" style="height: 200px;">
+<div class="container_rack">
     <div class="text-left container_rack_label">
       rack#<%=shelf_rack.name%>
     </div>
 
         <%shelf_rack.rack_positions.each do |position|%>
-            <div class = "bg-default container_rack_position draggableContainer slot outer-div" data-id=<%=position.id%> data-name=<%=position.name%>>
+            <div class = "col-xs-11 bg-default container_rack_position draggableContainer slot outer-div" data-id=<%=position.id%> data-name=<%=position.name%>>
             	<%unless position.box.nil? %>
 	            	<div class="box-location draggable  inner-div">
 						<div class="box" style="background-color: <%=position.box.color.code%>;"></div>

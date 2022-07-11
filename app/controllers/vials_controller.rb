@@ -102,7 +102,7 @@ end
 
 def destroy
     @batch = @vial.batch
-    redirect_to batch_path(@batch)
+    redirect_to vials_path
     @vial.destroy
     flash.keep[:success] = "Vial destroyed !"
 end

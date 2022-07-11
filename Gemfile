@@ -87,5 +87,6 @@ gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dab
 gem 'pagy'
 gem 'activerecord_where_assoc', '~> 1.0'
 gem 'haml'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master', group: :development
 
 
