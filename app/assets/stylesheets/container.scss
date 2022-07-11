@@ -89,16 +89,14 @@
 }
 
 .container_rack_position {
-  min-width: 80px;
-  min-height: 25px;
-  max-width: 80px;
-  max-height: 25px;
+  width: 80px;
+  height: 20px;
   border:1px solid grey;
   border-radius: 2px;
   background-color: lightgrey;
   display: inline-block;
   margin-bottom: 5px;
-  padding: 0 px;
+  //padding: 0 px;
 }
 
 .container_rack_position_small {
