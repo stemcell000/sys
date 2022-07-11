@@ -6,10 +6,9 @@ console.log('New container selected');
 
 $('#container-select').on('select2:clearing', function (e) {
   $("#help-message").html("Please, select a container.");
-$("#map-container").html("");
-$("#map-shelf-rack").html("");
+  $("#map-container").html("");
+  $("#map-shelf-rack").html("");
 });
-
 
 $(".rack").on("click", function() {
     //Changement de couleur du fond du rack cliqué
