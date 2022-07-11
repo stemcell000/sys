@@ -4,6 +4,7 @@
     </div>
 
         <%shelf_rack.rack_positions.each do |position|%>
+        <div class="row">
             <div class = "col-xs-11 bg-default container_rack_position draggableContainer slot outer-div" data-id=<%=position.id%> data-name=<%=position.name%>>
             	<%unless position.box.nil? %>
 	            	<div class="box-location draggable  inner-div">
@@ -13,5 +14,6 @@
             </div>
             <div class="col-xs-1" style="font-size: 75%; padding: 0 0 0 0;"><%=position.name%>
             </div>
+        </div>
         <%end%>
 </div>
