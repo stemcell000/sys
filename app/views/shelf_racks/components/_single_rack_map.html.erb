@@ -6,7 +6,7 @@
         <%shelf_rack.rack_positions.each do |position|%>
             <div class = "bg-default container_rack_position draggableContainer slot outer-div" data-id=<%=position.id%> data-name=<%=position.name%>>
             	<%unless position.box.nil? %>
-	            	<div class="box-location draggable  inner-div" style="display: inline-block; height: 15px; margin-top: 2px; margin-bottom: 2px; padding: 0 px; width: 100%; font-size: 80%; border:1px solid grey; border-radius: 2px; background-color: <%=position.box.color.code%>;">
+	            	<div class="" style="display: inline-block; height: 15px; margin-top: 2px; margin-bottom: 2px; padding: 0 px; width: 100%; font-size: 80%; border:1px solid grey; border-radius: 2px; background-color: <%=position.box.color.code%>;">
 					</div>
             	<%end%>
             </div>
