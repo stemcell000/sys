@@ -58,7 +58,7 @@
 		</div>
 <%end%>
 <div class="row margin-top-row-20">
- 		<div class="btn-group" role="group" aria-label="...">
+ 		<div class="btn-group pull-right" role="group" aria-label="...">
     		<%= f.submit("Save", :class => "btn btn-default", :title => "Save") %>
         	<%= link_to "Cancel", params[:source],:class => "btn btn-default", "aria-hidden" => "true" %>
         	<% if can? :manage, Vial%>
