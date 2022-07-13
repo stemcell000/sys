@@ -21,5 +21,6 @@ class Batch < ActiveRecord::Base
   validates :name, length: { maximum: 25,
     too_long: "%{count} characters is the maximum allowed",
     minimum: 2}
+  validates :vial_nb, presence: true, on: :create
 
 end

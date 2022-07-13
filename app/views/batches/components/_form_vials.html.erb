@@ -75,7 +75,7 @@
 </div>
 
 <div class="row">
- 		<div class="btn-group" role="group" aria-label="...">
+ 		<div class="btn-group col-xs-4 col-sm-4 col-md-3 col-md-offset-8" role="group" aria-label="...">
     		<%= f.submit("Save", :class => "btn btn-default", :title => "Save") %>
     		<%= link_to 'Back', edit_batch_path(@batch), :class => "btn btn-default" %>
         	<%= link_to 'Cancel', @batch, method: :delete, data: { confirm: 'Are you sure you want to cancel this batch registration ?' }, :class => "btn btn-default" %>
