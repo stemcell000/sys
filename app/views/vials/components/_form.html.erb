@@ -31,6 +31,7 @@
 								<div class="col-xs-6">
 					<div class="text-info"><strong>Current location :</strong></div>
 					 	<% current_position_id = @vial.position_id %>
+					 	<% available_positions = Position.is_empty %>
 						<% arr = available_positions.pluck(:id).push(current_position_id)%>
 				     <% selected_positions = Position.joins(:box).order('boxes.name ASC').order('nb ASC').find(arr) %>
 	  				<div class="text-primary"><%= !@vial.position.nil? ? "Box : #{@vial.position.box.name} / Slot : #{@vial.position.nb+1}" : "No position" %></div>

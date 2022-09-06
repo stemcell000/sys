@@ -80,10 +80,7 @@ def edit
   current_position_id = @vial.position_id
   available_positions = Position.is_empty
   arr = available_positions.pluck(:id).push(current_position_id)
-  if @vial.out == true
-    @selected_positions = Position.joins(:box).order('boxes.name ASC').is_empty.order('nb')
-  else
-    @selected_positions = Position.joins(:box).order('boxes.name ASC').order('nb ASC').find(arr)
+  @selected_positions = Position.joins(:box).order('boxes.name ASC').order('nb ASC').find(arr)
   end
 end
 
