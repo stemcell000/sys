@@ -28,8 +28,8 @@ def index
 
       @option = current_user.options.first
 
-      if @option.display_all == true
-        records = records.where.not(out: false)
+      if @option.display_all == false
+        records = records.where(out: false)
       end
 
       #Config de l'affichage des résultats.

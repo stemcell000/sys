@@ -7,7 +7,7 @@
   .col-xs-12.col-sm-12.col-md-12
     = render 'vials/components/search'
 .row
-  #display-container.col-xs-5.col-sm-5.col-md-5
+  #display-container.col-xs-12.col-sm-12.col-md-12
     = render :partial => "vials/components/toggle_display", :locals => { :option => @option }
 - unless @boxes.empty?
   .row{:style => "overflow: auto;"}

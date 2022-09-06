@@ -27,13 +27,17 @@
 				</div>
 			</div>
 			<div class="row margin-top-row-20">
-				<div class="col-xs-6">
+				<div class="col-xs-4">
 						<%= f.label "Batch type"%>
 					  	<%= f.select(:batch_batch_type_id_eq, BatchType.all.order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']] } , {:include_blank => " "}, {class: "col-xs-12 select2-select"}) %>
 				</div>
-				<div class="col-xs-6">
+				<div class="col-xs-4">
 						<%= f.label "Batch "%>
 					  	<%= f.select(:batch_id_eq, Batch.all.order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']] }, {:include_blank => " "}, {class: "col-xs-12 select2-select"}) %>
+				</div>
+				<div class="col-xs-4">
+						<%= f.label "Culture method "%>
+					  	<%= f.select(:batch_culture_eq, Batch.all.order(culture: "asc").uniq.map{ |obj| [obj['culture'], obj['id']] }, {:include_blank => " "}, {class: "col-xs-12 select2-select"}) %>
 				</div>
 			</div>
 			<div class="row margin-top-row-20">
