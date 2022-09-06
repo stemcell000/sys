@@ -37,7 +37,7 @@
 				</div>
 				<div class="col-xs-4">
 						<%= f.label "Culture method "%>
-					  	<%= f.select(:batch_culture_eq, Batch.all.order(culture: "asc").uniq.map{ |obj| [obj['culture'], obj['id']] }, {:include_blank => " "}, {class: "col-xs-12 select2-select"}) %>
+					  	<%= f.select(:batch_culture_eq, Batch.all.order(culture: "asc").pluck(:culture).uniq, {:include_blank => " "}, {class: "col-xs-12 select2-select"}) %>
 				</div>
 			</div>
 			<div class="row margin-top-row-20">
