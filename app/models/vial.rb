@@ -1,7 +1,7 @@
 class Vial < ActiveRecord::Base
   
   after_create :generate_recap
-  after_update :generate_recap
+  after_update :generate_recap, :check_in_out
 
   belongs_to :position
   has_one :box, through: :position
@@ -13,7 +13,7 @@ class Vial < ActiveRecord::Base
   #validations
   validates :name, :batch_id, presence: true
   validates :name, uniqueness: true
-  validates :name, length: { in: 2..25 }
+  validates :name, length: { in: 2..50 }
   validates :comment, length: { maximum: 500 }, allow_blank: true
   validates :name, :format => { with: /\A[a-zA-Z0-9 ._-]*\z/ ,
     :message => 'no special characters, only letters and numbers'}
@@ -50,5 +50,13 @@ def set_color_from_status
       str = self.out==true ? "text-danger" : ""
     return str
 end
+
+def check_in_out
+  if self.out== false && !self.position.nil?
+    self.out =  true
+    self.save!(validate: false)
+  end
+end
+
   
 end
