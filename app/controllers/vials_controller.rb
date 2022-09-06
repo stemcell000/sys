@@ -81,7 +81,6 @@ def edit
   available_positions = Position.is_empty
   arr = available_positions.pluck(:id).push(current_position_id)
   @selected_positions = Position.joins(:box).order('boxes.name ASC').order('nb ASC').find(arr)
-  end
 end
 
 def update
