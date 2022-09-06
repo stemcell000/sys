@@ -31,7 +31,7 @@
 								<div class="col-xs-6">
 					<div class="text-info"><strong>Current location :</strong></div>
 	  				<div class="text-primary"><%= @vial.position ? "Box : #{@vial.position.box.name} / Slot : #{@vial.position.nb+1}" : "No position" %></div>
-	  			<div><%= f.association :position, label: "Location", :collection => @selected_positions, label_method: lambda { |object| "Box: #{object.box.name} Slot : #{object.nb+1}"}, :placeholder => "Select a position", input_html: { class: 'select2-select col-xs-12' }%>
+	  			<div><%= f.association :position, label: "Location", :collection => @selected_positions, label_method: lambda { |object| "Box: #{object.box.nil? ? "" : object.box.name} Slot : #{object.nb+1}"}, :placeholder => "Select a position", input_html: { class: 'select2-select col-xs-12' }%>
 				</div>
 			</div>
 		</div>
@@ -52,7 +52,7 @@
 				<%=f.input :exit_date, :as => :string, :input_html => { :value => (f.object.exit_date.strftime("%B %e, %Y") if f.object.exit_date), "data-behaviour" => "datepicker"} %>
 			</div>
 			<div class="col-xs-6">
-			<%=f.association :user, label: "Client",collection: User.all.where.not(role: "superadmin"), label_method: lambda { |user| "#{user.firstname} #{user.lastname}"}, input_html: {class: "select2-select col-xs-12"}%>
+			<%=f.association :user, label: "Client", collection: User.all.where.not(role: "superadmin"), label_method: lambda { |user| "#{user.firstname} #{user.lastname}"}, input_html: {class: "select2-select col-xs-12"}%>
 			</div>
 		</div>
 		</div>
