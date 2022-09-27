@@ -75,7 +75,7 @@
   <% if can? :cru, Batch %>
       <%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_batch_path(object), method: :get %> 
   <%end%> 
-  <% if can? :destroy, Batch %>
+  <% if can? :crud, Batch %>
       <%= link_to "<i class='fas fa-trash'></i>".html_safe, batch_path(object), method: :delete, data: { confirm: 'Are you sure you want to destroy this batch ? Every related vial will be destroyed too.' } %> 
   <%end%>
 </div>
