@@ -15,7 +15,7 @@ class Ability
           can :read, :all
           can :manage, User
           can :manage, Vial
-          can :cru, Batch
+          can :crud, Batch
           can :manage, Position
           can :manage, Box
           can :manage, BoxType
