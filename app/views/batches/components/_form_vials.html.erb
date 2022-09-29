@@ -3,6 +3,11 @@
 </h3>
 <%= simple_nested_form_for (@batch), url: update_vials_batch_path, html: {class: 'vertical-form'} do |f|  %>
 	<%= f.error_notification %>
+<ul>
+    <% @batch.errors.full_messages.each do |message| %>
+    <li style="color: red;"><%= message %></li>
+    <% end %>
+</ul>
 	<%=hidden_field_tag :source, params[:source]%>
 <div class="container">
 	<%= f.simple_fields_for :vials, f.object.vials.order(:id) do |ff| %>

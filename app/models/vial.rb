@@ -15,8 +15,11 @@ class Vial < ActiveRecord::Base
   validates :name, uniqueness: true
   validates :name, length: { in: 2..50 }
   validates :comment, length: { maximum: 500 }, allow_blank: true
-  validates :name, :format => { with: /\A[a-zA-Z0-9 ._-]*\z/,
-    :message => 'no special characters, only letters and numbers'}
+  
+  #validates :name, :format => { with: /\A[a-zA-Z0-9._-]*\z/,
+   # :message => 'no special characters, only letters and numbers'}
+  validates :name, format: { without: /\// , :message => 'Slash character is not allowed.'}
+
   
 def generate_recap
   block = "#{self.name.nil? ? "": self.name}<br />
