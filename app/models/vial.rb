@@ -52,8 +52,8 @@ def set_color_from_status
 end
 
 def check_in_out
-  if self.out== false && !self.position.nil?
-    self.out =  true
+  if self.out== true && !self.position.nil?
+    self.position = nil
     self.save!(validate: false)
   end
 end
