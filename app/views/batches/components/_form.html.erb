@@ -1,6 +1,7 @@
 <%= simple_form_for (@batch), html: {class: 'vertical-form'} do |f|  %>
 
 <%= f.error_notification %>
+
 <ul>
     <% @batch.errors.full_messages.each do |message| %>
     <li style="color: red;"><%= message %></li>
@@ -38,18 +39,19 @@
 		</div>
 	</div>
 	<div class="row margin-top-row-20">
-		<div class="col-xs-4">
+		<div class="col-xs-4 col-sm-4 col-md-4">
 			<%= f.label "Culture method"%>
 			<%= f.select(:culture, ['Feeder', 'Feeder free'], {:include_blank => " "}, {class: "col-xs-8 select2-select"}) %>
-
+		</div>
+		<div class="col-xs-2 col-sm-2 col-md-2">
 		<%if params[:action]=='new' || params[:action]=='create'%>
 			<%=f.input :vial_nb, label: "Number of vials", input_html: {class: "col-xs-12"}%>
 		<%end%>
+	   </div>
+		<div class="col-xs-2 col-sm-2 col-md-2" >
+			<%= f.input :corrected, as: :boolean, wrapper: :inline_checkbox %>
 		</div>
-		<div class="col-xs-2" >
-			<%= f.input :corrected%>
-		</div>
-    	<div class="col-xs-6 row ghost-container" id="technique-container">
+    	<div class="col-xs-4 col-sm-4 col-md-4 row ghost-container" id="technique-container">
            <%= f.label "Correction technique"%>
 			<%= f.select(:technique, ['CRISPR-Cas9', 'KI'], {:include_blank => " "}, {class: "col-xs-12 select2-select"}) %>
         </div>

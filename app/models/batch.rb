@@ -10,12 +10,8 @@ class Batch < ActiveRecord::Base
     Arel.sql("to_char(\"#{:batches}\".\"clone_nb\", '99999')")
   end
 
-  #after_create :generate_recap
-  #after_update :generate_recap
-
 	#validations
   validates :name, :batch_type_id, :presence => true
-  validates :name, length: { in: 2..25 }
   validates :name, uniqueness: true
   validates :description, length: { maximum: 500 }, allow_blank: true
   validates :name, length: { maximum: 25,

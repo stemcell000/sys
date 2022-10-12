@@ -25,8 +25,9 @@ class BatchesController < ApplicationController
 		#Création des batches
 		1.upto(@batch.vial_nb) do
 			i+=1
+			str = format('%02d', i)
 			vial = @batch.vials.new
-			vial.name = @batch.name+"."+i.to_s
+			vial.name = @batch.name+"."+str
 			vial.save!(validate: false)
 		end
   
@@ -56,11 +57,11 @@ class BatchesController < ApplicationController
 	end
 
 	def update_vials
-		@batch.update_attributes(batch_params)
+		@batch.update(batch_params)
 		if  @batch.valid?
 			@batch.update_columns(vial_nb: @batch.vials.count)
 			flash.keep[:success] = "Batch updated !"
-			redirect_to @batch
+			render 'add_vials'
 		else
 			render action: "add_vials"
 		end
@@ -94,8 +95,6 @@ class BatchesController < ApplicationController
 	def batch_params
       params.require(:batch).permit(
         :name, :batch_type_id, :description, :user_id, :vial_nb, :passagenb, :patientnb, :clonenb, :culture, :corrected, :technique, :source,
-        vials_attributes: [:id, :name, :barcode, :volume, :box_id,
-                                   :position_id, :out, :comment,
-                                   :barcode, :recap, :batch_id])
+        vials_attributes: [:id, :name, :barcode, :volume, :box_id, :position_id, :out, :comment, :barcode, :recap, :batch_id, :user_id, :exit_date, :_destroy])
     end
 end

@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   
   attr_writer :login
-  after_create :create_option
-  after_save :create_option
-  after_update :create_option
+  #after_create :create_option
+  #after_save :create_option
+  #after_update :create_option
 
   scope :is_in_charge_of, -> u_id {joins(:items_users).where(:items_users => {user_id: u_id})}
   scope :by_teams,  ->(team_id) { joins(:teams).where(teams: { id: team_id }) }

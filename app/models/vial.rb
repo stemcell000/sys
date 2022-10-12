@@ -1,25 +1,20 @@
 class Vial < ActiveRecord::Base
   
   after_create :generate_recap
-  after_update :generate_recap, :check_in_out
+  after_update :check_in_out, :generate_recap
 
   belongs_to :position
   has_one :box, through: :position
   belongs_to :batch
   belongs_to :user
   
-  accepts_nested_attributes_for :position, :batch
   
   #validations
   validates :name, :batch_id, presence: true
   validates :name, uniqueness: true
   validates :name, length: { in: 2..50 }
   validates :comment, length: { maximum: 500 }, allow_blank: true
-  
-  #validates :name, :format => { with: /\A[a-zA-Z0-9._-]*\z/,
-   # :message => 'no special characters, only letters and numbers'}
-  validates :name, format: { without: /\// , :message => 'Slash character is not allowed.'}
-
+  #validates :name, format: { without: /\// , :message => 'Slash character is not allowed.'}
   
 def generate_recap
   block = "#{self.name.nil? ? "": self.name}<br />
