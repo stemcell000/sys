@@ -29,7 +29,7 @@ $('.slot').each(function(index){
 	console.log('Ajout du dataset des elts draggableContainer');
 	$(this).attr({'data-id': arr1[index], 'data-name': arr2[index]});
 	if(arr3[index]){
-		$(this).append("<%= escape_javascript(render :partial => "vials/components/tube")%>")
+		$(this).append("<%= escape_javascript(render :partial => "vials/components/tube_medium")%>")
 		$(this).find('.location').append(arr3[index]+" ("+arr4[index]+")");
 	}else{
 		$(this).addClass('empty-slot')
