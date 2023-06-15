@@ -1,6 +1,7 @@
 class ContainersController < InheritedResources::Base
     
     before_action :set_container, only:[:delete, :edit, :show, :update, :destroy, :set_container_map]
+    before_action :set_variables, only: [:fetch_box]
   
   def index
     @q = Container.ransack(params[:q])
@@ -54,9 +55,12 @@ class ContainersController < InheritedResources::Base
 
   def fetch_vials
   @box = Box.find(params[:id])
-  set_variables
-    records = Vial.where(position_id: @position_ids)
-    @pagy, @vials = pagy(records, vials: 30)
+   @position_ids = @box.positions.order(:nb).pluck(:id)
+   @vial=Vial.where(position_id: @position_ids)
+  end
+
+  def fetch_box
+    
   end
   
   private
@@ -84,6 +88,30 @@ class ContainersController < InheritedResources::Base
           print e
         end
   end
-  
+
+  def set_variables
+    @box = Box.find(params[:id])
+    if @box.box_type
+      @box_type = @box.box_type
+      @v_max = @box_type.vertical_max
+      @h_max = @box_type.horizontal_max
+      @position_ids = @box.positions.order(:nb).pluck(:id)
+      @position_names = @box.positions.order(:nb).map{|p|(p.nb+1).to_s}
+      @position_batch_names = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name}
+      @position_batch_names_slots = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.name.truncate(6)}
+      @position_batch_ids = @box.positions.order(:nb).map{|p| p.vial.nil? ? "":p.vial.id}
+      @position_batch_volumes  = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" : "#{p.vial.volume}"}
+      @position_batch_bcs  = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" : "#{p.vial.barcode}"}
+      @position_batch_freez  = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" : "#{p.vial.freezing_date}"}
+      @position_batch_cmts = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" : "#{p.vial.comment}"}
+      @position_batch_recaps = @box.positions.order(:nb).map{|p| p.vial.nil? ? "-" :"#{p.vial.recap}"}
+    else
+      @v_max = 0
+      @h_max = 0
+      @position_ids = []
+      @position_names = []
+    end
+        @vials=@box.vials.order(name: :asc)
+  end
 end
 

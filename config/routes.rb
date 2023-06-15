@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :shelves
   resources :containers do
     get :map_container, :on => :collection
+    get :fetch_box, :on => :member
   end
   resources :positions
   resources :shelf_racks do

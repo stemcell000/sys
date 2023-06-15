@@ -1,0 +1,8 @@
+.row{:style => "overflow: auto;"}
+  .col-xs-6.col-sm-6.col-md-6
+    =render partial: 'containers/components/top_view', locals: {container: container}
+  .col-xs-6.col-sm-6.col-md-6{:style => "overflow: auto;"}
+    =render partial: 'containers/components/side_view', locals: {container: container, source: source}
+  .row
+    .col-xs-12.col-sm-12.col-md-12{:style => "overflow: auto;"}
+      #map-container.col-xs-12.col-sm-12.col-md-12.text-center

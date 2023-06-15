@@ -22,8 +22,9 @@
         .panel-heading
           %h4 Vials
         .panel-body
-          #vials-container
+          #vials-container{style:  "z-index: 0;"}
             = render partial: 'vials/list_components/list', locals: {vials: @vials, pagy: @pagy_vials, source: source }
+          }
     .col-xs-4.col-md-4.col-sm-4.text-center{:style => "overflow: auto;"}
       #map-container.col-xs-12.col-sm-12.col-md-12.text-center
 - else

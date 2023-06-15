@@ -1,18 +1,17 @@
 <%if container.container_type_id== 1%>
     <div>
-        <div style="overflow: auto; margin: 0 0 0 0px; padding: 0 0 0 0px; width: 400px; display: inline-block; vertical-align: top;">
-          <%=render partial: 'containers/components/top_view', locals: {container: container}%>
-        </div>
+      <div style="overflow: auto; margin: 0 0 0 0px; padding: 0 0 0 0px; width: 400px; display: inline-block; vertical-align: top;">
+        <%=render partial: 'containers/components/top_view', locals: {container: container}%>
+      </div>
       <div style="overflow: auto; margin: 0 0 0 0px; padding: 0 0 0 0px; width: 400px; display: inline-block; vertical-align: top;">
         <%=render partial: 'containers/components/side_view', locals: {container: container, source: source}%>
       </div>
       <div style="overflow: auto; margin: 20px 0 0 0px; padding: 0 0 0 20px; width: 800px; display: inline-block; vertical-align: top;">
-          <div id="map-container">
-          </div>
+        <div id="map-container" class="col-xs-12 text-center"></div>
       </div>
-  </div>
+    </div>
 <%else%>
     <div style="overflow: auto; margin: 0 0 0 0px; padding: 0 0 0 0px; width: 100%; display: inline-block; vertical-align: top;">
         <%=render partial: 'containers/components/front_view', locals: {container: container}%>
     </div>
-  <%end%>
+<%end%>

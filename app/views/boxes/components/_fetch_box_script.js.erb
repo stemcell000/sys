@@ -1,0 +1,67 @@
+if(<%= !@box_type.nil?%>){
+	
+//Affichage du partial
+$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/map_small", locals: {:box => @box, :box_type => @box_type, :v_max => @v_max, :h_max => @h_max, :position_ids => @position_ids, :position_names => @position_names, :storage_status => @storage_status}) %>");
+
+	var arr1 =  <%= raw @position_ids %>;
+	var arr2 =  <%= raw @position_names %>;
+	var arr3 = 	<%= raw @position_batch_names%>;
+	var arr3_short = <%= raw @position_batch_names_slots%>;
+	var arr4 = 	<%= raw @position_batch_ids%>
+	var box_id= <%= @box.id %>;
+ 	var arr4 = <%= raw @position_batch_ids %>
+ 	var arr5 = <%= raw @position_batch_volumes %>
+ 	var arr6 = <%= raw @position_batch_freez%>
+ 	var arr7 = <%= raw @position_batch_bcs %>
+ 	var arr8 = <%= raw @position_batch_cmts %>
+	
+	console.log('arr1 length = '+arr1.length);
+	console.log('arr2 length = '+arr2.length);
+	console.log('arr3 length = '+arr3.length);
+	console.log('box_id = '+box_id);
+//start
+$('.slot').each(function(index){
+	console.log('Ajout du dataset des elts draggableContainer');
+	$(this).attr({'data-id': arr1[index], 'data-name': arr2[index], 'id': arr1[index]});
+	if(arr3[index]){
+		title_str = "<div style='width: 200px;'<div class='row'><div class='col-lg-8 text-left'><strong>"+arr3[index]+"</strong></div><div class='col-lg-4 right'></div></div>"
+		content_str = "<div class='col-lg-12 text-left'><small><strong>Barcode : </strong>"+arr7[index]+"<br /><strong>Freezing date : </strong>"+arr6[index]+"<br /><strong>Volume : </strong>"+arr5[index]+"<br /><strong>Comments : </strong><br />"+arr8[index]+"<br /></small></div></div>"
+		$('[data-toggle="popover"]').popover({html:true});
+		$(this).append("<%= escape_javascript(render :partial => "vials/components/tube_medium")%>")
+		$(this).find('.dot-medium').attr('id', arr4[index])
+		$(this).find('.dot-medium').attr('data-id', arr4[index])
+		$(this).find('.location').append(arr3_short[index]);
+		$(this).find('.location-tooltips').attr('title', title_str);
+		$(this).find('.location-tooltips').attr('data-content', content_str);
+	}else{
+		$(this).addClass('empty-slot')
+	}
+	});
+
+$('.location-tooltips').each(function(index){
+	console.log('Ajout de id des elts locations pour les tooltips');
+	$(this).attr('id',arr1[index]);
+	$(this).attr('title', arr3[index]);
+
+})
+
+$('.location-label').each(function(index){
+	console.log('Ajout des noms de batch des elts location-label');
+	$(this).append(arr2[index]);
+});
+
+$('.location').each(function(index){
+	console.log('Ajout de id des elts locations');
+	//ajout de l'attribut 'id'
+	$(this).attr('id',arr1[index]);
+	//$(this).append(arr3_short[index]);
+});
+//end
+
+}else{
+	$("#map-container").html("<%= escape_javascript( render :partial =>  "boxes/components/no_map") %>");
+	$("#container-map-container").html("");
+	$("#map-shelf-rack").html("");
+}
+
+$('[data-toggle="popover"]').popover({html:true, container: 'body'});
